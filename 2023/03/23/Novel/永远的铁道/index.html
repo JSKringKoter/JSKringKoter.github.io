@@ -69,6 +69,8 @@
     			
             
     			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">工程</a>
+    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -80,11 +82,7 @@
 				
 					<a class="github" target="_blank" href="https://github.com/JSKringKoter" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="qq" target="_blank" href="/2265757077" title="qq"><i class="icon-qq"></i></a>
-		        
 					<a class="bilibili" target="_blank" href="https://space.bilibili.com/456757086/dynamic" title="bilibili"><i class="icon-bilibili"></i></a>
-		        
-					<a class="mail" target="_blank" href="/2265757077@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -119,11 +117,7 @@
 					
 						<a class="github" target="_blank" href="https://github.com/JSKringKoter" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="qq" target="_blank" href="/2265757077" title="qq"><i class="icon-qq"></i></a>
-			        
 						<a class="bilibili" target="_blank" href="https://space.bilibili.com/456757086/dynamic" title="bilibili"><i class="icon-bilibili"></i></a>
-			        
-						<a class="mail" target="_blank" href="/2265757077@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -486,6 +480,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
       
       
@@ -497,13 +493,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">工程</a></li>
+      
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -587,11 +585,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://github.com/JSKringKoter/Art-of-Nature" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>《Art of Nature：天工》mud游戏</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://github.com/JSKringKoter/COB-s-Advanture" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>《COB‘s Advance》mud游戏</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">JS_KringKoter，就读于南京邮电大学网络工程专业。现学习Unreal Engine4。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">JS_KringKoter QQ:2265757077</div>
   	  	
     	</section>
     
