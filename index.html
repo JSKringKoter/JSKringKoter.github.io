@@ -176,26 +176,9 @@
 <h5 id="优化3-1：在击中后添加音效和特效"><a href="#优化3-1：在击中后添加音效和特效" class="headerlink" title="优化3.1：在击中后添加音效和特效"></a>优化3.1：在击中后添加音效和特效</h5><p>依次搜索<br><code>在位置处生成音效</code>和<code>在位置处生成发射器</code>，将<em>Location</em>输入引脚依次和<code>事件命中</code>的<em>Hit Location</em>输出引脚相连（生成位置为碰撞处）。</p>
 <h5 id="优化3-2：为摧毁的Actor计数"><a href="#优化3-2：为摧毁的Actor计数" class="headerlink" title="优化3.2：为摧毁的Actor计数"></a>优化3.2：为摧毁的Actor计数</h5><p>创建int类型变量hitCount，默认值0，用于储存 <strong>击中次数</strong>。</p>
 <p>在<code>销毁Actor</code>后连接<code>设置Hit Count</code>，将变量拖到蓝图中，选择获取变量，连接<code>整数+整数</code>并将值设置为1，在连接<code>设置Hit Count</code>与<code>整数+整数</code>。</p>
-<h3 id="二、为Actor添加固定移动属性"><a href="#二、为Actor添加固定移动属性" class="headerlink" title="二、为Actor添加固定移动属性"></a>二、为Actor添加固定移动属性</h3><p>创建flout变量（Speed，默认值200），用于储存<strong>速度</strong>；</p>
-<p>创建vector变量（Location，默认值0，10，0），用于储存<strong>移动方向</strong>，数值的大小也部分反映了<strong>速度</strong>。</p>
-<h6 id="1-使速度与时间相关"><a href="#1-使速度与时间相关" class="headerlink" title="1.使速度与时间相关"></a>1.使速度与时间相关</h6><p><code>获取Speed</code>和<code>获取场景差量（秒）</code>相乘。</p>
-<blockquote>
-<p>获取场景差量（秒）：返回两帧之间间隔秒数</p>
-</blockquote>
-<h6 id="2-规格化方向向量"><a href="#2-规格化方向向量" class="headerlink" title="2.规格化方向向量"></a>2.规格化方向向量</h6><p><code>获取Location</code>与<code>规格化</code>相乘。</p>
-<h6 id="3-获取Actor当前位置信息"><a href="#3-获取Actor当前位置信息" class="headerlink" title="3.获取Actor当前位置信息"></a>3.获取Actor当前位置信息</h6><p><code>获取差量变换</code>连接<code>拆分变换</code>，返回三个值，分别为<em>Location</em>，<em>Ratation</em>和<em>Scale</em>。</p>
-<blockquote>
-<p>获取差量变换：貌似就是获取位置信息。</p>
-<p>拆分变换：变换类型包含了三个数据，用这个函数将三个数据拆开。</p>
-</blockquote>
-<h6 id="4-组合以上数据"><a href="#4-组合以上数据" class="headerlink" title="4.组合以上数据"></a>4.组合以上数据</h6><p><code>规格化</code>与速度后<code>浮点*浮点</code>相乘，这一步得出了Actor运动的方向和速度。</p>
-<p><code>拆分变换</code><em>Location</em>引脚和上面<code>向量*浮点</code>相加，得到实际物体的位置信息。</p>
-<p>查找<code>创建变换</code>，将<em>Location</em>引脚与刚才的值相连，剩下两个引脚连接<code>拆分变换</code>的对应引脚。这一步创建了一个新的变换，需要将这个新的变化赋值给原Actor。</p>
-<p>查找<code>设置场景变换</code>，将<code>创建变换</code>的返回引脚连接<em>New Transform</em>输入引脚。</p>
-<p>查找<code>事件Tick</code>，连接至<code>设置场景变换</code>，使得运动事件每Tick执行一次。</p>
-<h4 id="优化1：在两个方向上交替运动"><a href="#优化1：在两个方向上交替运动" class="headerlink" title="优化1：在两个方向上交替运动"></a>优化1：在两个方向上交替运动</h4><p>查找<code>延迟</code>，连接至<code>设置场景变换</code>后，此项决定了每多少秒改变移动路径。</p>
-<p>后将<code>Flip Flop</code>分别连接两个<code>设置Location</code>上，设置移动方向；其本身输入引脚与<code>延迟</code>相连。</p>
-
+        
+          <a class="article-more-a" href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">more >></a>
+        
       
 
       

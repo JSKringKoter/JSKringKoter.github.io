@@ -16,7 +16,7 @@
 <meta property="og:description" content="从零开始的FPS一、创建材质 &amp; 为Actor附加材质创建 材质 蓝图后，查找 12VectorParameter &#x2F;&#x2F;设置颜色ScalarParameter &#x2F;&#x2F;设置高光度与粗糙度 (推荐默认值0.1)    二、在发生碰撞时改变Actor的材质创建Actor的蓝图，打开事件图表。 查找  事件命中 以及设置材质 连接二者，编译运行，此Actor在任何目标碰撞时都会改变颜色。 优化1：仅">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-27T11:06:15.000Z">
-<meta property="article:modified_time" content="2023-03-27T14:37:43.460Z">
+<meta property="article:modified_time" content="2023-03-27T14:39:16.728Z">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Unreal Engine">
@@ -177,6 +177,8 @@
 <h5 id="优化3-1：在击中后添加音效和特效"><a href="#优化3-1：在击中后添加音效和特效" class="headerlink" title="优化3.1：在击中后添加音效和特效"></a>优化3.1：在击中后添加音效和特效</h5><p>依次搜索<br><code>在位置处生成音效</code>和<code>在位置处生成发射器</code>，将<em>Location</em>输入引脚依次和<code>事件命中</code>的<em>Hit Location</em>输出引脚相连（生成位置为碰撞处）。</p>
 <h5 id="优化3-2：为摧毁的Actor计数"><a href="#优化3-2：为摧毁的Actor计数" class="headerlink" title="优化3.2：为摧毁的Actor计数"></a>优化3.2：为摧毁的Actor计数</h5><p>创建int类型变量hitCount，默认值0，用于储存 <strong>击中次数</strong>。</p>
 <p>在<code>销毁Actor</code>后连接<code>设置Hit Count</code>，将变量拖到蓝图中，选择获取变量，连接<code>整数+整数</code>并将值设置为1，在连接<code>设置Hit Count</code>与<code>整数+整数</code>。</p>
+<span id="more"></span>
+
 <h3 id="二、为Actor添加固定移动属性"><a href="#二、为Actor添加固定移动属性" class="headerlink" title="二、为Actor添加固定移动属性"></a>二、为Actor添加固定移动属性</h3><p>创建flout变量（Speed，默认值200），用于储存<strong>速度</strong>；</p>
 <p>创建vector变量（Location，默认值0，10，0），用于储存<strong>移动方向</strong>，数值的大小也部分反映了<strong>速度</strong>。</p>
 <h6 id="1-使速度与时间相关"><a href="#1-使速度与时间相关" class="headerlink" title="1.使速度与时间相关"></a>1.使速度与时间相关</h6><p><code>获取Speed</code>和<code>获取场景差量（秒）</code>相乘。</p>
