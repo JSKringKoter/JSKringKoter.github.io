@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://JSKringKoter.github.io">
   <title>UE4学习笔记 | JS_KringKoter | Personal blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="从零开始的FPS创建材质 &amp; 为Actor附加材质创建 材质 蓝图后，输入 12VectorParameter &#x2F;&#x2F;设置颜色ScalarParameter &#x2F;&#x2F;设置高光度与粗糙度 (推荐默认值0.1)    在发生碰撞时改变Actor的材质创建Actor的蓝图，打开事件图表。">
+  <meta name="description" content="从零开始的FPS一、创建材质 &amp; 为Actor附加材质创建 材质 蓝图后，查找 12VectorParameter &#x2F;&#x2F;设置颜色ScalarParameter &#x2F;&#x2F;设置高光度与粗糙度 (推荐默认值0.1)    二、在发生碰撞时改变Actor的材质创建Actor的蓝图，打开事件图表。 查找  事件命中 以及设置材质 连接二者，编译运行，此Actor在任何目标碰撞时都会改变颜色。 优化1：仅">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UE4学习笔记">
 <meta property="og:url" content="https://jskringkoter.github.io/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="JS_KringKoter | Personal blog">
-<meta property="og:description" content="从零开始的FPS创建材质 &amp; 为Actor附加材质创建 材质 蓝图后，输入 12VectorParameter &#x2F;&#x2F;设置颜色ScalarParameter &#x2F;&#x2F;设置高光度与粗糙度 (推荐默认值0.1)    在发生碰撞时改变Actor的材质创建Actor的蓝图，打开事件图表。">
+<meta property="og:description" content="从零开始的FPS一、创建材质 &amp; 为Actor附加材质创建 材质 蓝图后，查找 12VectorParameter &#x2F;&#x2F;设置颜色ScalarParameter &#x2F;&#x2F;设置高光度与粗糙度 (推荐默认值0.1)    二、在发生碰撞时改变Actor的材质创建Actor的蓝图，打开事件图表。 查找  事件命中 以及设置材质 连接二者，编译运行，此Actor在任何目标碰撞时都会改变颜色。 优化1：仅">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-27T11:06:15.000Z">
-<meta property="article:modified_time" content="2023-03-27T12:49:30.597Z">
+<meta property="article:modified_time" content="2023-03-27T14:37:43.460Z">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Unreal Engine">
@@ -162,12 +162,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="从零开始的FPS"><a href="#从零开始的FPS" class="headerlink" title="从零开始的FPS"></a>从零开始的FPS</h2><h3 id="创建材质-amp-为Actor附加材质"><a href="#创建材质-amp-为Actor附加材质" class="headerlink" title="创建材质 &amp; 为Actor附加材质"></a>创建材质 &amp; 为Actor附加材质</h3><p>创建 材质 蓝图后，输入</p>
+        <h2 id="从零开始的FPS"><a href="#从零开始的FPS" class="headerlink" title="从零开始的FPS"></a>从零开始的FPS</h2><h3 id="一、创建材质-amp-为Actor附加材质"><a href="#一、创建材质-amp-为Actor附加材质" class="headerlink" title="一、创建材质 &amp; 为Actor附加材质"></a>一、创建材质 &amp; 为Actor附加材质</h3><p>创建 材质 蓝图后，查找</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VectorParameter <span class="comment">//设置颜色</span></span><br><span class="line">ScalarParameter <span class="comment">//设置高光度与粗糙度 (推荐默认值0.1)</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="在发生碰撞时改变Actor的材质"><a href="#在发生碰撞时改变Actor的材质" class="headerlink" title="在发生碰撞时改变Actor的材质"></a>在发生碰撞时改变Actor的材质</h3><p>创建Actor的蓝图，打开事件图表。</p>
+<h3 id="二、在发生碰撞时改变Actor的材质"><a href="#二、在发生碰撞时改变Actor的材质" class="headerlink" title="二、在发生碰撞时改变Actor的材质"></a>二、在发生碰撞时改变Actor的材质</h3><p>创建Actor的蓝图，打开事件图表。</p>
+<p>查找 <code> 事件命中</code> 以及<code>设置材质</code></p>
+<p>连接二者，编译运行，此Actor在任何目标碰撞时都会改变颜色。</p>
+<h4 id="优化1：仅响应子弹（FirstPersonProjectile）的碰撞"><a href="#优化1：仅响应子弹（FirstPersonProjectile）的碰撞" class="headerlink" title="优化1：仅响应子弹（FirstPersonProjectile）的碰撞"></a>优化1：仅响应子弹（FirstPersonProjectile）的碰撞</h4><p>查找 <code>类型转换为FirstPersonProjectile</code>，连接<code>事件命中</code>的 <em>Other</em> 输出引脚和其<em>Object</em> 输入引脚。</p>
+<h4 id="优化2：两种颜色来回切换"><a href="#优化2：两种颜色来回切换" class="headerlink" title="优化2：两种颜色来回切换"></a>优化2：两种颜色来回切换</h4><p>查找<code>Flip Flop</code>，连接A和B引脚至两个<code>设置材质</code></p>
+<h4 id="优化3：在击中两次后销毁"><a href="#优化3：在击中两次后销毁" class="headerlink" title="优化3：在击中两次后销毁"></a>优化3：在击中两次后销毁</h4><p>创建bool类型变量（命名为isHited，默认值false）用于储存 <strong>是否击中过</strong>  这一信息。</p>
+<p>查找<code>分支</code>，<em>False</em>引脚后设置isHited为真（表示击中过），连接<code>设置材质</code>；<em>True</em>引脚连接<code>销毁Actor</code>。</p>
+<h5 id="优化3-1：在击中后添加音效和特效"><a href="#优化3-1：在击中后添加音效和特效" class="headerlink" title="优化3.1：在击中后添加音效和特效"></a>优化3.1：在击中后添加音效和特效</h5><p>依次搜索<br><code>在位置处生成音效</code>和<code>在位置处生成发射器</code>，将<em>Location</em>输入引脚依次和<code>事件命中</code>的<em>Hit Location</em>输出引脚相连（生成位置为碰撞处）。</p>
+<h5 id="优化3-2：为摧毁的Actor计数"><a href="#优化3-2：为摧毁的Actor计数" class="headerlink" title="优化3.2：为摧毁的Actor计数"></a>优化3.2：为摧毁的Actor计数</h5><p>创建int类型变量hitCount，默认值0，用于储存 <strong>击中次数</strong>。</p>
+<p>在<code>销毁Actor</code>后连接<code>设置Hit Count</code>，将变量拖到蓝图中，选择获取变量，连接<code>整数+整数</code>并将值设置为1，在连接<code>设置Hit Count</code>与<code>整数+整数</code>。</p>
+<h3 id="二、为Actor添加固定移动属性"><a href="#二、为Actor添加固定移动属性" class="headerlink" title="二、为Actor添加固定移动属性"></a>二、为Actor添加固定移动属性</h3><p>创建flout变量（Speed，默认值200），用于储存<strong>速度</strong>；</p>
+<p>创建vector变量（Location，默认值0，10，0），用于储存<strong>移动方向</strong>，数值的大小也部分反映了<strong>速度</strong>。</p>
+<h6 id="1-使速度与时间相关"><a href="#1-使速度与时间相关" class="headerlink" title="1.使速度与时间相关"></a>1.使速度与时间相关</h6><p><code>获取Speed</code>和<code>获取场景差量（秒）</code>相乘。</p>
+<blockquote>
+<p>获取场景差量（秒）：返回两帧之间间隔秒数</p>
+</blockquote>
+<h6 id="2-规格化方向向量"><a href="#2-规格化方向向量" class="headerlink" title="2.规格化方向向量"></a>2.规格化方向向量</h6><p><code>获取Location</code>与<code>规格化</code>相乘。</p>
+<h6 id="3-获取Actor当前位置信息"><a href="#3-获取Actor当前位置信息" class="headerlink" title="3.获取Actor当前位置信息"></a>3.获取Actor当前位置信息</h6><p><code>获取差量变换</code>连接<code>拆分变换</code>，返回三个值，分别为<em>Location</em>，<em>Ratation</em>和<em>Scale</em>。</p>
+<blockquote>
+<p>获取差量变换：貌似就是获取位置信息。</p>
+<p>拆分变换：变换类型包含了三个数据，用这个函数将三个数据拆开。</p>
+</blockquote>
+<h6 id="4-组合以上数据"><a href="#4-组合以上数据" class="headerlink" title="4.组合以上数据"></a>4.组合以上数据</h6><p><code>规格化</code>与速度后<code>浮点*浮点</code>相乘，这一步得出了Actor运动的方向和速度。</p>
+<p><code>拆分变换</code><em>Location</em>引脚和上面<code>向量*浮点</code>相加，得到实际物体的位置信息。</p>
+<p>查找<code>创建变换</code>，将<em>Location</em>引脚与刚才的值相连，剩下两个引脚连接<code>拆分变换</code>的对应引脚。这一步创建了一个新的变换，需要将这个新的变化赋值给原Actor。</p>
+<p>查找<code>设置场景变换</code>，将<code>创建变换</code>的返回引脚连接<em>New Transform</em>输入引脚。</p>
+<p>查找<code>事件Tick</code>，连接至<code>设置场景变换</code>，使得运动事件每Tick执行一次。</p>
+<h4 id="优化1：在两个方向上交替运动"><a href="#优化1：在两个方向上交替运动" class="headerlink" title="优化1：在两个方向上交替运动"></a>优化1：在两个方向上交替运动</h4><p>查找<code>延迟</code>，连接至<code>设置场景变换</code>后，此项决定了每多少秒改变移动路径。</p>
+<p>后将<code>Flip Flop</code>分别连接两个<code>设置Location</code>上，设置移动方向；其本身输入引脚与<code>延迟</code>相连。</p>
 
       
 
@@ -284,7 +312,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84FPS"><span class="toc-number">1.</span> <span class="toc-text">从零开始的FPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%9D%90%E8%B4%A8-amp-%E4%B8%BAActor%E9%99%84%E5%8A%A0%E6%9D%90%E8%B4%A8"><span class="toc-number">1.1.</span> <span class="toc-text">创建材质 &amp; 为Actor附加材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%8F%91%E7%94%9F%E7%A2%B0%E6%92%9E%E6%97%B6%E6%94%B9%E5%8F%98Actor%E7%9A%84%E6%9D%90%E8%B4%A8"><span class="toc-number">1.2.</span> <span class="toc-text">在发生碰撞时改变Actor的材质</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84FPS"><span class="toc-number">1.</span> <span class="toc-text">从零开始的FPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9D%90%E8%B4%A8-amp-%E4%B8%BAActor%E9%99%84%E5%8A%A0%E6%9D%90%E8%B4%A8"><span class="toc-number">1.1.</span> <span class="toc-text">一、创建材质 &amp; 为Actor附加材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%A8%E5%8F%91%E7%94%9F%E7%A2%B0%E6%92%9E%E6%97%B6%E6%94%B9%E5%8F%98Actor%E7%9A%84%E6%9D%90%E8%B4%A8"><span class="toc-number">1.2.</span> <span class="toc-text">二、在发生碰撞时改变Actor的材质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%961%EF%BC%9A%E4%BB%85%E5%93%8D%E5%BA%94%E5%AD%90%E5%BC%B9%EF%BC%88FirstPersonProjectile%EF%BC%89%E7%9A%84%E7%A2%B0%E6%92%9E"><span class="toc-number">1.2.1.</span> <span class="toc-text">优化1：仅响应子弹（FirstPersonProjectile）的碰撞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%962%EF%BC%9A%E4%B8%A4%E7%A7%8D%E9%A2%9C%E8%89%B2%E6%9D%A5%E5%9B%9E%E5%88%87%E6%8D%A2"><span class="toc-number">1.2.2.</span> <span class="toc-text">优化2：两种颜色来回切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%963%EF%BC%9A%E5%9C%A8%E5%87%BB%E4%B8%AD%E4%B8%A4%E6%AC%A1%E5%90%8E%E9%94%80%E6%AF%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">优化3：在击中两次后销毁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%963-1%EF%BC%9A%E5%9C%A8%E5%87%BB%E4%B8%AD%E5%90%8E%E6%B7%BB%E5%8A%A0%E9%9F%B3%E6%95%88%E5%92%8C%E7%89%B9%E6%95%88"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">优化3.1：在击中后添加音效和特效</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%963-2%EF%BC%9A%E4%B8%BA%E6%91%A7%E6%AF%81%E7%9A%84Actor%E8%AE%A1%E6%95%B0"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">优化3.2：为摧毁的Actor计数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%BAActor%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%A7%BB%E5%8A%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">二、为Actor添加固定移动属性</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E4%BD%BF%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B8%E5%85%B3"><span class="toc-number">1.3.0.0.1.</span> <span class="toc-text">1.使速度与时间相关</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E8%A7%84%E6%A0%BC%E5%8C%96%E6%96%B9%E5%90%91%E5%90%91%E9%87%8F"><span class="toc-number">1.3.0.0.2.</span> <span class="toc-text">2.规格化方向向量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E8%8E%B7%E5%8F%96Actor%E5%BD%93%E5%89%8D%E4%BD%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.0.0.3.</span> <span class="toc-text">3.获取Actor当前位置信息</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E7%BB%84%E5%90%88%E4%BB%A5%E4%B8%8A%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.0.0.4.</span> <span class="toc-text">4.组合以上数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%961%EF%BC%9A%E5%9C%A8%E4%B8%A4%E4%B8%AA%E6%96%B9%E5%90%91%E4%B8%8A%E4%BA%A4%E6%9B%BF%E8%BF%90%E5%8A%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">优化1：在两个方向上交替运动</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -396,11 +424,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Personal Information</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Personal Information</a>
+                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小说</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -413,14 +449,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小说</a>
               </li>
              
               <li class="article-tag-list-item">

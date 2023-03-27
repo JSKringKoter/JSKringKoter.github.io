@@ -161,12 +161,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="从零开始的FPS"><a href="#从零开始的FPS" class="headerlink" title="从零开始的FPS"></a>从零开始的FPS</h2><h3 id="创建材质-amp-为Actor附加材质"><a href="#创建材质-amp-为Actor附加材质" class="headerlink" title="创建材质 &amp; 为Actor附加材质"></a>创建材质 &amp; 为Actor附加材质</h3><p>创建 材质 蓝图后，输入</p>
+        <h2 id="从零开始的FPS"><a href="#从零开始的FPS" class="headerlink" title="从零开始的FPS"></a>从零开始的FPS</h2><h3 id="一、创建材质-amp-为Actor附加材质"><a href="#一、创建材质-amp-为Actor附加材质" class="headerlink" title="一、创建材质 &amp; 为Actor附加材质"></a>一、创建材质 &amp; 为Actor附加材质</h3><p>创建 材质 蓝图后，查找</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VectorParameter <span class="comment">//设置颜色</span></span><br><span class="line">ScalarParameter <span class="comment">//设置高光度与粗糙度 (推荐默认值0.1)</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="在发生碰撞时改变Actor的材质"><a href="#在发生碰撞时改变Actor的材质" class="headerlink" title="在发生碰撞时改变Actor的材质"></a>在发生碰撞时改变Actor的材质</h3><p>创建Actor的蓝图，打开事件图表。</p>
+<h3 id="二、在发生碰撞时改变Actor的材质"><a href="#二、在发生碰撞时改变Actor的材质" class="headerlink" title="二、在发生碰撞时改变Actor的材质"></a>二、在发生碰撞时改变Actor的材质</h3><p>创建Actor的蓝图，打开事件图表。</p>
+<p>查找 <code> 事件命中</code> 以及<code>设置材质</code></p>
+<p>连接二者，编译运行，此Actor在任何目标碰撞时都会改变颜色。</p>
+<h4 id="优化1：仅响应子弹（FirstPersonProjectile）的碰撞"><a href="#优化1：仅响应子弹（FirstPersonProjectile）的碰撞" class="headerlink" title="优化1：仅响应子弹（FirstPersonProjectile）的碰撞"></a>优化1：仅响应子弹（FirstPersonProjectile）的碰撞</h4><p>查找 <code>类型转换为FirstPersonProjectile</code>，连接<code>事件命中</code>的 <em>Other</em> 输出引脚和其<em>Object</em> 输入引脚。</p>
+<h4 id="优化2：两种颜色来回切换"><a href="#优化2：两种颜色来回切换" class="headerlink" title="优化2：两种颜色来回切换"></a>优化2：两种颜色来回切换</h4><p>查找<code>Flip Flop</code>，连接A和B引脚至两个<code>设置材质</code></p>
+<h4 id="优化3：在击中两次后销毁"><a href="#优化3：在击中两次后销毁" class="headerlink" title="优化3：在击中两次后销毁"></a>优化3：在击中两次后销毁</h4><p>创建bool类型变量（命名为isHited，默认值false）用于储存 <strong>是否击中过</strong>  这一信息。</p>
+<p>查找<code>分支</code>，<em>False</em>引脚后设置isHited为真（表示击中过），连接<code>设置材质</code>；<em>True</em>引脚连接<code>销毁Actor</code>。</p>
+<h5 id="优化3-1：在击中后添加音效和特效"><a href="#优化3-1：在击中后添加音效和特效" class="headerlink" title="优化3.1：在击中后添加音效和特效"></a>优化3.1：在击中后添加音效和特效</h5><p>依次搜索<br><code>在位置处生成音效</code>和<code>在位置处生成发射器</code>，将<em>Location</em>输入引脚依次和<code>事件命中</code>的<em>Hit Location</em>输出引脚相连（生成位置为碰撞处）。</p>
+<h5 id="优化3-2：为摧毁的Actor计数"><a href="#优化3-2：为摧毁的Actor计数" class="headerlink" title="优化3.2：为摧毁的Actor计数"></a>优化3.2：为摧毁的Actor计数</h5><p>创建int类型变量hitCount，默认值0，用于储存 <strong>击中次数</strong>。</p>
+<p>在<code>销毁Actor</code>后连接<code>设置Hit Count</code>，将变量拖到蓝图中，选择获取变量，连接<code>整数+整数</code>并将值设置为1，在连接<code>设置Hit Count</code>与<code>整数+整数</code>。</p>
+<h3 id="二、为Actor添加固定移动属性"><a href="#二、为Actor添加固定移动属性" class="headerlink" title="二、为Actor添加固定移动属性"></a>二、为Actor添加固定移动属性</h3><p>创建flout变量（Speed，默认值200），用于储存<strong>速度</strong>；</p>
+<p>创建vector变量（Location，默认值0，10，0），用于储存<strong>移动方向</strong>，数值的大小也部分反映了<strong>速度</strong>。</p>
+<h6 id="1-使速度与时间相关"><a href="#1-使速度与时间相关" class="headerlink" title="1.使速度与时间相关"></a>1.使速度与时间相关</h6><p><code>获取Speed</code>和<code>获取场景差量（秒）</code>相乘。</p>
+<blockquote>
+<p>获取场景差量（秒）：返回两帧之间间隔秒数</p>
+</blockquote>
+<h6 id="2-规格化方向向量"><a href="#2-规格化方向向量" class="headerlink" title="2.规格化方向向量"></a>2.规格化方向向量</h6><p><code>获取Location</code>与<code>规格化</code>相乘。</p>
+<h6 id="3-获取Actor当前位置信息"><a href="#3-获取Actor当前位置信息" class="headerlink" title="3.获取Actor当前位置信息"></a>3.获取Actor当前位置信息</h6><p><code>获取差量变换</code>连接<code>拆分变换</code>，返回三个值，分别为<em>Location</em>，<em>Ratation</em>和<em>Scale</em>。</p>
+<blockquote>
+<p>获取差量变换：貌似就是获取位置信息。</p>
+<p>拆分变换：变换类型包含了三个数据，用这个函数将三个数据拆开。</p>
+</blockquote>
+<h6 id="4-组合以上数据"><a href="#4-组合以上数据" class="headerlink" title="4.组合以上数据"></a>4.组合以上数据</h6><p><code>规格化</code>与速度后<code>浮点*浮点</code>相乘，这一步得出了Actor运动的方向和速度。</p>
+<p><code>拆分变换</code><em>Location</em>引脚和上面<code>向量*浮点</code>相加，得到实际物体的位置信息。</p>
+<p>查找<code>创建变换</code>，将<em>Location</em>引脚与刚才的值相连，剩下两个引脚连接<code>拆分变换</code>的对应引脚。这一步创建了一个新的变换，需要将这个新的变化赋值给原Actor。</p>
+<p>查找<code>设置场景变换</code>，将<code>创建变换</code>的返回引脚连接<em>New Transform</em>输入引脚。</p>
+<p>查找<code>事件Tick</code>，连接至<code>设置场景变换</code>，使得运动事件每Tick执行一次。</p>
+<h4 id="优化1：在两个方向上交替运动"><a href="#优化1：在两个方向上交替运动" class="headerlink" title="优化1：在两个方向上交替运动"></a>优化1：在两个方向上交替运动</h4><p>查找<code>延迟</code>，连接至<code>设置场景变换</code>后，此项决定了每多少秒改变移动路径。</p>
+<p>后将<code>Flip Flop</code>分别连接两个<code>设置Location</code>上，设置移动方向；其本身输入引脚与<code>延迟</code>相连。</p>
 
       
 
@@ -1135,11 +1163,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Personal Information</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Personal Information</a>
+                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小说</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1152,14 +1188,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小说</a>
               </li>
              
               <li class="article-tag-list-item">
