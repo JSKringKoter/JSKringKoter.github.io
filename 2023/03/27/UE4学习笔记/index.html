@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/ue4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%B8%89%E3%80%81%E4%BC%98%E5%8C%961.1.jpg?raw=true">
 <meta property="og:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/ue4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%B8%89%E3%80%81%E4%BC%98%E5%8C%962.1.png?raw=true">
 <meta property="article:published_time" content="2023-03-27T11:06:15.000Z">
-<meta property="article:modified_time" content="2023-03-28T01:29:57.085Z">
+<meta property="article:modified_time" content="2023-03-28T12:02:11.893Z">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Unreal Engine">
@@ -184,31 +184,31 @@
 
 <h3 id="二、为Actor添加固定移动属性"><a href="#二、为Actor添加固定移动属性" class="headerlink" title="二、为Actor添加固定移动属性"></a>二、为Actor添加固定移动属性</h3><p>创建flout变量（Speed，默认值200），用于储存<strong>速度</strong>；</p>
 <p>创建vector变量（Location，默认值0，10，0），用于储存<strong>移动方向</strong>，数值的大小也部分反映了<strong>速度</strong>。</p>
-<h6 id="1-使速度与时间相关"><a href="#1-使速度与时间相关" class="headerlink" title="1.使速度与时间相关"></a>1.使速度与时间相关</h6><p><code>获取Speed</code>和<code>获取场景差量（秒）</code>相乘。</p>
+<h4 id="1-使速度与时间相关"><a href="#1-使速度与时间相关" class="headerlink" title="1.使速度与时间相关"></a>1.使速度与时间相关</h4><p><code>获取Speed</code>和<code>获取场景差量（秒）</code>相乘。</p>
 <blockquote>
 <p>获取场景差量（秒）：返回两帧之间间隔秒数</p>
 </blockquote>
-<h6 id="2-规格化方向向量"><a href="#2-规格化方向向量" class="headerlink" title="2.规格化方向向量"></a>2.规格化方向向量</h6><p><code>获取Location</code>与<code>规格化</code>相乘。</p>
-<h6 id="3-获取Actor当前位置信息"><a href="#3-获取Actor当前位置信息" class="headerlink" title="3.获取Actor当前位置信息"></a>3.获取Actor当前位置信息</h6><p><code>获取差量变换</code>连接<code>拆分变换</code>，返回三个值，分别为<em>Location</em>，<em>Ratation</em>和<em>Scale</em>。</p>
+<h4 id="2-规格化方向向量"><a href="#2-规格化方向向量" class="headerlink" title="2.规格化方向向量"></a>2.规格化方向向量</h4><p><code>获取Location</code>与<code>规格化</code>相乘。</p>
+<h4 id="3-获取Actor当前位置信息"><a href="#3-获取Actor当前位置信息" class="headerlink" title="3.获取Actor当前位置信息"></a>3.获取Actor当前位置信息</h4><p><code>获取差量变换</code>连接<code>拆分变换</code>，返回三个值，分别为<em>Location</em>，<em>Ratation</em>和<em>Scale</em>。</p>
 <blockquote>
 <p>获取差量变换：貌似就是获取位置信息。</p>
 <p>拆分变换：变换类型包含了三个数据，用这个函数将三个数据拆开。</p>
 </blockquote>
-<h6 id="4-组合以上数据"><a href="#4-组合以上数据" class="headerlink" title="4.组合以上数据"></a>4.组合以上数据</h6><p><code>规格化</code>与速度后<code>浮点*浮点</code>相乘，这一步得出了Actor运动的方向和速度。</p>
+<h4 id="4-组合以上数据"><a href="#4-组合以上数据" class="headerlink" title="4.组合以上数据"></a>4.组合以上数据</h4><p><code>规格化</code>与速度后<code>浮点*浮点</code>相乘，这一步得出了Actor运动的方向和速度。</p>
 <p><code>拆分变换</code><em>Location</em>引脚和上面<code>向量*浮点</code>相加，得到实际物体的位置信息。</p>
 <p>查找<code>创建变换</code>，将<em>Location</em>引脚与刚才的值相连，剩下两个引脚连接<code>拆分变换</code>的对应引脚。这一步创建了一个新的变换，需要将这个新的变化赋值给原Actor。</p>
 <p>查找<code>设置场景变换</code>，将<code>创建变换</code>的返回引脚连接<em>New Transform</em>输入引脚。</p>
 <p>查找<code>事件Tick</code>，连接至<code>设置场景变换</code>，使得运动事件每Tick执行一次。</p>
-<h5 id="优化1：在两个方向上交替运动"><a href="#优化1：在两个方向上交替运动" class="headerlink" title="优化1：在两个方向上交替运动"></a>优化1：在两个方向上交替运动</h5><p>查找<code>延迟</code>，连接至<code>设置场景变换</code>后，此项决定了每多少秒改变移动路径。</p>
+<h4 id="优化1：在两个方向上交替运动"><a href="#优化1：在两个方向上交替运动" class="headerlink" title="优化1：在两个方向上交替运动"></a>优化1：在两个方向上交替运动</h4><p>查找<code>延迟</code>，连接至<code>设置场景变换</code>后，此项决定了每多少秒改变移动路径。</p>
 <p>后将<code>Flip Flop</code>分别连接两个<code>设置Location</code>上，设置移动方向；其本身输入引脚与<code>延迟</code>相连。</p>
-<h4 id="三、疾跑，体力值，在疾跑时消耗体力"><a href="#三、疾跑，体力值，在疾跑时消耗体力" class="headerlink" title="三、疾跑，体力值，在疾跑时消耗体力"></a>三、疾跑，体力值，在疾跑时消耗体力</h4><h5 id="1-疾跑"><a href="#1-疾跑" class="headerlink" title="1.疾跑"></a>1.疾跑</h5><p>转到编辑-项目设置-输入，添加操作映射Sprint，绑定键位左Shift。</p>
+<h3 id="三、疾跑，体力值，在疾跑时消耗体力"><a href="#三、疾跑，体力值，在疾跑时消耗体力" class="headerlink" title="三、疾跑，体力值，在疾跑时消耗体力"></a>三、疾跑，体力值，在疾跑时消耗体力</h3><h4 id="1-疾跑"><a href="#1-疾跑" class="headerlink" title="1.疾跑"></a>1.疾跑</h4><p>转到编辑-项目设置-输入，添加操作映射Sprint，绑定键位左Shift。</p>
 <p>打开FirstPersonCharacter蓝图</p>
 <p>查找<code>Sprint //即自定义的输入事件名</code>，从组件列表中拖出<code>角色移动</code>，从<code>角色移动</code>输出引脚拖出并查找<code>设置Max Walk Speed</code>，<em>Pressed，Released</em>引脚和两者输入引脚分别相连。</p>
 <blockquote>
 <p>查找设置Max Walk Speed时必须从角色移动输出引脚拖出，否则找不到。</p>
 <p>Pressed决定按下时执行的操作，Released决定松开时的操作。</p>
 </blockquote>
-<h5 id="2-体力值，在疾跑时消耗体力"><a href="#2-体力值，在疾跑时消耗体力" class="headerlink" title="2.体力值，在疾跑时消耗体力"></a>2.体力值，在疾跑时消耗体力</h5><p>创建flout变量（stamina，默认值为1.0）</p>
+<h4 id="2-体力值，在疾跑时消耗体力"><a href="#2-体力值，在疾跑时消耗体力" class="headerlink" title="2.体力值，在疾跑时消耗体力"></a>2.体力值，在疾跑时消耗体力</h4><p>创建flout变量（stamina，默认值为1.0）</p>
 <blockquote>
 <p>默认值为1.0而不是100的原因是UHD的进度条满值即为1.0</p>
 </blockquote>
@@ -222,13 +222,55 @@
 </blockquote>
 <p>在<code>输入操作Sprint</code>的<em>Release</em>输出引脚后查找<code>以函数名清除定时器</code>，输入Function Name为Sprint。这一步使得松开Shift后体力值不会一直消耗。</p>
 <p>此时已经可以做到在疾跑时消耗体力，但体力消耗完后冲刺没有停止。</p>
-<h5 id="优化1：体力消耗完后停止冲刺-amp-没有体力时停用冲刺"><a href="#优化1：体力消耗完后停止冲刺-amp-没有体力时停用冲刺" class="headerlink" title="优化1：体力消耗完后停止冲刺 &amp; 没有体力时停用冲刺"></a>优化1：体力消耗完后停止冲刺 &amp; 没有体力时停用冲刺</h5><p>创建float变量（SprnitCost，默认值为0.1），用来储存<strong>冲刺消耗的体力/每Time秒</strong>。</p>
+<h4 id="优化1：体力消耗完后停止冲刺-amp-没有体力时停用冲刺"><a href="#优化1：体力消耗完后停止冲刺-amp-没有体力时停用冲刺" class="headerlink" title="优化1：体力消耗完后停止冲刺 &amp; 没有体力时停用冲刺"></a>优化1：体力消耗完后停止冲刺 &amp; 没有体力时停用冲刺</h4><p>创建float变量（SprnitCost，默认值为0.1），用来储存<strong>冲刺消耗的体力/每Time秒</strong>。</p>
 <p>使用stamina - SprintCost &gt;= 0的分支语句来判断是否可以进行冲刺，若为True，将stamina - SprintCost和0的最大值赋予stamina（防止体力值为负）；若为false，设置行走速度为600（重置），并以函数名清除定时器。</p>
 <p><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/ue4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%B8%89%E3%80%81%E4%BC%98%E5%8C%961.1.jpg?raw=true"></p>
-<h5 id="优化2：在不冲刺时恢复体力"><a href="#优化2：在不冲刺时恢复体力" class="headerlink" title="优化2：在不冲刺时恢复体力"></a>优化2：在不冲刺时恢复体力</h5><p>依旧是自定义事件，这次是Recover。</p>
+<h4 id="优化2：在不冲刺时恢复体力"><a href="#优化2：在不冲刺时恢复体力" class="headerlink" title="优化2：在不冲刺时恢复体力"></a>优化2：在不冲刺时恢复体力</h4><p>依旧是自定义事件，这次是Recover。</p>
 <p>用一个分支语句判断stamina是否大于最大值1.0，只有当不大于1.0时才会执行下面的恢复操作。</p>
 <p>对于<code>输入操作Sprint</code>，<em>Pressed</em>引脚后依次<code>以函数名清除Recover</code> <code>以函数名设置Sprint</code>；<em>Released</em>引脚后依次<code>以函数名清除Sprint</code> <code>以函数名设置Recover</code>。</p>
 <p><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/ue4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%B8%89%E3%80%81%E4%BC%98%E5%8C%962.1.png?raw=true"></p>
+<h3 id="四、创建UHD界面"><a href="#四、创建UHD界面" class="headerlink" title="四、创建UHD界面"></a>四、创建UHD界面</h3><p>创建UI文件夹，在其中新建用户界面，命名为UHD。</p>
+<h4 id="1-向画布面板中添加组件"><a href="#1-向画布面板中添加组件" class="headerlink" title="1.向画布面板中添加组件"></a>1.向画布面板中添加组件</h4><p>1.1.生命，体力</p>
+<p>一共需要一个水平框和两个垂直框，将它们组合，在拖入文本和进度条。文本和进度条均设置为填充，此项可以使其在垂直方向上均匀分布。</p>
+<p>1.2.子弹，摧毁数量</p>
+<p>如果这都不会建议重开。</p>
+<h4 id="2-绑定组件和实际数值"><a href="#2-绑定组件和实际数值" class="headerlink" title="2.绑定组件和实际数值"></a>2.绑定组件和实际数值</h4><p>2.1.体力，生命的绑定</p>
+<p>创建绑定后，事件图表中会有两个节点：<code>Get Percent 0</code>和<code>返回节点</code>。</p>
+<p>这两个节点的作用分别为：事件开始，事件结束（或许还有其他作用）。</p>
+<p>从<code>Get Percent 0</code>引出节点<code>类型转换为FirstPersonCharacter</code>，查找<code>获取玩家角色</code>，将返回值与<em>Object</em>输入引脚相连。</p>
+<p>在<code>类型转换为FirstPersonCharacter</code>的<em>As First Person Character</em>的输出引脚查找<code>获取stamina</code>，即之前创建的体力值变量，将返回值与<code>返回节点</code>的<em>Return Value</em>相连。</p>
+<blockquote>
+<p>类型转换为FirstPersonCharacter和获取玩家角色的组合才能真正获取玩家蓝图里变量，函数等信息。</p>
+<p>As First Person Character输出引脚后即可获取该蓝图中的信息。</p>
+</blockquote>
+<p>生命值同理。</p>
+<p>2.2.子弹，摧毁数量</p>
+<p>这两个同理，只是要加上整数转文本。</p>
+<p>别忘了在FirstPersonCharacter蓝图里面加这两个变量。</p>
+<h4 id="3-将UI界面显示于抬头显示"><a href="#3-将UI界面显示于抬头显示" class="headerlink" title="3.将UI界面显示于抬头显示"></a>3.将UI界面显示于抬头显示</h4><p>在第一人称蓝图中找到<code>事件开始运行</code>，查找<code>创建控件</code>，设置<em>class</em>为UHD；查找<code>添加到视口</code>，依次连接输入输出引脚，并注意连接<code>创建UHD控件</code><em>Return Value</em>引脚和<code>添加到视口</code><em>目标</em>引脚。</p>
+<h3 id="五、优化射击和弹药系统"><a href="#五、优化射击和弹药系统" class="headerlink" title="五、优化射击和弹药系统"></a>五、优化射击和弹药系统</h3><h4 id="1-在开火时消耗弹药-amp-在弹药为零时不允许射击"><a href="#1-在开火时消耗弹药-amp-在弹药为零时不允许射击" class="headerlink" title="1.在开火时消耗弹药 &amp; 在弹药为零时不允许射击"></a>1.在开火时消耗弹药 &amp; 在弹药为零时不允许射击</h4><p>找到<code>输入操作Fire</code>，获取Ammo，Ammo - 1，设置Ammo，一气呵成。</p>
+<p>在设置Ammo前面用分支判断一下就能完成第二点。</p>
+<h4 id="2-换弹"><a href="#2-换弹" class="headerlink" title="2.换弹"></a>2.换弹</h4><p>添加输入操作Reload，使用分支判断子弹是否满，设置子弹数为默认值。</p>
+<p>可以添加延迟使得换单需要时间，但会引入新的问题：在延迟中可以反复按下R，导致重复换弹。</p>
+<h5 id="优化1-拒绝重复换弹"><a href="#优化1-拒绝重复换弹" class="headerlink" title="优化1.拒绝重复换弹"></a>优化1.拒绝重复换弹</h5><p>新建isReloading变量，用以储存<strong>是否正在换弹</strong>。</p>
+<p>在<code>输入操作Fire</code>后添加分支，若为false，设置为true，执行换弹，换弹结束再设置为false。</p>
+<h5 id="优化2-在弹药耗尽后自动换弹"><a href="#优化2-在弹药耗尽后自动换弹" class="headerlink" title="优化2.在弹药耗尽后自动换弹"></a>优化2.在弹药耗尽后自动换弹</h5><p>在<code>输入操作Reload</code>后创建自定义事件Reload，在射击分区最后先使用分支判断弹药是否耗尽，将<em>True</em>引脚连接<code>Reload</code>。</p>
+<blockquote>
+<p>直接查找Reload，选择 调用函数Reload，这个函数就是刚才的自定义事件。</p>
+</blockquote>
+<h4 id="3-瞄准"><a href="#3-瞄准" class="headerlink" title="3.瞄准"></a>3.瞄准</h4><blockquote>
+<p>瞄准实质上是Fov（视野）的改变。</p>
+</blockquote>
+<p>添加操作Zoom，创建<code>时间轴</code>，在<code>时间轴</code>中添加浮点型轨道，shift+鼠标左键添加关键帧。</p>
+<p>在事件图表中，连接<em>Pressed</em>与<em>play</em>；<em>Released</em>与<em>Reverse</em>，在<em>Update</em>后查找<code>设置视野</code>，连接<em>轨道名</em>输出引脚与<em>In Field of View</em>输入引脚。</p>
+<p>时间轴的一些引脚：</p>
+<blockquote>
+<p>Play：播放</p>
+<p>Play form Start：从头播放</p>
+<p>Stop：停止</p>
+<p>Reverse：反向播放</p>
+<p>Reverse：从末尾反向播放</p>
+</blockquote>
 
       
 
@@ -345,7 +387,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84FPS"><span class="toc-number">1.</span> <span class="toc-text">从零开始的FPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9D%90%E8%B4%A8-amp-%E4%B8%BAActor%E9%99%84%E5%8A%A0%E6%9D%90%E8%B4%A8"><span class="toc-number">1.1.</span> <span class="toc-text">一、创建材质 &amp; 为Actor附加材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%A8%E5%8F%91%E7%94%9F%E7%A2%B0%E6%92%9E%E6%97%B6%E6%94%B9%E5%8F%98Actor%E7%9A%84%E6%9D%90%E8%B4%A8"><span class="toc-number">1.2.</span> <span class="toc-text">二、在发生碰撞时改变Actor的材质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%961%EF%BC%9A%E4%BB%85%E5%93%8D%E5%BA%94%E5%AD%90%E5%BC%B9%EF%BC%88FirstPersonProjectile%EF%BC%89%E7%9A%84%E7%A2%B0%E6%92%9E"><span class="toc-number">1.2.1.</span> <span class="toc-text">优化1：仅响应子弹（FirstPersonProjectile）的碰撞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%962%EF%BC%9A%E4%B8%A4%E7%A7%8D%E9%A2%9C%E8%89%B2%E6%9D%A5%E5%9B%9E%E5%88%87%E6%8D%A2"><span class="toc-number">1.2.2.</span> <span class="toc-text">优化2：两种颜色来回切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%963%EF%BC%9A%E5%9C%A8%E5%87%BB%E4%B8%AD%E4%B8%A4%E6%AC%A1%E5%90%8E%E9%94%80%E6%AF%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">优化3：在击中两次后销毁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%963-1%EF%BC%9A%E5%9C%A8%E5%87%BB%E4%B8%AD%E5%90%8E%E6%B7%BB%E5%8A%A0%E9%9F%B3%E6%95%88%E5%92%8C%E7%89%B9%E6%95%88"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">优化3.1：在击中后添加音效和特效</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%963-2%EF%BC%9A%E4%B8%BA%E6%91%A7%E6%AF%81%E7%9A%84Actor%E8%AE%A1%E6%95%B0"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">优化3.2：为摧毁的Actor计数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%BAActor%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%A7%BB%E5%8A%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">二、为Actor添加固定移动属性</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E4%BD%BF%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B8%E5%85%B3"><span class="toc-number">1.3.0.0.1.</span> <span class="toc-text">1.使速度与时间相关</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E8%A7%84%E6%A0%BC%E5%8C%96%E6%96%B9%E5%90%91%E5%90%91%E9%87%8F"><span class="toc-number">1.3.0.0.2.</span> <span class="toc-text">2.规格化方向向量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E8%8E%B7%E5%8F%96Actor%E5%BD%93%E5%89%8D%E4%BD%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.0.0.3.</span> <span class="toc-text">3.获取Actor当前位置信息</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E7%BB%84%E5%90%88%E4%BB%A5%E4%B8%8A%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.0.0.4.</span> <span class="toc-text">4.组合以上数据</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%961%EF%BC%9A%E5%9C%A8%E4%B8%A4%E4%B8%AA%E6%96%B9%E5%90%91%E4%B8%8A%E4%BA%A4%E6%9B%BF%E8%BF%90%E5%8A%A8"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">优化1：在两个方向上交替运动</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%96%BE%E8%B7%91%EF%BC%8C%E4%BD%93%E5%8A%9B%E5%80%BC%EF%BC%8C%E5%9C%A8%E7%96%BE%E8%B7%91%E6%97%B6%E6%B6%88%E8%80%97%E4%BD%93%E5%8A%9B"><span class="toc-number">1.3.1.</span> <span class="toc-text">三、疾跑，体力值，在疾跑时消耗体力</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%96%BE%E8%B7%91"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1.疾跑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BD%93%E5%8A%9B%E5%80%BC%EF%BC%8C%E5%9C%A8%E7%96%BE%E8%B7%91%E6%97%B6%E6%B6%88%E8%80%97%E4%BD%93%E5%8A%9B"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">2.体力值，在疾跑时消耗体力</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%961%EF%BC%9A%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97%E5%AE%8C%E5%90%8E%E5%81%9C%E6%AD%A2%E5%86%B2%E5%88%BA-amp-%E6%B2%A1%E6%9C%89%E4%BD%93%E5%8A%9B%E6%97%B6%E5%81%9C%E7%94%A8%E5%86%B2%E5%88%BA"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">优化1：体力消耗完后停止冲刺 &amp; 没有体力时停用冲刺</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%962%EF%BC%9A%E5%9C%A8%E4%B8%8D%E5%86%B2%E5%88%BA%E6%97%B6%E6%81%A2%E5%A4%8D%E4%BD%93%E5%8A%9B"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">优化2：在不冲刺时恢复体力</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84FPS"><span class="toc-number">1.</span> <span class="toc-text">从零开始的FPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9D%90%E8%B4%A8-amp-%E4%B8%BAActor%E9%99%84%E5%8A%A0%E6%9D%90%E8%B4%A8"><span class="toc-number">1.1.</span> <span class="toc-text">一、创建材质 &amp; 为Actor附加材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%A8%E5%8F%91%E7%94%9F%E7%A2%B0%E6%92%9E%E6%97%B6%E6%94%B9%E5%8F%98Actor%E7%9A%84%E6%9D%90%E8%B4%A8"><span class="toc-number">1.2.</span> <span class="toc-text">二、在发生碰撞时改变Actor的材质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%961%EF%BC%9A%E4%BB%85%E5%93%8D%E5%BA%94%E5%AD%90%E5%BC%B9%EF%BC%88FirstPersonProjectile%EF%BC%89%E7%9A%84%E7%A2%B0%E6%92%9E"><span class="toc-number">1.2.1.</span> <span class="toc-text">优化1：仅响应子弹（FirstPersonProjectile）的碰撞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%962%EF%BC%9A%E4%B8%A4%E7%A7%8D%E9%A2%9C%E8%89%B2%E6%9D%A5%E5%9B%9E%E5%88%87%E6%8D%A2"><span class="toc-number">1.2.2.</span> <span class="toc-text">优化2：两种颜色来回切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%963%EF%BC%9A%E5%9C%A8%E5%87%BB%E4%B8%AD%E4%B8%A4%E6%AC%A1%E5%90%8E%E9%94%80%E6%AF%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">优化3：在击中两次后销毁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%963-1%EF%BC%9A%E5%9C%A8%E5%87%BB%E4%B8%AD%E5%90%8E%E6%B7%BB%E5%8A%A0%E9%9F%B3%E6%95%88%E5%92%8C%E7%89%B9%E6%95%88"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">优化3.1：在击中后添加音效和特效</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%963-2%EF%BC%9A%E4%B8%BA%E6%91%A7%E6%AF%81%E7%9A%84Actor%E8%AE%A1%E6%95%B0"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">优化3.2：为摧毁的Actor计数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%BAActor%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%A7%BB%E5%8A%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">二、为Actor添加固定移动属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B8%E5%85%B3"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.使速度与时间相关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A7%84%E6%A0%BC%E5%8C%96%E6%96%B9%E5%90%91%E5%90%91%E9%87%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.规格化方向向量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%8E%B7%E5%8F%96Actor%E5%BD%93%E5%89%8D%E4%BD%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.获取Actor当前位置信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%BB%84%E5%90%88%E4%BB%A5%E4%B8%8A%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.4.</span> <span class="toc-text">4.组合以上数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%961%EF%BC%9A%E5%9C%A8%E4%B8%A4%E4%B8%AA%E6%96%B9%E5%90%91%E4%B8%8A%E4%BA%A4%E6%9B%BF%E8%BF%90%E5%8A%A8"><span class="toc-number">1.3.5.</span> <span class="toc-text">优化1：在两个方向上交替运动</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%96%BE%E8%B7%91%EF%BC%8C%E4%BD%93%E5%8A%9B%E5%80%BC%EF%BC%8C%E5%9C%A8%E7%96%BE%E8%B7%91%E6%97%B6%E6%B6%88%E8%80%97%E4%BD%93%E5%8A%9B"><span class="toc-number">1.4.</span> <span class="toc-text">三、疾跑，体力值，在疾跑时消耗体力</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%96%BE%E8%B7%91"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.疾跑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%93%E5%8A%9B%E5%80%BC%EF%BC%8C%E5%9C%A8%E7%96%BE%E8%B7%91%E6%97%B6%E6%B6%88%E8%80%97%E4%BD%93%E5%8A%9B"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.体力值，在疾跑时消耗体力</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%961%EF%BC%9A%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97%E5%AE%8C%E5%90%8E%E5%81%9C%E6%AD%A2%E5%86%B2%E5%88%BA-amp-%E6%B2%A1%E6%9C%89%E4%BD%93%E5%8A%9B%E6%97%B6%E5%81%9C%E7%94%A8%E5%86%B2%E5%88%BA"><span class="toc-number">1.4.3.</span> <span class="toc-text">优化1：体力消耗完后停止冲刺 &amp; 没有体力时停用冲刺</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%962%EF%BC%9A%E5%9C%A8%E4%B8%8D%E5%86%B2%E5%88%BA%E6%97%B6%E6%81%A2%E5%A4%8D%E4%BD%93%E5%8A%9B"><span class="toc-number">1.4.4.</span> <span class="toc-text">优化2：在不冲刺时恢复体力</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%9B%E5%BB%BAUHD%E7%95%8C%E9%9D%A2"><span class="toc-number">1.5.</span> <span class="toc-text">四、创建UHD界面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%91%E7%94%BB%E5%B8%83%E9%9D%A2%E6%9D%BF%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.向画布面板中添加组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BB%91%E5%AE%9A%E7%BB%84%E4%BB%B6%E5%92%8C%E5%AE%9E%E9%99%85%E6%95%B0%E5%80%BC"><span class="toc-number">1.5.2.</span> <span class="toc-text">2.绑定组件和实际数值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%B0%86UI%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E4%BA%8E%E6%8A%AC%E5%A4%B4%E6%98%BE%E7%A4%BA"><span class="toc-number">1.5.3.</span> <span class="toc-text">3.将UI界面显示于抬头显示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BC%98%E5%8C%96%E5%B0%84%E5%87%BB%E5%92%8C%E5%BC%B9%E8%8D%AF%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.6.</span> <span class="toc-text">五、优化射击和弹药系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9C%A8%E5%BC%80%E7%81%AB%E6%97%B6%E6%B6%88%E8%80%97%E5%BC%B9%E8%8D%AF-amp-%E5%9C%A8%E5%BC%B9%E8%8D%AF%E4%B8%BA%E9%9B%B6%E6%97%B6%E4%B8%8D%E5%85%81%E8%AE%B8%E5%B0%84%E5%87%BB"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.在开火时消耗弹药 &amp; 在弹药为零时不允许射击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8D%A2%E5%BC%B9"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.换弹</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%961-%E6%8B%92%E7%BB%9D%E9%87%8D%E5%A4%8D%E6%8D%A2%E5%BC%B9"><span class="toc-number">1.6.2.1.</span> <span class="toc-text">优化1.拒绝重复换弹</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%962-%E5%9C%A8%E5%BC%B9%E8%8D%AF%E8%80%97%E5%B0%BD%E5%90%8E%E8%87%AA%E5%8A%A8%E6%8D%A2%E5%BC%B9"><span class="toc-number">1.6.2.2.</span> <span class="toc-text">优化2.在弹药耗尽后自动换弹</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%9E%84%E5%87%86"><span class="toc-number">1.6.3.</span> <span class="toc-text">3.瞄准</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -477,15 +519,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">小说</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
             
             <div class="clearfix"></div>
