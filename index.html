@@ -141,6 +141,129 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/STL标准模板库/智能指针模板类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/">智能指针模板类</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2023-04-04T09:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-智能指针的作用"><a href="#1-智能指针的作用" class="headerlink" title="1.智能指针的作用"></a>1.智能指针的作用</h3><p>智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。</p>
+<p>如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::string * ps = <span class="keyword">new</span> <span class="built_in">string</span>(str);</span><br><span class="line"><span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (i = <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span>();  <span class="comment">//若引发异常，delete将不被执行。</span></span><br><span class="line"><span class="keyword">delete</span> ps;  </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-使用智能指针"><a href="#2-使用智能指针" class="headerlink" title="2.使用智能指针"></a>2.使用智能指针</h3><p>智能指针共有四种：auto_ptr, unique_ptr, share_ptr, weak_ptr。其中auto_ptr已被抛弃，weak_ptr不作讨论。</p>
+<h4 id="2-1-创建智能指针对象"><a href="#2-1-创建智能指针对象" class="headerlink" title="2.1 创建智能指针对象"></a>2.1 创建智能指针对象</h4><p>智能指针作为模板类，应使用模板类语法：</p>
+<p><code>auto_ptr&lt;Type&gt; name(new Type);</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">auto_ptr&lt;<span class="type">double</span>&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> <span class="type">double</span>)</span></span>;</span><br><span class="line"><span class="function">atuo_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>所有智能指针类都有一个explicit构造函数，避免将普通指针直接转换为智能指针（但可以使用普通指针为参量的构造函数）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shared_ptr&lt;<span class="type">double</span>&gt; pd;</span><br><span class="line"><span class="type">double</span>* ps = <span class="keyword">new</span> <span class="type">double</span>;</span><br><span class="line">pd = ps;                      <span class="comment">//非法</span></span><br><span class="line">pd = <span class="built_in">shared_ptr</span>&lt;<span class="type">double</span>&gt; (ps); <span class="comment">//合法</span></span><br><span class="line">shared_ptr&lt;<span class="type">double</span>&gt; ptr = ps;  <span class="comment">//非法</span></span><br><span class="line"><span class="function">shared_ptr&lt;<span class="type">double</span>&gt; <span class="title">ptr</span><span class="params">(ps)</span></span>;   <span class="comment">//合法</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>注意：智能指针必须使用new，否则将对非堆内存使用 delete</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">str</span><span class="params">(<span class="string">&quot;你说的对&quot;</span>)</span></span>;</span><br><span class="line"><span class="function">auto_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(&amp;str)</span></span>; <span class="comment">//非法！</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-2-auto-ptr的缺点"><a href="#2-2-auto-ptr的缺点" class="headerlink" title="2.2 auto_ptr的缺点"></a>2.2 auto_ptr的缺点</h4><p>先看以下语句：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">auto_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">auto_ptr&lt;string&gt; pd;</span><br><span class="line">pd = ps;</span><br><span class="line">cout &lt;&lt; pd &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; ps &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>会出现什么情况？pd = ps;将字符串“JS_KringKoter”的控制权转移给了pd，此时ps指向的是空指针，将不会输出任何内容。</p>
+<p>为解决此问题，引入了unique_ptr和shared_ptr两种指针。</p>
+<ul>
+<li><p>unique_ptr和auto_ptr都使用了所有权概念，对于同一个对象，只有一个指针可以拥有它。auto_ptr在转让所有权之后置空原有指针，unique_ptr则更加严格，它不会允许这样的赋值。</p>
+</li>
+<li><p>shared_ptr使用引用计数，它计数指向目标的指针，仅在计数为零时调用析构函数。</p>
+</li>
+</ul>
+<h4 id="2-3-为何unique-ptr优于auto-ptr"><a href="#2-3-为何unique-ptr优于auto-ptr" class="headerlink" title="2.3 为何unique_ptr优于auto_ptr"></a>2.3 为何unique_ptr优于auto_ptr</h4><p>将上一点的语句使用unique_ptr改写。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">unique_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">ps = pd;   <span class="comment">//非法！</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑器将不允许这样的赋值。但可以这样做：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">pd = <span class="built_in">unique_ptr</span>&lt;string&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;JS_KringKoter&quot;</span>));  <span class="comment">//合法</span></span><br></pre></td></tr></table></figure>
+
+<p>如果右值临时存在，在赋值结束后即销毁，则可以这样做。如果右值将存在一段时间，编辑器将会静止这样的行为。</p>
+<p>另一个优点是，auto_ptr只能使用new和delete，unique_ptr可以使用new[]和delete[]。</p>
+<h6 id="std-move-函数：安全地重用unique-ptr"><a href="#std-move-函数：安全地重用unique-ptr" class="headerlink" title="std::move()函数：安全地重用unique_ptr"></a>std::move()函数：安全地重用unique_ptr</h6><p>要安全的重用unique_ptr，可以考虑给其赋新值。标准库函数move()可以做到这一点。该函数返回一个unique_ptr<Type>对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">unique_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">pd = <span class="built_in">move</span>(ps);  <span class="comment">//转移所有权，置空ps</span></span><br><span class="line">ps = <span class="built_in">unique_ptr</span>&lt;string&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;JS&quot;</span>));  <span class="comment">//重新赋值</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：调用move()函数后，ps指针仍被置空，此时需要对其进行赋值才能重新使用。</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-平白无奇的人设图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -357,11 +480,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">旧作为新</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">旧作为新</a>
         		</li>
       		
 		</ul>
@@ -445,11 +568,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">旧作为新</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">旧作为新</a>
         		</li>
       		
 		</ul>
@@ -903,103 +1026,6 @@
 
 
   
-    <article id="post-Novel/尘埃深处" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/23/Novel/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/">尘埃深处</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/23/Novel/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/" class="archive-article-date">
-  	<time datetime="2023-03-23T09:00:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最后更新日期：2023.03.26</p>
-<hr>
-<h4 id="序"><a href="#序" class="headerlink" title="-序-"></a>-序-</h4><p>时钟打了六点，已然是黄昏了。</p>
-<p>我伫立在窗边，空气中满是的沙尘在逐渐散去，阳光透过窗户，洒的满桌都是金黄。</p>
-<p>梧桐叶满秋，风帆影动，桂树花浓。</p>
-<p>秋天了呀。</p>
-<p>秋天呀，秋天。</p>
-<p>我反复念叨着这个词。</p>
-<p>我所生活的世界里，从来没有秋天。</p>
-<p>这里没有桂花和梧桐，没有渐凉的秋风，也没有越来越高的天空。</p>
-<p>这里是EHIS-4，一个没有季节的星球，一个没有生命的星球，这里几乎所有的陆地都是荒漠，高温覆盖了四季的每一天。伴随着高温的还有沙尘，无边的沙尘将天空染成了黄褐色，难得看见太阳，至于蓝天，那更是只能存在于老一辈人的记忆中了。</p>
-<p>然而，这里是三亿人的家园。无论他们情愿或不情愿，他们都生活在这里。因为这里是全宇宙经济最发达的地区之一，许多人为了生计不远万里前来，只为了能养活自己和家人。所以即使被风沙划破了脸颊，他们依然生活在此。几十年过去了，他们也适应了这样的天气，他们的后代从小在这里长大，这样的天气对他们来说便如每日的白昼一样平常。</p>
-<p>曾经，我也是他们中的一员。</p>
-<p>秋天呀，秋天。我时常挂在嘴边。</p>
-<p>还会有人记得这个世界本来的模样吗？还会有人记得四季轮转吗？</p>
-<p>就连我，也从未见过它本身的模样。可仅仅是书中的那只言片语，也能激起我不尽的念想。书的封面上印着“EARTH”的艺术字，在那后面，是一个青绿的星球，陆地衬着海洋，明媚地，仿佛周围深邃的银河也不再冷寂。</p>
-<p>谁能想到，EHIS-4的法律禁止种植植物，星球的植物和动物都遭到灭绝，为的是那可笑的工业发展。</p>
-<p>这里的人们不记得地球，不记得那是人类的本源，也不再记得那郁郁葱葱的世界。 </p>
-<p>不再记得春天的野花，冬天的雪。</p>
-<p>不再记得秋天呀，秋天。</p>
-<p>书是一年前，那个少年，送给我的。</p>
-<p>那是一场彻彻底底的意外。但那场意外，却将一点来之不易的生机，给了我，和这个世界。从此我相信，荒漠中，细雨仍在，它会在意想不到的时候降落。</p>
-        
-          <a class="article-more-a" href="/2023/03/23/Novel/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/23/Novel/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1097,11 +1123,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Personal Information</a>
+                <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
+                <a href="javascript:void(0)" class="js-tag color1">Personal Information</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1117,11 +1143,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
+                <a href="javascript:void(0)" class="js-tag color3">小说</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,7 +1151,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小说</a>
+                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
             
             <div class="clearfix"></div>

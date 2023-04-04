@@ -6,26 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://JSKringKoter.github.io">
-  <title>踩点报告 | JS_KringKoter | Personal blog</title>
+  <title>智能指针模板类 | JS_KringKoter | Personal blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="酒店特地定了37楼——几乎在新街口的中心。想必风光会很好的。 在楼下要仰视几乎90°才能看到楼顶，从这个角度能看到新街口几座高大的现代化建筑，玻璃幕墙反射着阴沉的天空。 南京市中心，并不算很繁华，没有想象中人山人海的景象。路旁的梧桐还未发芽，风有些凉，莫名有些萧瑟。 似乎并不该动情，毕竟只是一次踩点罢了。   离新街口真的好近的说。">
+  <meta name="description" content="1.智能指针的作用智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。 如： 12345std::string * ps &#x3D; new string(str);int i &#x3D; 0;if (i &#x3D; 0)    throw();  &#x2F;&#x2F;若引发异常，delete将不被执行。delete ps;      2.使用智能指针智能指针共有四种：auto_ptr,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="踩点报告">
-<meta property="og:url" content="https://jskringkoter.github.io/2023/03/25/Travel/2023.03.25%20%E8%B8%A9%E7%82%B9%E6%8A%A5%E5%91%8A%20For%202023.04.08/index.html">
+<meta property="og:title" content="智能指针模板类">
+<meta property="og:url" content="https://jskringkoter.github.io/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/index.html">
 <meta property="og:site_name" content="JS_KringKoter | Personal blog">
-<meta property="og:description" content="酒店特地定了37楼——几乎在新街口的中心。想必风光会很好的。 在楼下要仰视几乎90°才能看到楼顶，从这个角度能看到新街口几座高大的现代化建筑，玻璃幕墙反射着阴沉的天空。 南京市中心，并不算很繁华，没有想象中人山人海的景象。路旁的梧桐还未发芽，风有些凉，莫名有些萧瑟。 似乎并不该动情，毕竟只是一次踩点罢了。   离新街口真的好近的说。">
+<meta property="og:description" content="1.智能指针的作用智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。 如： 12345std::string * ps &#x3D; new string(str);int i &#x3D; 0;if (i &#x3D; 0)    throw();  &#x2F;&#x2F;若引发异常，delete将不被执行。delete ps;      2.使用智能指针智能指针共有四种：auto_ptr,">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/1img2023_3_25.jpg?raw=true">
-<meta property="og:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/hotalAddress.jpg?raw=true">
-<meta property="og:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/3img2023_3_25.jpg?raw=true">
-<meta property="og:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/2img2023_3_25.jpg?raw=true">
-<meta property="og:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/6img2023_3_25%20.jpg?raw=true">
-<meta property="article:published_time" content="2023-03-25T08:18:31.000Z">
-<meta property="article:modified_time" content="2023-03-27T04:16:44.461Z">
+<meta property="article:published_time" content="2023-04-04T09:42:46.000Z">
+<meta property="article:modified_time" content="2023-04-04T11:30:34.821Z">
 <meta property="article:author" content="JS_KringKoter">
-<meta property="article:tag" content="旅行">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/1img2023_3_25.jpg?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="JS_KringKoter | Personal blog" type="application/atom+xml">
   
@@ -147,56 +142,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Travel/2023.03.25 踩点报告 For 2023.04.08" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-C++学习笔记/STL标准模板库/智能指针模板类" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      踩点报告
+      智能指针模板类
     </h1>
   
 
         
-        <a href="/2023/03/25/Travel/2023.03.25%20%E8%B8%A9%E7%82%B9%E6%8A%A5%E5%91%8A%20For%202023.04.08/" class="archive-article-date">
-  	<time datetime="2023-03-25T08:18:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-25</time>
+        <a href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2023-04-04T09:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="酒店"><a href="#酒店" class="headerlink" title="酒店"></a>酒店</h3><p>特地定了37楼——几乎在新街口的中心。想必风光会很好的。</p>
-<p>在楼下要仰视几乎90°才能看到楼顶，从这个角度能看到新街口几座高大的现代化建筑，玻璃幕墙反射着阴沉的天空。</p>
-<p>南京市中心，并不算很繁华，没有想象中人山人海的景象。路旁的梧桐还未发芽，风有些凉，莫名有些萧瑟。</p>
-<p>似乎并不该动情，毕竟只是一次踩点罢了。</p>
-<p><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/1img2023_3_25.jpg?raw=true"></p>
-<blockquote>
-<p>离新街口真的好近的说。</p>
-</blockquote>
-<span id="more"></span>
+        <h3 id="1-智能指针的作用"><a href="#1-智能指针的作用" class="headerlink" title="1.智能指针的作用"></a>1.智能指针的作用</h3><p>智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。</p>
+<p>如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::string * ps = <span class="keyword">new</span> <span class="built_in">string</span>(str);</span><br><span class="line"><span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (i = <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span>();  <span class="comment">//若引发异常，delete将不被执行。</span></span><br><span class="line"><span class="keyword">delete</span> ps;  </span><br></pre></td></tr></table></figure>
 
-<p><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/hotalAddress.jpg?raw=true"></p>
-<h3 id="玄武湖"><a href="#玄武湖" class="headerlink" title="玄武湖"></a>玄武湖</h3><h4 id="樱洲-樱桃园"><a href="#樱洲-樱桃园" class="headerlink" title="樱洲-樱桃园"></a>樱洲-樱桃园</h4><p>去的是时候但也不是时候。</p>
-<p>樱花已经开了，浅粉色缀满枝头。还有樱桃，开着白色的花朵，绿叶中间藏着青涩的果子。</p>
-<p>这样的景色应该留给四月的她的。花期很短，那时候应该早就错过了吧。</p>
-<p>一直不知道樱桃和樱花是同一属的物种（蔷薇科樱属），所以为什么不给欧阳和小羽的丛山阁种两棵樱桃呢？白色的樱桃花，并不比碎红满地的樱花差多少，而且还能有樱桃恰（）</p>
-<p>绿色的果子还很硬，不知道四月去的时候会如何。</p>
-<p>这样的树种在光天化日下，真的不怕游客采摘吗？或许这也是园方的留给我们的一丝雅趣吧。</p>
-<p>很多花，数不清的花，溢满了视野的花，榆钱，未干的泥土，新草，一池潭水，蝌蚪；亭，在亭中歌唱的中年人，月季花架，花架中的秘境，春天。</p>
-<p>在地图上看樱洲并不大，所以当初次踏上那片土地时，并未发觉脚下的就是樱洲。走来走去，以为早就逛完了玄武湖，实则连樱洲的景色都没有一一过目。</p>
-<p>月季园也是个不错的去处。可惜这个时节花未开。</p>
-<p><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/3img2023_3_25.jpg?raw=true"></p>
-<p><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/2img2023_3_25.jpg?raw=true"></p>
-<h4 id="鸡鸣寺"><a href="#鸡鸣寺" class="headerlink" title="鸡鸣寺"></a>鸡鸣寺</h4><p>才三月啊，怎么就这么多人啊！</p>
-<p>新街口没人，全跑这来了是吧。</p>
-<p>樱花大道的樱花快要落没了，任人踩踏；鸡鸣寺建议改为人语寺。</p>
-<p><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/2023_03_25/6img2023_3_25%20.jpg?raw=true"></p>
-<blockquote>
-<p>古鸡鸣寺的门楼后能看见南京的地标建筑——紫金大厦，可谓是历史与现代的交替。</p>
-</blockquote>
-<p>从玄武湖出来的时候实在是人挤人，观感很差，所以临时决定取消鸡鸣寺的行程。</p>
+
+
+<h3 id="2-使用智能指针"><a href="#2-使用智能指针" class="headerlink" title="2.使用智能指针"></a>2.使用智能指针</h3><p>智能指针共有四种：auto_ptr, unique_ptr, share_ptr, weak_ptr。其中auto_ptr已被抛弃，weak_ptr不作讨论。</p>
+<h4 id="2-1-创建智能指针对象"><a href="#2-1-创建智能指针对象" class="headerlink" title="2.1 创建智能指针对象"></a>2.1 创建智能指针对象</h4><p>智能指针作为模板类，应使用模板类语法：</p>
+<p><code>auto_ptr&lt;Type&gt; name(new Type);</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">auto_ptr&lt;<span class="type">double</span>&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> <span class="type">double</span>)</span></span>;</span><br><span class="line"><span class="function">atuo_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>所有智能指针类都有一个explicit构造函数，避免将普通指针直接转换为智能指针（但可以使用普通指针为参量的构造函数）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shared_ptr&lt;<span class="type">double</span>&gt; pd;</span><br><span class="line"><span class="type">double</span>* ps = <span class="keyword">new</span> <span class="type">double</span>;</span><br><span class="line">pd = ps;                      <span class="comment">//非法</span></span><br><span class="line">pd = <span class="built_in">shared_ptr</span>&lt;<span class="type">double</span>&gt; (ps); <span class="comment">//合法</span></span><br><span class="line">shared_ptr&lt;<span class="type">double</span>&gt; ptr = ps;  <span class="comment">//非法</span></span><br><span class="line"><span class="function">shared_ptr&lt;<span class="type">double</span>&gt; <span class="title">ptr</span><span class="params">(ps)</span></span>;   <span class="comment">//合法</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>注意：智能指针必须使用new，否则将对非堆内存使用 delete</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">str</span><span class="params">(<span class="string">&quot;你说的对&quot;</span>)</span></span>;</span><br><span class="line"><span class="function">auto_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(&amp;str)</span></span>; <span class="comment">//非法！</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-2-auto-ptr的缺点"><a href="#2-2-auto-ptr的缺点" class="headerlink" title="2.2 auto_ptr的缺点"></a>2.2 auto_ptr的缺点</h4><p>先看以下语句：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">auto_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">auto_ptr&lt;string&gt; pd;</span><br><span class="line">pd = ps;</span><br><span class="line">cout &lt;&lt; pd &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; ps &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>会出现什么情况？pd = ps;将字符串“JS_KringKoter”的控制权转移给了pd，此时ps指向的是空指针，将不会输出任何内容。</p>
+<p>为解决此问题，引入了unique_ptr和shared_ptr两种指针。</p>
+<ul>
+<li><p>unique_ptr和auto_ptr都使用了所有权概念，对于同一个对象，只有一个指针可以拥有它。auto_ptr在转让所有权之后置空原有指针，unique_ptr则更加严格，它不会允许这样的赋值。</p>
+</li>
+<li><p>shared_ptr使用引用计数，它计数指向目标的指针，仅在计数为零时调用析构函数。</p>
+</li>
+</ul>
+<h4 id="2-3-为何unique-ptr优于auto-ptr"><a href="#2-3-为何unique-ptr优于auto-ptr" class="headerlink" title="2.3 为何unique_ptr优于auto_ptr"></a>2.3 为何unique_ptr优于auto_ptr</h4><p>将上一点的语句使用unique_ptr改写。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">unique_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">ps = pd;   <span class="comment">//非法！</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑器将不允许这样的赋值。但可以这样做：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">pd = <span class="built_in">unique_ptr</span>&lt;string&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;JS_KringKoter&quot;</span>));  <span class="comment">//合法</span></span><br></pre></td></tr></table></figure>
+
+<p>如果右值临时存在，在赋值结束后即销毁，则可以这样做。如果右值将存在一段时间，编辑器将会静止这样的行为。</p>
+<p>另一个优点是，auto_ptr只能使用new和delete，unique_ptr可以使用new[]和delete[]。</p>
+<h6 id="std-move-函数：安全地重用unique-ptr"><a href="#std-move-函数：安全地重用unique-ptr" class="headerlink" title="std::move()函数：安全地重用unique_ptr"></a>std::move()函数：安全地重用unique_ptr</h6><p>要安全的重用unique_ptr，可以考虑给其赋新值。标准库函数move()可以做到这一点。该函数返回一个unique_ptr<Type>对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">unique_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">pd = <span class="built_in">move</span>(ps);  <span class="comment">//转移所有权，置空ps</span></span><br><span class="line">ps = <span class="built_in">unique_ptr</span>&lt;string&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;JS&quot;</span>));  <span class="comment">//重新赋值</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：调用move()函数后，ps指针仍被置空，此时需要对其进行赋值才能重新使用。</strong></p>
 
       
 
@@ -210,7 +221,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">旅行</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
         		</li>
       		
 		</ul>
@@ -266,7 +281,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://jskringkoter.github.io/2023/03/25/Travel/2023.03.25%20%E8%B8%A9%E7%82%B9%E6%8A%A5%E5%91%8A%20For%202023.04.08/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://jskringkoter.github.io/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,18 +295,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/03/27/Novel/%E4%B8%94%E5%90%AC%E9%A3%8E%E9%9B%AA/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          且听风雪
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/03/23/Rainimator/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Rainimator</div>
+    <a href="/2023/04/03/%E5%B9%B3%E7%99%BD%E6%97%A0%E5%A5%87%E7%9A%84%E4%BA%BA%E8%AE%BE%E5%9B%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">平白无奇的人设图</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -318,7 +324,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%92%E5%BA%97"><span class="toc-number">1.</span> <span class="toc-text">酒店</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%84%E6%AD%A6%E6%B9%96"><span class="toc-number">2.</span> <span class="toc-text">玄武湖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%B1%E6%B4%B2-%E6%A8%B1%E6%A1%83%E5%9B%AD"><span class="toc-number">2.1.</span> <span class="toc-text">樱洲-樱桃园</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%B8%A1%E9%B8%A3%E5%AF%BA"><span class="toc-number">2.2.</span> <span class="toc-text">鸡鸣寺</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">1.智能指针的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">2.</span> <span class="toc-text">2.使用智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E5%88%9B%E5%BB%BA%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 创建智能指针对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-auto-ptr%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 auto_ptr的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E4%B8%BA%E4%BD%95unique-ptr%E4%BC%98%E4%BA%8Eauto-ptr"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 为何unique_ptr优于auto_ptr</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#std-move-%E5%87%BD%E6%95%B0%EF%BC%9A%E5%AE%89%E5%85%A8%E5%9C%B0%E9%87%8D%E7%94%A8unique-ptr"><span class="toc-number">2.3.0.1.</span> <span class="toc-text">std::move()函数：安全地重用unique_ptr</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
