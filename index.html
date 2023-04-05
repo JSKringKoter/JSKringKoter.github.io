@@ -141,6 +141,188 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/STL标准模板库/vector模板库和迭代器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/vector%E6%A8%A1%E6%9D%BF%E5%BA%93%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8/">vector模板库和迭代器</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/vector%E6%A8%A1%E6%9D%BF%E5%BA%93%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2023-04-04T11:31:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>STL（Standard Template Library）标准模板库提供了容器，迭代器，函数对象和算法的模板，这些组成了一种不同于OOP的编程思想：泛型编程。</p>
+<h3 id="模板类vector"><a href="#模板类vector" class="headerlink" title="模板类vector"></a>模板类vector</h3><p>vector可以译作“向量“（事实上在UE4中确实如此），但它实际对应数组。vector储存了一组可随机访问的值，可以对它使用[], *等运算符来访问数据。</p>
+<p>要创建vector对象，需要使用<type>表示法来指出需要的类型。可以使用初始化参数指出需要储存多少数据。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">rating</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">score</span><span class="params">(n)</span></span>;   <span class="comment">//n为变量</span></span><br></pre></td></tr></table></figure>
+
+<p>可以通过数组表示法访问各个成员。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rating[<span class="number">0</span>] = <span class="number">1.3</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cout &lt;&lt; rating[i];</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>迭代器是一个对象，但它具有指针的性质，可以认为它是一个广义指针。可以对其使用operator*(), operator++()等。将指针定义为迭代器，可以对STL中不同的容器执行统一的操作。每个容器类都定义了一个合适的迭代器，名为iterator。</p>
+<p>为vector<double>容器声明迭代器：</p>
+<p><code> vector&lt;double&gt;::iterator pd;</code></p>
+<p>可以使用迭代器对该容器内数据进行操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">double</span>&gt;::iterator pd;</span><br><span class="line"><span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">vec</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">pd = vec.<span class="built_in">begin</span>();  <span class="comment">//指定迭代器为vec对象第一个数据</span></span><br><span class="line">*pd = <span class="number">22.3</span>;        <span class="comment">//将第一个数据赋值</span></span><br><span class="line">pd++;              <span class="comment">//令pd指向第二个数据</span></span><br></pre></td></tr></table></figure>
+
+<p>可用c++类型自动推断简化代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">double</span>&gt;::iterator pd = vec.<span class="built_in">begin</span>();</span><br><span class="line"><span class="keyword">auto</span> ps = vec.<span class="built_in">begin</span>();</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-可以对矢量进行的操作"><a href="#1-可以对矢量进行的操作" class="headerlink" title="1.可以对矢量进行的操作"></a>1.可以对矢量进行的操作</h4><p>所有STL容器都提供了一些基本方法，包括了以下几种：</p>
+<blockquote>
+<p>size() 返回容器中元素数目。</p>
+<p>swap() 交换两个容器中的内容。</p>
+<p>begin() 返回指向容器第一个元素的迭代器。</p>
+<p>end() 返回指向容器超过末尾的迭代器。</p>
+</blockquote>
+<p>vector容器也包括了一些只有某些STL容器才有的方法，如：</p>
+<blockquote>
+<p>push_back() 将元素添加到容器尾，自动进行内存管理。</p>
+<p>erase() 删除给定区间的元素。</p>
+<p>insert() 将给定区间元素插入指定位置。</p>
+</blockquote>
+<p>push_back()函数接受一个容器元素，将其添加到容器尾。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">double</span>&gt; vec;</span><br><span class="line">vec.<span class="built_in">push_back</span>(<span class="number">3.1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>erase()函数接受两个迭代器参数，将其中的元素删除。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">vec.<span class="built_in">erase</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">begin</span>() + <span class="number">2</span>);  <span class="comment">//删除[1, 3)中的元素，即第0，1元素</span></span><br></pre></td></tr></table></figure>
+
+<p>insert()函数接受三个迭代器参数，第一个参数是插入的元素位置（的前面），后面两个参数是插入的元素范围。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; oldVec;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; newVec;</span><br><span class="line">···</span><br><span class="line">newVec.<span class="built_in">insert</span>(newVec.<span class="built_in">begin</span>(), oldVec.<span class="built_in">begin</span>() + <span class="number">1</span>, oldVec.<span class="built_in">end</span>());</span><br><span class="line"><span class="comment">//将oldVec中除第一个元素外复制到newVec第一个元素前面</span></span><br><span class="line">newVec.<span class="built_in">insert</span>(newVec.<span class="built_in">end</span>(), oldVec.<span class="built_in">begin</span>(), oldVec.<span class="built_in">end</span>());</span><br><span class="line"><span class="comment">//将oldVec的所有元素复制到newVec的末尾</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>vec.erase(it1, it2);</p>
+<p>若it1和it2都为迭代器，则范围表示[it1, it2)。集合[begin(), end())表示包括集合的所有内容，[p1, p1)则为空。</p>
+</blockquote>
+<h4 id="2-可以对矢量进行的其他操作"><a href="#2-可以对矢量进行的其他操作" class="headerlink" title="2.可以对矢量进行的其他操作"></a>2.可以对矢量进行的其他操作</h4><p>STL定义了非成员函数来省去重复的操作，这些方法适用于所有容器类。但在有些时候STL也定义了成员函数，原因是类特定算法比通用算法的效率高。由于是非成员函数，不能通过成员访问法调用。</p>
+<p>以下是三个STL函数：</p>
+<blockquote>
+<p>for_each() 遍历指定范围的元素</p>
+<p>random_shuffle() 随机排序指定区间的元素，要求容器支持随机访问。</p>
+<p>sort() 排序指定区间的元素，要求支持随机访问。</p>
+</blockquote>
+<p>在使用STL非成员函数时，先包含<code> #include &lt;algorithm&gt;</code>，并使用标准名称空间。</p>
+<ul>
+<li>for_each()</li>
+</ul>
+<p>该函数接受三个参数：起始位置迭代器，终止位置迭代器，函数对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;string&gt; <span class="title">vec</span><span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line">vec = &#123;</span><br><span class="line">    <span class="string">&quot;JS&quot;</span>, <span class="string">&quot;Kring&quot;</span>, <span class="string">&quot;Koter&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line">for_each(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), showString);  <span class="comment">//对vec.begin()和vec.end()中的元素执行showString();</span></span><br></pre></td></tr></table></figure>
+
+<p>应注意函数对象的参数列表仅能含有与vector<type>相同（或能隐式类型转换）的变量。默认参数也不好使。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">showString</span>(<span class="type">const</span> string&amp; str);  <span class="comment">//合法</span></span><br><span class="line"><span class="built_in">showString</span>(<span class="type">const</span> string&amp; str, <span class="type">int</span> i = <span class="number">0</span>);  <span class="comment">//编译器不会报错，但无法通过编译</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用for_each()可以避免使用迭代器变量，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> ps = vec.<span class="built_in">begin</span>();  <span class="comment">//在遍历时需要使用变量ps</span></span><br><span class="line"><span class="keyword">for</span> (ps = vec.<span class="built_in">begin</span>(), ps &lt; vec.<span class="built_in">end</span>(), ps++)</span><br><span class="line">    <span class="built_in">showString</span>(*ps);</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>random_shuffle()</li>
+</ul>
+<p>该函数接受两个参数：起始位置迭代器，终止位置迭代器。</p>
+<p>以下代码将随机排列vec中的元素：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line"><span class="built_in">random_shuffle</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>sort()</li>
+</ul>
+<p>该函数有两个版本，先来看第一个。</p>
+<p>第一个版本传递两个参数，使用默认的&lt;运算符排序（升序），作用对象是储存在容器内的类型元素（即不能是用户自定义类型）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;string&gt; <span class="title">vec</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+
+<p>如果要对用户自定义类型进行排序，需要有相应的运算符重载函数：operator&lt;()</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">book</span> &#123;</span><br><span class="line">    string title;</span><br><span class="line">    <span class="type">int</span> rating;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">const</span> book&amp; b1, <span class="type">const</span> book&amp; b2)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(b1.title &lt; b2.title)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(b1.title == b2.title &amp;&amp; b1.rating &lt; b2.ratring)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">vector&lt;book&gt; <span class="title">bo</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="built_in">sort</span>(bo.<span class="built_in">begin</span>(), bo.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此程序对book按title的首字母进行排序，若相同，则比较rating的大小。</p>
+<p>另一种sort()函数接受三个参数，最后一个是函数对象。要求该函数返回值可转换为bool，当返回false时表示顺序不正确。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">book</span> &#123;</span><br><span class="line">    string title;</span><br><span class="line">    <span class="type">int</span> ratnig;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">worseThan</span><span class="params">(<span class="type">const</span> book&amp; b1, <span class="type">const</span> book&amp; b2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b1.title &gt; b2.title)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">vector&lt;book&gt; <span class="title">bo</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="built_in">sort</span>(bo.<span class="built_in">begin</span>(), bo.<span class="built_in">end</span>(), worseThan);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="基于范围的for循环-C-11"><a href="#基于范围的for循环-C-11" class="headerlink" title="基于范围的for循环(C++11)"></a>基于范围的for循环(C++11)</h3><p>考虑以下代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> array[<span class="number">4</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : array)</span><br><span class="line">    cout &lt;&lt; x &lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>括号内的代码声明了一个与容器类型相同的变量，并指出容器名称。将使用指定的变量遍历容器。</p>
+<p>可以使用c++自动类型推断：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> x : array) cout &lt;&lt; x &lt;&lt; endl;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> x : book) <span class="built_in">showBook</span>(x);</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/vector%E6%A8%A1%E6%9D%BF%E5%BA%93%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++学习笔记/STL标准模板库/智能指针模板类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -938,94 +1120,6 @@
 
 
   
-    <article id="post-Novel/永远的铁道" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/23/Novel/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/">永远的铁道</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/23/Novel/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/" class="archive-article-date">
-  	<time datetime="2023-03-23T09:00:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p> 写于2023.01.25 记一段梦境</p>
-<hr>
-<p>铁路修了很多年，如今仍在修着。</p>
-<p>没人知道铁路的起讫地点，它就这样一直延伸着，穿过无边的草原和湿地，遇水搭桥，逢山开路。或许它经过了无数个小镇，或许它经过了无数座城市，它仍然不断延伸，如同时光般永不停歇。</p>
-<p>铁路修了很多年，当然，还没有火车经过这里。</p>
-<p>铁轨下的枕木，经过多年风和雨的摧残，已经腐朽得不成样子，完全无法承受火车的重量。即便如此，没有人将它们更换掉，它们被遗弃在这里，兀自记载着岁月的痕迹。</p>
-<p>老一辈人还记得铁路修到这里的时候，很多人站在路边看热闹的样子。工人扛着木头，沉重的铁镐挥击着大地，发出有规律的，触及人心的震颤声。那时候人人都以为火车会在不久的将来冒着热气，在汽笛声中缓缓开进站台。人们带着行李，在烟雾缭绕中走上火车，前往不可知的远方，寻找各自的目的地。</p>
-<p>铁路逐渐远去，它倒是去了远方，在人们日复一日的期盼中隐没在了无边的飞雪和雾气中，渺无音讯。</p>
-<p>北国的小镇，交通不便。群山环绕之中，一年里除了飞雪，很难看到其他东西。</p>
-<p>总有人想出去，而那些出去的人们，也不会再回来。偶尔有鸽子携着信穿越群山来到这里，带来来自远方的问候。几天之后它又会飞走，带走憧憬和祝愿，消失在人们的视野中。</p>
-<p>铁路修了很多年，如今又如何呢？</p>
-<p>老一辈人都离开了人世，终于没有人记得曾经的期愿了。铁路被封在大雪中，那桦木的小巧玲珑的车站破损不堪。没人在乎，当然也没必要在乎。当它早就废弃了就好。</p>
-        
-          <a class="article-more-a" href="/2023/03/23/Novel/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/23/Novel/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1164,6 +1258,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">STL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
             
             <div class="clearfix"></div>
