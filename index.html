@@ -141,6 +141,242 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/STL标准模板库/顺序容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">顺序容器</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2023-04-06T06:13:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="顺序容器的分类"><a href="#顺序容器的分类" class="headerlink" title="顺序容器的分类"></a>顺序容器的分类</h3><p>容器特定对象（包括内置数据类型，结构，类等）的集合。顺序容器则提供了按顺序储存或访问它们的能力。</p>
+<p>理解为一个很牛逼的数组就行了。</p>
+<p>下面是顺序容器的类型和特点：</p>
+<table>
+<thead>
+<tr>
+<th>容器类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vector</td>
+<td>大小可变，可以增添或删除，可以随机访问。在尾部之外的地方插入数据可能很慢。</td>
+</tr>
+<tr>
+<td>deque</td>
+<td>双端队列，在头部插入数据很快。</td>
+</tr>
+<tr>
+<td>list</td>
+<td>双向链表，在任何位置插入数据很快，但访问很慢。</td>
+</tr>
+<tr>
+<td>forward_list</td>
+<td>单向链表，只支持单向数据访问，在任何位置插入数据很快。</td>
+</tr>
+<tr>
+<td>array</td>
+<td>固定数组，无法变化大小，可随机访问。</td>
+</tr>
+<tr>
+<td>string</td>
+<td>类似于vector<string></td>
+</tr>
+</tbody></table>
+<p>应在不同情况下选择不同的容器，一般除非有特殊理由，则使用vector。避免使用数组，容器的数据处理效率要大于数组。如果不确定应选择何种容器，则在只使用vector和list的情况下使用迭代器（而不是下标访问）。</p>
+<h3 id="顺序容器的迭代器"><a href="#顺序容器的迭代器" class="headerlink" title="顺序容器的迭代器"></a>顺序容器的迭代器</h3><p>所有的容器迭代器都有++操作，–仅forward_list不支持（无法双向访问）。支持随机访问的迭代器才能使用+, -运算符。</p>
+<p>可以对迭代器使用&lt;, &lt;=, &gt;, =&gt;运算符，但list和forward_list不支持。</p>
+<h3 id="顺序容器定义和初始化"><a href="#顺序容器定义和初始化" class="headerlink" title="顺序容器定义和初始化"></a>顺序容器定义和初始化</h3><p>初始化方法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">list&lt;<span class="type">int</span>&gt; a;                       <span class="comment">//名称为a的空容器</span></span><br><span class="line">list&lt;<span class="type">int</span>&gt; c&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;            <span class="comment">//列表初始化</span></span><br><span class="line"><span class="comment">//或list&lt;int&gt; c = &#123; 1, 2, 3 &#125;;</span></span><br><span class="line"><span class="function">list&lt;<span class="type">int</span>&gt; <span class="title">d</span><span class="params">(c)</span></span>;                    <span class="comment">//将d初始化为c的拷贝</span></span><br><span class="line"><span class="comment">//或list&lt;int&gt; d = c;</span></span><br><span class="line"><span class="function">list&lt;<span class="type">int</span>&gt; <span class="title">e</span><span class="params">(c.begin(), c.end())</span></span>;   <span class="comment">//将e初始化为两个迭代器中的元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//仅顺序容器可用</span></span><br><span class="line"><span class="built_in">list</span>&lt;<span class="type">int</span>&gt; (<span class="number">5</span>);                     <span class="comment">//五个元素的空容器</span></span><br><span class="line"><span class="function">list&lt;<span class="type">int</span>&gt; <span class="title">f</span><span class="params">(<span class="number">5</span>)</span></span>;                    <span class="comment">//含有五个元素的容器</span></span><br><span class="line"><span class="function">list&lt;<span class="type">int</span>&gt; <span class="title">h</span><span class="params">(<span class="number">5</span>, <span class="number">1145</span>)</span></span>;              <span class="comment">//含有五个元素，值都为1145的容器</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>将一个容器初始化为另一个容器的拷贝，容器类型必须相同，但使用迭代器则不要求。<strong>程序员要保证类型匹配。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">double</span>&gt; vecDou&#123; <span class="number">1</span>, <span class="number">2</span> ,<span class="number">3</span> &#125;;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vecInt2</span><span class="params">(vecDou)</span></span>;  <span class="comment">//非法！</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ve2Int</span><span class="params">(vecDou.begin(), vecDou.end())</span></span>;  <span class="comment">//合法</span></span><br><span class="line">	</span><br><span class="line">vector&lt;string&gt; vecString&#123; <span class="string">&quot;addd&quot;</span>, <span class="string">&quot;add&quot;</span> &#125;;</span><br><span class="line"><span class="function">vector&lt;<span class="type">const</span> <span class="type">char</span>*&gt; <span class="title">vecChar</span><span class="params">(vecString)</span></span>;  <span class="comment">//非法！</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">const</span> <span class="type">char</span>*&gt; <span class="title">vecChar2</span><span class="params">(vecString.begin(), vecString.end())</span></span>;  <span class="comment">//合法</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vecInt</span><span class="params">(vecString.begin(), vecString.end())</span></span>;  <span class="comment">//合法，但绝对不能这样做。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="array容器的特殊初始化"><a href="#array容器的特殊初始化" class="headerlink" title="array容器的特殊初始化"></a>array容器的特殊初始化</h4><p>array容器可以看作定长数组，在初始化时必须传递长度数据。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array&lt;<span class="type">int</span>, 3&gt; arr;   <span class="comment">//长度为3，储存int的array</span></span><br><span class="line">array&lt;<span class="type">int</span>&gt;  arr;     <span class="comment">//非法！array&lt;int&gt;不是类型</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>无法对内置数组类型进行拷贝，但array可以。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">3</span>] = &#123; <span class="number">1</span>, <span class="number">2</span> &#125;;</span><br><span class="line"><span class="type">int</span> b[<span class="number">3</span>] = a;  <span class="comment">//非法！</span></span><br><span class="line"></span><br><span class="line">array&lt;<span class="type">int</span>, 3&gt; a = &#123; <span class="number">1</span>, <span class="number">2</span> ,<span class="number">3</span> &#125;;   </span><br><span class="line">array&lt;<span class="type">int</span>, 3&gt; b = a;  <span class="comment">//合法，只要类型匹配</span></span><br></pre></td></tr></table></figure>
+
+<p>在拷贝时，必须保证数据类型和大小完全一致。迭代器方法在此无效。</p>
+<h3 id="顺序容器的赋值"><a href="#顺序容器的赋值" class="headerlink" title="顺序容器的赋值"></a>顺序容器的赋值</h3><p>使用=运算符的前提是容器类型一致，赋值后左边容器和右边容器完全相同。赋值操作会使得指向左边容器的指针，迭代器和引用失效。</p>
+<p>swap()和assign()函数可用于更改容器的值。且指针，迭代器和引用不会失效。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">swap</span>(a, b);   <span class="comment">//交换两个容器的值，要求类型相同</span></span><br><span class="line">a.<span class="built_in">swap</span>(b);    <span class="comment">//使用成员函数法，两种方法都比直接拷贝快</span></span><br><span class="line"></span><br><span class="line">a.<span class="built_in">assign</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">end</span>());  <span class="comment">//将指定迭代器范围内的数据赋给a</span></span><br><span class="line">a.<span class="built_in">assign</span>(&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;);         <span class="comment">//将a替代为初始化列表</span></span><br><span class="line">a.<span class="built_in">assign</span>(<span class="number">4</span>, <span class="number">2</span>);                <span class="comment">//将a替代为四个为2的元素</span></span><br></pre></td></tr></table></figure>
+
+<p>这两个函数都不能直接传递类型不匹配的容器。</p>
+<p><em>书后习题：将一个list&lt;char指针&gt;赋给vector<string></em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">list&lt;<span class="type">const</span> <span class="type">char</span>*&gt; <span class="title">liChar</span><span class="params">(<span class="number">3</span>)</span></span>;  <span class="comment">//为了可以赋值，这里用了const char*</span></span><br><span class="line">liChar.<span class="built_in">assign</span>(&#123; <span class="string">&quot;addd&quot;</span>, <span class="string">&quot;adddd&quot;</span>, <span class="string">&quot;add&quot;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;string&gt; <span class="title">vecString</span><span class="params">(liChar.begin(), liChar.end())</span></span>;</span><br><span class="line">vecString.<span class="built_in">assign</span>(liChar.<span class="built_in">begin</span>(), liChar.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>所有容器都支持等于和不等，除了无序关联容器以外都支持大于小于，大于等于小于等于。</p>
+<p>只有当两个容器类型完全相同时才能使用关系运算符。</p>
+<p><em>书后习题：比较list<int>和vector<int>中的元素</em></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C++学习笔记/STL标准模板库/概念，改进和模型，深入探讨迭代器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/">概念，改进和模型，深入探讨迭代器</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2023-04-05T10:28:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概念，改进和模型"><a href="#概念，改进和模型" class="headerlink" title="概念，改进和模型"></a>概念，改进和模型</h3><p>STL有着许多个c++术语无法描述的特性。</p>
+<p>就迭代器而言，它可以是一个指针，一个结构，一个类。它无法用一个确切的“类型”来形容，只是存在一类需要这种东西来满足需求。C++将这种东西称作“概念”。</p>
+<p>正向迭代器是一个类，输入迭代器也是一个类，但正向迭代器拥有输入迭代器所有的功能，这可以看成一种继承关系。但是两个概念之间的继承是没有意义的，但可以将正向迭代器看成输入迭代器的“改进”。</p>
+<p>概念的具体实现形式为模型。若某样东西满足了概念的所有需求，它即为该概念的一个“模型”。</p>
+<p><code>int* ps = new int(3)</code></p>
+<p>ps指针可以随机访问，可以读写，它就可以看成随机迭代器的一个模型。</p>
+<h3 id="深入讨论迭代器"><a href="#深入讨论迭代器" class="headerlink" title="深入讨论迭代器"></a>深入讨论迭代器</h3><h4 id="1-将指针用于迭代器"><a href="#1-将指针用于迭代器" class="headerlink" title="1.将指针用于迭代器"></a>1.将指针用于迭代器</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> NUM = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> rec[NUM] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="built_in">sort</span> (rec, rec + NUM);  <span class="comment">//rec + NUM即数组超尾，c++确保这是被定义的</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : rec)</span><br><span class="line">    cout &lt;&lt; x &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>如上所示，普通的指针可以作为迭代器使用，可以使用诸如sort()的STL方法。</p>
+<h4 id="2-copy-ostream-iterator-istream-iterator"><a href="#2-copy-ostream-iterator-istream-iterator" class="headerlink" title="2. copy(), ostream_iterator, istream_iterator"></a>2. copy(), ostream_iterator, istream_iterator</h4><p>未完……先学后面</p>
+        
+          <a class="article-more-a" href="/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++学习笔记/STL标准模板库/vector模板库和迭代器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -183,11 +419,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
         		</li>
       		
 		</ul>
@@ -282,11 +518,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -833,173 +1069,6 @@
 
 
   
-    <article id="post-Novel/斯通古堡的往事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/23/Novel/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/">斯通古堡的往事</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/23/Novel/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/" class="archive-article-date">
-  	<time datetime="2023-03-23T10:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="斯通古堡的往事"><a href="#斯通古堡的往事" class="headerlink" title="-斯通古堡的往事-"></a>-斯通古堡的往事-</h3><hr>
-<p>古老的歌谣一直传唱着，几千年来，从未间断。</p>
-<p>斯通古城堡墙壁上的砖石，在阳光和风的侵蚀下，慢慢露出里面只属于石头的纹路。人们会小心地敲下破损的砖头，然后换上新的，代替原来的接受时光的冲刷。替换用的石头摆在城堡的外面，像小山一样，黄色的砖石让人们有一种温暖的感觉，总会有小孩子爬上石头玩，秋天的太阳把他们晒得暖洋洋地。</p>
-<p>他们在咿呀学语，在摸爬滚打中学会走路，在傍晚天快黑的时候被赶回去用餐。第二天放学后，他们一定会像平常一样在这里爬上爬下，在这里嬉戏打闹，在这里唱着那传唱了几千年的歌谣。</p>
-<p>连人们都数不清多少年之后，这里的砖石也变得和那城堡上的砖头一样破损了。但它们一直堆在这里，从没有人挪动过位置，仿佛这就是法律所规定的一般，神圣不可侵犯。当年的孩子长大了，结婚了，生育了下一代，生病了，死去了，和这一堆石头都没有关系。它只是默默地看着他们成长，然后死去，仅此而已。</p>
-<p>笔者是在那里长大的孩子中的一员。虽然这一堆石头，以及那座城堡，和它伴着成长的那些人，早已经湮没在了时光中，但笔者仍然想提起笔，写下那里发生的一些事情。笔者的私心：这些故事，希望能给更多的人看到。</p>
-<p>故事零零散散，笔者已经不可能将它们拼凑完整，留白的部分就请读者自由想象吧。</p>
-<p>历460年 11 月 8 日</p>
-        
-          <a class="article-more-a" href="/2023/03/23/Novel/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/23/Novel/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-音乐填词" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/23/%E9%9F%B3%E4%B9%90%E5%A1%AB%E8%AF%8D/">音乐填词</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/23/%E9%9F%B3%E4%B9%90%E5%A1%AB%E8%AF%8D/" class="archive-article-date">
-  	<time datetime="2023-03-23T09:56:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><h3 id="初雪·群山"><a href="#初雪·群山" class="headerlink" title="初雪·群山"></a>初雪·群山</h3></li>
-</ul>
-<hr>
-<p>古琴声声 拨动了流年<br>倚歌执念 旋起相思的雪<br>触动群山间 飞鸟迹已绝<br>是峰回路转 君才不见</p>
-<p>问君何归处 白雪覆人间路<br>独扫玉镯环步 昨夜梨花一树<br>树下何人伫 却盼君在归途<br>吱呀细声户枢 自有青幡舞</p>
-<p>琉璃砖瓦残 梅逊雪三分白<br>奈何断墙遗落 古琴唤几多愁<br>枝头雪忽落 是车马声过<br>赋情愫两句 不为多</p>
-<p>问君何归处 望穿一山初雪<br>独伫斑驳断墙 却忆檀门斓窗<br>窗前何人伫 君能饮一杯无<br>看酒家城楼处 亦有青幡舞</p>
-<p>是霜重寒鼓 故意把旌旗缚<br>是繁花一簇 忆中叶簌簌<br>是念滴落在 水墨和江山<br>是素手赠簪 为君生辰恭祝</p>
-        
-          <a class="article-more-a" href="/2023/03/23/%E9%9F%B3%E4%B9%90%E5%A1%AB%E8%AF%8D/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">音乐🎶</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/23/%E9%9F%B3%E4%B9%90%E5%A1%AB%E8%AF%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1113,10 +1182,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
               </li>
              
@@ -1125,15 +1190,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Do not touch!</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1141,7 +1210,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
             
             <div class="clearfix"></div>

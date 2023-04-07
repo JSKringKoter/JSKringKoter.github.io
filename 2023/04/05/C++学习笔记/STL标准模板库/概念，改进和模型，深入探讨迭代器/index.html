@@ -6,17 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://JSKringKoter.github.io">
-  <title>Tag: Do not touch! | JS_KringKoter | Personal blog</title>
+  <title>概念，改进和模型，深入探讨迭代器 | JS_KringKoter | Personal blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="克林沃特的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JS_KringKoter | Personal blog">
-<meta property="og:url" content="https://jskringkoter.github.io/tags/Do-not-touch/index.html">
+  <meta name="description" content="概念，改进和模型STL有着许多个c++术语无法描述的特性。 就迭代器而言，它可以是一个指针，一个结构，一个类。它无法用一个确切的“类型”来形容，只是存在一类需要这种东西来满足需求。C++将这种东西称作“概念”。 正向迭代器是一个类，输入迭代器也是一个类，但正向迭代器拥有输入迭代器所有的功能，这可以看成一种继承关系。但是两个概念之间的继承是没有意义的，但可以将正向迭代器看成输入迭代器的“改进”。 概">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概念，改进和模型，深入探讨迭代器">
+<meta property="og:url" content="https://jskringkoter.github.io/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/index.html">
 <meta property="og:site_name" content="JS_KringKoter | Personal blog">
-<meta property="og:description" content="克林沃特的个人博客">
+<meta property="og:description" content="概念，改进和模型STL有着许多个c++术语无法描述的特性。 就迭代器而言，它可以是一个指针，一个结构，一个类。它无法用一个确切的“类型”来形容，只是存在一类需要这种东西来满足需求。C++将这种东西称作“概念”。 正向迭代器是一个类，输入迭代器也是一个类，但正向迭代器拥有输入迭代器所有的功能，这可以看成一种继承关系。但是两个概念之间的继承是没有意义的，但可以将正向迭代器看成输入迭代器的“改进”。 概">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-05T10:28:29.000Z">
+<meta property="article:modified_time" content="2023-04-05T11:01:19.568Z">
 <meta property="article:author" content="JS_KringKoter">
-<meta property="article:tag" content="C++">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="JS_KringKoter | Personal blog" type="application/atom+xml">
@@ -139,60 +142,181 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-C++学习笔记/STL标准模板库/概念，改进和模型，深入探讨迭代器" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/03/%E5%B9%B3%E7%99%BD%E6%97%A0%E5%A5%87%E7%9A%84%E4%BA%BA%E8%AE%BE%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2023-04-03T12:54:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/03/%E5%B9%B3%E7%99%BD%E6%97%A0%E5%A5%87%E7%9A%84%E4%BA%BA%E8%AE%BE%E5%9B%BE/">平白无奇的人设图</a>
+    <h1 class="article-title" itemprop="name">
+      概念，改进和模型，深入探讨迭代器
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2023-04-05T10:28:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概念，改进和模型"><a href="#概念，改进和模型" class="headerlink" title="概念，改进和模型"></a>概念，改进和模型</h3><p>STL有着许多个c++术语无法描述的特性。</p>
+<p>就迭代器而言，它可以是一个指针，一个结构，一个类。它无法用一个确切的“类型”来形容，只是存在一类需要这种东西来满足需求。C++将这种东西称作“概念”。</p>
+<p>正向迭代器是一个类，输入迭代器也是一个类，但正向迭代器拥有输入迭代器所有的功能，这可以看成一种继承关系。但是两个概念之间的继承是没有意义的，但可以将正向迭代器看成输入迭代器的“改进”。</p>
+<p>概念的具体实现形式为模型。若某样东西满足了概念的所有需求，它即为该概念的一个“模型”。</p>
+<p><code>int* ps = new int(3)</code></p>
+<p>ps指针可以随机访问，可以读写，它就可以看成随机迭代器的一个模型。</p>
+<h3 id="深入讨论迭代器"><a href="#深入讨论迭代器" class="headerlink" title="深入讨论迭代器"></a>深入讨论迭代器</h3><h4 id="1-将指针用于迭代器"><a href="#1-将指针用于迭代器" class="headerlink" title="1.将指针用于迭代器"></a>1.将指针用于迭代器</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> NUM = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> rec[NUM] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="built_in">sort</span> (rec, rec + NUM);  <span class="comment">//rec + NUM即数组超尾，c++确保这是被定义的</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : rec)</span><br><span class="line">    cout &lt;&lt; x &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>如上所示，普通的指针可以作为迭代器使用，可以使用诸如sort()的STL方法。</p>
+<h4 id="2-copy-ostream-iterator-istream-iterator"><a href="#2-copy-ostream-iterator-istream-iterator" class="headerlink" title="2. copy(), ostream_iterator, istream_iterator"></a>2. copy(), ostream_iterator, istream_iterator</h4><p>未完……先学后面</p>
+<span id="more"></span>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Do not touch!</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://jskringkoter.github.io/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          顺序容器
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/vector%E6%A8%A1%E6%9D%BF%E5%BA%93%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vector模板库和迭代器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">概念，改进和模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%AE%A8%E8%AE%BA%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">深入讨论迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B0%86%E6%8C%87%E9%92%88%E7%94%A8%E4%BA%8E%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">1.将指针用于迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-copy-ostream-iterator-istream-iterator"><span class="toc-number">2.2.</span> <span class="toc-text">2. copy(), ostream_iterator, istream_iterator</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -215,9 +339,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
