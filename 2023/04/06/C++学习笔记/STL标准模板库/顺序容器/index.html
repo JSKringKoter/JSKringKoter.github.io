@@ -16,8 +16,9 @@
 <meta property="og:description" content="顺序容器的分类容器特定对象（包括内置数据类型，结构，类等）的集合。顺序容器则提供了按顺序储存或访问它们的能力。 理解为一个很牛逼的数组就行了。 下面是顺序容器的类型和特点：    容器类型 特点    vector 大小可变，可以增添或删除，可以随机访问。在尾部之外的地方插入数据可能很慢。   deque 双端队列，在头部插入数据很快。   list 双向链表，在任何位置插入数据很快，但访问很慢。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-06T06:13:41.000Z">
-<meta property="article:modified_time" content="2023-04-12T12:18:17.023Z">
+<meta property="article:modified_time" content="2023-04-13T10:02:39.174Z">
 <meta property="article:author" content="JS_KringKoter">
+<meta property="article:tag" content="笔记">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary">
@@ -292,6 +293,26 @@
 <h4 id="改变容器类大小"><a href="#改变容器类大小" class="headerlink" title="改变容器类大小"></a>改变容器类大小</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//array不支持</span></span><br><span class="line">vec.<span class="built_in">resize</span>(n);   <span class="comment">//大小调整为n个元素，若为对象，调用默认构造函数</span></span><br><span class="line">vec.<span class="built_in">resize</span>(n, t);  <span class="comment">//大小调整为n个元素，初始化为t</span></span><br></pre></td></tr></table></figure>
 
 
+
+<h4 id="容器操作会使迭代器失效"><a href="#容器操作会使迭代器失效" class="headerlink" title="容器操作会使迭代器失效"></a>容器操作会使迭代器失效</h4><p>由于如删除，添加元素等操作会使得迭代器指向的内存空间改变或失效，当改变一个容器的内容时，必须重新定位迭代器。使用失效的指针和迭代器是一种严重的程序设计错误。</p>
+<h5 id="例：改变容器的循环程序"><a href="#例：改变容器的循环程序" class="headerlink" title="例：改变容器的循环程序"></a>例：改变容器的循环程序</h5><p>添加删除vector，string，deque容器时必须考虑更新迭代器。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vi&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> &#125;;</span><br><span class="line"><span class="keyword">auto</span> iter = vi.<span class="built_in">begin</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (iter != vi.<span class="built_in">end</span>()) &#123;</span><br><span class="line">	<span class="keyword">if</span> (*iter % <span class="number">2</span>) &#123;</span><br><span class="line">		iter = vi.<span class="built_in">insert</span>(iter, *iter);</span><br><span class="line">		iter += <span class="number">2</span>;                       <span class="comment">//在元素之前插入</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		iter = vi.<span class="built_in">erase</span>(iter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>insert()函数返回的是插入元素的迭代器，这个插入元素位于iter之前，也就意味着需要iter+=2才能使iter指向下一个元素（iter++指向的是原来的iter，原iter在插入操作后失效。）</p>
+<p>注意到其中<code>iter = vi.insert(iter, *iter);</code>，如果不接受insert()返回的迭代器，仅将iter++，将会出现严重错误，因为插入操作后iter迭代器失效，必须重新指定。</p>
+<h5 id="不要保存end返回的迭代器"><a href="#不要保存end返回的迭代器" class="headerlink" title="不要保存end返回的迭代器"></a>不要保存end返回的迭代器</h5><p>end返回的迭代器会随着插入，删除等操作不断变化，将end迭代器保存是完全错误的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vi&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> &#125;;</span><br><span class="line"><span class="keyword">auto</span> iter = vi.<span class="built_in">begin</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (iter != vi.<span class="built_in">end</span>()) &#123;</span><br><span class="line">	iter++;</span><br><span class="line">	iter = vi.<span class="built_in">insert</span>(iter, <span class="number">4</span>);    <span class="comment">//在元素之后插入</span></span><br><span class="line">	iter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>绝对不能写成：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> end = vi.<span class="built_in">end</span>();</span><br><span class="line"><span class="keyword">while</span> (iter != end) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="管理容器容量的函数"><a href="#管理容器容量的函数" class="headerlink" title="管理容器容量的函数"></a>管理容器容量的函数</h4><p>可以随机访问的容器在管理内存空间时通常分为两部分：储存元素的部分，预留给元素的部分。通常预留给元素的部分不为空，能通过函数来操作。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vi;</span><br><span class="line">vi.<span class="built_in">size</span>();           <span class="comment">//返回元素数量</span></span><br><span class="line">vi.<span class="built_in">capacity</span>();       <span class="comment">//返回总内存空间的数量</span></span><br><span class="line"></span><br><span class="line">vi.<span class="built_in">resize</span>(n);        <span class="comment">//重新分配元素数量为n</span></span><br><span class="line">vi.<span class="built_in">reserve</span>(n);       <span class="comment">//重新分配内存空间数量为n（可能会更大），如果小于size，则不会处理请求</span></span><br><span class="line">vi.<span class="built_in">shrink_to_fit</span>();  <span class="comment">//将内存空间调整为正好合适。只是一个请求，不保证退还内存</span></span><br></pre></td></tr></table></figure>
+
+<p>在必须要扩大内存时，容器会一次请求很多内存。请求内存较慢，但向内存中压入元素很快，所以vector和string容器采用这样的方法。list并不需要连续的内存空间，array长度为定值，都不需要这样的内存管理。</p>
+
       
 
       
@@ -303,6 +324,10 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
@@ -416,7 +441,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">顺序容器的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">顺序容器的迭代器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">顺序容器定义和初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#array%E5%AE%B9%E5%99%A8%E7%9A%84%E7%89%B9%E6%AE%8A%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">array容器的特殊初始化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E7%9A%84%E8%B5%8B%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">顺序容器的赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.1.</span> <span class="toc-text">关系运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">顺序容器操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E5%AE%B9%E5%99%A8%E4%B8%AD%E5%A2%9E%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-number">5.1.</span> <span class="toc-text">向容器中增加元素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#push-front%E5%92%8Cpush-back"><span class="toc-number">5.1.1.</span> <span class="toc-text">push_front和push_back</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#insert"><span class="toc-number">5.1.2.</span> <span class="toc-text">insert</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emplace"><span class="toc-number">5.1.3.</span> <span class="toc-text">emplace</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%85%83%E7%B4%A0"><span class="toc-number">5.2.</span> <span class="toc-text">访问元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-number">5.3.</span> <span class="toc-text">删除元素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84forward-list%E6%93%8D%E4%BD%9C"><span class="toc-number">5.3.1.</span> <span class="toc-text">特殊的forward_list操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E5%AE%B9%E5%99%A8%E7%B1%BB%E5%A4%A7%E5%B0%8F"><span class="toc-number">5.4.</span> <span class="toc-text">改变容器类大小</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">顺序容器的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">顺序容器的迭代器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">顺序容器定义和初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#array%E5%AE%B9%E5%99%A8%E7%9A%84%E7%89%B9%E6%AE%8A%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">array容器的特殊初始化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E7%9A%84%E8%B5%8B%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">顺序容器的赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.1.</span> <span class="toc-text">关系运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">顺序容器操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E5%AE%B9%E5%99%A8%E4%B8%AD%E5%A2%9E%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-number">5.1.</span> <span class="toc-text">向容器中增加元素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#push-front%E5%92%8Cpush-back"><span class="toc-number">5.1.1.</span> <span class="toc-text">push_front和push_back</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#insert"><span class="toc-number">5.1.2.</span> <span class="toc-text">insert</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#emplace"><span class="toc-number">5.1.3.</span> <span class="toc-text">emplace</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%85%83%E7%B4%A0"><span class="toc-number">5.2.</span> <span class="toc-text">访问元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-number">5.3.</span> <span class="toc-text">删除元素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84forward-list%E6%93%8D%E4%BD%9C"><span class="toc-number">5.3.1.</span> <span class="toc-text">特殊的forward_list操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E5%AE%B9%E5%99%A8%E7%B1%BB%E5%A4%A7%E5%B0%8F"><span class="toc-number">5.4.</span> <span class="toc-text">改变容器类大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C%E4%BC%9A%E4%BD%BF%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%A4%B1%E6%95%88"><span class="toc-number">5.5.</span> <span class="toc-text">容器操作会使迭代器失效</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A%E6%94%B9%E5%8F%98%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.5.1.</span> <span class="toc-text">例：改变容器的循环程序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BF%9D%E5%AD%98end%E8%BF%94%E5%9B%9E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">5.5.2.</span> <span class="toc-text">不要保存end返回的迭代器</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%AE%B9%E5%99%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">5.6.</span> <span class="toc-text">管理容器容量的函数</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -532,7 +557,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Do not touch!</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,22 +577,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Do not touch!</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Travel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
               </li>
              
@@ -568,15 +585,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">STL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
             
             <div class="clearfix"></div>
