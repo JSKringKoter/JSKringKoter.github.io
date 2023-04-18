@@ -141,6 +141,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/泛型算法/lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-04-18T00:23:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="lambda表达式概览"><a href="#lambda表达式概览" class="headerlink" title="lambda表达式概览"></a>lambda表达式概览</h3><p>可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为：</p>
+<p><strong>[捕获列表] (参数列表) 返回类型{函数体}</strong></p>
+<p>可以忽略返回类型和参数列表。当忽略返回类型时，返回类型根据return的类型自动推断，否则类型为void。不加()表明忽略参数列表，等价于指定一个空参数列表（空括号）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> f = [] &#123; <span class="keyword">return</span> <span class="number">42</span>; &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="向lambda传递参数"><a href="#向lambda传递参数" class="headerlink" title="向lambda传递参数"></a>向lambda传递参数</h4><p>参数列表括号中可以添加对lambda传递的参数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一个具有比较功能的lambda表达式</span></span><br><span class="line"><span class="keyword">auto</span> f = [](<span class="type">const</span> <span class="type">int</span>&amp; a, <span class="type">const</span> <span class="type">int</span>&amp; b) &#123; <span class="keyword">return</span> a &lt; b; &#125;;</span><br><span class="line"><span class="comment">//使用lambda表达式的sort</span></span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), f);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="使用捕获列表"><a href="#使用捕获列表" class="headerlink" title="使用捕获列表"></a>使用捕获列表</h4><p>空捕获列表表示不会使用表达式所在函数中的任何参数。可以在参数列表中给定所需参量，该参量必须在表达式之前声明。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ve = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">auto</span> f = [ve](<span class="type">const</span> <span class="type">int</span>&amp; a) &#123; <span class="keyword">return</span> a &lt; ve; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以传递多个参量，之间使用逗号隔开：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ve, i;</span><br><span class="line"><span class="keyword">auto</span> f = [ve, i](<span class="type">const</span> <span class="type">int</span>&amp; a) &#123; <span class="keyword">return</span> a + i &lt; ve; &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="lambda的捕获和返回"><a href="#lambda的捕获和返回" class="headerlink" title="lambda的捕获和返回"></a>lambda的捕获和返回</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Novel/风乎舞雩" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -283,6 +376,70 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> result = <span class="built_in">accumulate</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), <span class="number">3</span>);</span><br><span class="line"><span class="comment">//结果为vec中值的总和+3。</span></span><br></pre></td></tr></table></figure>
 
 <p>accumulate假定了容器元素能够转化为第三个参数类型，比如当第三个参数为int时，容器元素可以为int, long, double等任何可以转换为int的类型。另一个例子是由于string定义了+运算符，可以使用accumulate进行字符串拼接。</p>
+<h5 id="操作两个序列的算法"><a href="#操作两个序列的算法" class="headerlink" title="操作两个序列的算法"></a>操作两个序列的算法</h5><p>另一个只读算法为equal，它确定两个范围是否保存有相同的内容。此算法接受三个迭代器参数，且<strong>假定第二个序列至少与第一个一样长</strong>，即第二个序列大于等于第一个序列。</p>
+<p><em>所有接受单迭代器来表示第二个迭代器序列的算法都假定第二个至少与第一个一样长。</em></p>
+<h4 id="写容器的算法"><a href="#写容器的算法" class="headerlink" title="写容器的算法"></a>写容器的算法</h4><p>写入算法同样对迭代器操作，它<strong>不会改变容器大小</strong>。它只会向给定范围内写入元素，最多写入与给定序列一样多的元素。</p>
+<p>fill算法要求提供三个参量，第一个和第二个是迭代器，第三个是写入（若本来有元素，则为替换）的值。它将迭代器范围内所有元素替代为该值，注意容器元素必须存在，不能仅仅预留内存空间。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">vec.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">fill</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">1</span>);   <span class="comment">//将vec中所有元素重置为1</span></span><br></pre></td></tr></table></figure>
+
+<p>fill算法还有一个变体：fill_n。它接受一个迭代器参数，一个范围值，一个写入值。它将迭代器参数后范围值的内容替换为写入值。它并不检查迭代过程中是否越界，保证不越界还是他妈的程序员的责任。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">vec.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">fill_n</span>(vec.<span class="built_in">begin</span>(), <span class="number">5</span>, <span class="number">1</span>);    <span class="comment">//将vec中所有元素重置为1</span></span><br><span class="line"><span class="built_in">fill_n</span>(vec.<span class="built_in">begin</span>(), <span class="number">6</span>, <span class="number">1</span>);    <span class="comment">//越界，将在运行阶段报错</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="back-inserter插入迭代器"><a href="#back-inserter插入迭代器" class="headerlink" title="back_inserter插入迭代器"></a>back_inserter插入迭代器</h5><p>保证容器有足够的空间保存元素的添加元素的方法是使用插入迭代器。使用普通迭代器赋值时，迭代器指向的值被赋值；使用插入迭代器赋值时，一个新的元素被置入容器中。使用定义于头文件iterator的函数back_iterater来获取插入迭代器。back_iterater函数接受一个容器的引用，返回与该容器绑定的插入迭代器。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">back_inserter</span>(vec);</span><br><span class="line"><span class="built_in">fill_n</span>(<span class="built_in">back_inserter</span>(vec), <span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line"><span class="comment">//或直接fill_n(iter, 5, 10);</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="copy算法"><a href="#copy算法" class="headerlink" title="copy算法"></a>copy算法</h5><p>copy算法接受一对迭代器范围（表示输入范围）和一个迭代器（目的序列起始位置），算法将输入序列复制到目的序列中，应保证目的序列至少与输入序列一样长。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line">list&lt;<span class="type">int</span>&gt; lis;</span><br><span class="line">lis.<span class="built_in">resize</span>(<span class="number">5</span>);  <span class="comment">//别忘了必须有元素</span></span><br><span class="line"><span class="built_in">copy</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), lis.<span class="built_in">begin</span>());</span><br></pre></td></tr></table></figure>
+
+<p>可以使用copy算法将内置数组拷贝至容器（反之亦然）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">3</span>]&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">copy</span>(a, a + <span class="number">3</span>, vec.<span class="built_in">begin</span>());       <span class="comment">//将数组元素拷贝至容器</span></span><br><span class="line"><span class="built_in">copy</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), a); <span class="comment">//将容器元素拷贝至数组</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="函数的copy变体"><a href="#函数的copy变体" class="headerlink" title="函数的copy变体"></a>函数的copy变体</h5><p>例如replace函数，其搜索给定值，将其替换为参数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">replace</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">3</span>, <span class="number">0</span>);   <span class="comment">//(迭代器范围，搜索值，替换值)</span></span><br></pre></td></tr></table></figure>
+
+<p>其有一个copy变体，额外接受一个迭代器参数，将所得结果拷贝至该迭代器。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">replace</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">back_inserter</span>(ivec), <span class="number">3</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><p>排序算法将容器元素按某种方式排序。</p>
+<h5 id="sort算法"><a href="#sort算法" class="headerlink" title="sort算法"></a>sort算法</h5><p>一个典型例子为 sort算法，该函数要求提供一组迭代器范围，以 &lt;运算符排序其中的元素，对于自定义类型，需要提供operator&lt;()。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec1&#123; <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">45</span> &#125;;</span><br><span class="line"><span class="built_in">sort</span>(vec1.<span class="built_in">begin</span>(), vec1.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="一个例子：消除重复单词"><a href="#一个例子：消除重复单词" class="headerlink" title="一个例子：消除重复单词"></a>一个例子：消除重复单词</h5><p>假设给定一个句子：<strong>the quick red fox jumps over the slow red turtle</strong></p>
+<p>分配到容器中：**”the”,”quick”, “red”, “fox”, “jumps”, “over”, “the”, “slow”, “red”, “turtle”**</p>
+<p>首先使用sort将这些单词排序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; vec&#123; <span class="string">&quot;the&quot;</span>, <span class="string">&quot;quick&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;fox&quot;</span>, <span class="string">&quot;jumps&quot;</span>, <span class="string">&quot;over&quot;</span>, <span class="string">&quot;the&quot;</span>, <span class="string">&quot;slow&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;turtle&quot;</span> &#125;;</span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+
+<p>得到：<strong>fox jumps over quick red red slow the the turtle</strong></p>
+<h5 id="使用unique"><a href="#使用unique" class="headerlink" title="使用unique"></a>使用unique</h5><p>unique将消除范围中重复的元素，返回指向不重复值超尾的迭代器。超尾之后的元素并未被删除，但已不可知（也没必要知道）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">unique</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+
+<p>在获得不重复元素超尾迭代器之后，进行删除操作，必须使用erase，因为只有容器内方法才能操作容器本身。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vec.<span class="built_in">erase</span>(iter, vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="定制操作"><a href="#定制操作" class="headerlink" title="定制操作"></a>定制操作</h4><h5 id="向算法传递函数"><a href="#向算法传递函数" class="headerlink" title="向算法传递函数"></a>向算法传递函数</h5><p>sort有一个重载版本，它接受一个谓词，使得sort按照该谓词指定的规则排序。</p>
+<p><strong>谓词</strong>：</p>
+<p>谓词是一个可以调用的表达式，返回一个可转换为bool的值。根据表达式接受的值数目，谓词分为一元谓词和二元谓词。和函数一样，谓词接受的参数类型必须可转化成指定的类型。</p>
+<p>定义isShorter函数，使得sort按照字符串长度排序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isShorter</span><span class="params">(<span class="type">const</span> string&amp; a, <span class="type">const</span> string&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">size</span>() &lt; b.<span class="built_in">size</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), isShorter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>sort还有一个stable_sort变体，使得排序后可维持原有的长度顺序，它同样可以接受第三个谓词参数。</p>
+<h6 id="一个书后习题"><a href="#一个书后习题" class="headerlink" title="一个书后习题"></a><em>一个书后习题</em></h6><p><em>pratition()函数，判断容器元素是否符合谓词描述，将true的元素置于容器前端，返回指向true最后一个元素超尾的迭代器。</em>要求将vector<string>按照大于4字符的为true排序，打印所有为true的元素。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">longerThen5</span><span class="params">(<span class="type">const</span> string&amp; str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.<span class="built_in">size</span>() &gt;= <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;string&gt; str&#123; <span class="string">&quot;the&quot;</span>, <span class="string">&quot;quick&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;fox&quot;</span>, <span class="string">&quot;jumps&quot;</span>, <span class="string">&quot;over&quot;</span>, <span class="string">&quot;the&quot;</span>, <span class="string">&quot;slow&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;turtle&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">auto</span> iter = <span class="built_in">partition</span>(str.<span class="built_in">begin</span>(), str.<span class="built_in">end</span>(), longerThen5);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it = str.<span class="built_in">begin</span>(); it != iter; it++)</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
 
@@ -1010,93 +1167,6 @@
 
 
   
-    <article id="post-Novel/墨雨春分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/27/Novel/%E5%A2%A8%E9%9B%A8%E6%98%A5%E5%88%86/">墨雨春分</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/27/Novel/%E5%A2%A8%E9%9B%A8%E6%98%A5%E5%88%86/" class="archive-article-date">
-  	<time datetime="2023-03-27T04:07:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="旧作为新-lt-二-gt"><a href="#旧作为新-lt-二-gt" class="headerlink" title="旧作为新&lt;二&gt;"></a>旧作为新&lt;二&gt;</h5><p>写于2022.10.11</p>
-<hr>
-<p>烟柳画桥，长亭旁边人家，习雨和微风，老树又是新芽。</p>
-<p>你在如丝的细雨中行船，油纸伞面湿润的江南，风动衣袖宽。岸边榆树正茂盛，随意取下几篇叶子，便可以去那风幡舞动的地方小斟一杯吧。绿蚁新酿，浅浅的白沫，或许还有几支樱花，对于你来说就是悠闲的一个下午。也许是春天惹人醉，下午的微醺，总会把相思赋了一梦中。</p>
-<p>离家已经二月有五日了，沿路总有些没化尽的晚雪，仿佛不舍得离去般停留在树枝上。你不懈地打听着，算是找到了他当年的熟人，为你指了一个方向，那里是江南的一个古镇。古镇虽小，可风光却不错，大运河背靠着山峦，古渡口深色的木，细雨湿流光。</p>
-<p>不同于你的家乡——淮北的景色，他应该已经很熟悉了吧。</p>
-<p>半城樱花半城柳</p>
-<p>试问君 曾记否</p>
-        
-          <a class="article-more-a" href="/2023/03/27/Novel/%E5%A2%A8%E9%9B%A8%E6%98%A5%E5%88%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">旧作为新</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/27/Novel/%E5%A2%A8%E9%9B%A8%E6%98%A5%E5%88%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1206,10 +1276,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
@@ -1223,6 +1289,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">小说</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
               </li>
              
               <li class="article-tag-list-item">
