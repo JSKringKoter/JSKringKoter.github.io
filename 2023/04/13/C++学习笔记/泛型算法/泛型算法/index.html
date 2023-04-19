@@ -16,7 +16,7 @@
 <meta property="og:description" content="初识泛型算法：好怪，再看一眼泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。 算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-13T10:06:11.000Z">
-<meta property="article:modified_time" content="2023-04-18T00:23:48.903Z">
+<meta property="article:modified_time" content="2023-04-19T06:15:30.847Z">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="c++">
@@ -237,6 +237,8 @@
 <p>sort还有一个stable_sort变体，使得排序后可维持原有的长度顺序，它同样可以接受第三个谓词参数。</p>
 <h6 id="一个书后习题"><a href="#一个书后习题" class="headerlink" title="一个书后习题"></a><em>一个书后习题</em></h6><p><em>pratition()函数，判断容器元素是否符合谓词描述，将true的元素置于容器前端，返回指向true最后一个元素超尾的迭代器。</em>要求将vector<string>按照大于4字符的为true排序，打印所有为true的元素。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">longerThen5</span><span class="params">(<span class="type">const</span> string&amp; str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.<span class="built_in">size</span>() &gt;= <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;string&gt; str&#123; <span class="string">&quot;the&quot;</span>, <span class="string">&quot;quick&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;fox&quot;</span>, <span class="string">&quot;jumps&quot;</span>, <span class="string">&quot;over&quot;</span>, <span class="string">&quot;the&quot;</span>, <span class="string">&quot;slow&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;turtle&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">auto</span> iter = <span class="built_in">partition</span>(str.<span class="built_in">begin</span>(), str.<span class="built_in">end</span>(), longerThen5);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it = str.<span class="built_in">begin</span>(); it != iter; it++)</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 
 

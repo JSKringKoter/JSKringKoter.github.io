@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://JSKringKoter.github.io">
   <title>lambda表达式 | JS_KringKoter | Personal blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lambda表达式概览可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为： [捕获列表] (参数列表) 返回类型{函数体} 可以忽略返回类型和参数列表。当忽略返回类型时，返回类型根据return的类型自动推断，否则类型为void。不加">
+  <meta name="description" content="lambda表达式概览可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为： [捕获列表] (参数列表) -&gt; 返回类型{函数体} 可以忽略返回类型和参数列表。当忽略返回类型时，返回类型根据return的类型自动推断，否则类型为v">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lambda表达式">
 <meta property="og:url" content="https://jskringkoter.github.io/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
 <meta property="og:site_name" content="JS_KringKoter | Personal blog">
-<meta property="og:description" content="lambda表达式概览可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为： [捕获列表] (参数列表) 返回类型{函数体} 可以忽略返回类型和参数列表。当忽略返回类型时，返回类型根据return的类型自动推断，否则类型为void。不加">
+<meta property="og:description" content="lambda表达式概览可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为： [捕获列表] (参数列表) -&gt; 返回类型{函数体} 可以忽略返回类型和参数列表。当忽略返回类型时，返回类型根据return的类型自动推断，否则类型为v">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-18T00:23:24.000Z">
-<meta property="article:modified_time" content="2023-04-18T01:24:15.038Z">
+<meta property="article:modified_time" content="2023-04-18T12:11:10.771Z">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="lambda表达式概览"><a href="#lambda表达式概览" class="headerlink" title="lambda表达式概览"></a>lambda表达式概览</h3><p>可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为：</p>
-<p><strong>[捕获列表] (参数列表) 返回类型{函数体}</strong></p>
+<p><strong>[捕获列表] (参数列表) -&gt; 返回类型{函数体}</strong></p>
 <p>可以忽略返回类型和参数列表。当忽略返回类型时，返回类型根据return的类型自动推断，否则类型为void。不加()表明忽略参数列表，等价于指定一个空参数列表（空括号）。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> f = [] &#123; <span class="keyword">return</span> <span class="number">42</span>; &#125;;</span><br></pre></td></tr></table></figure>
 
@@ -181,7 +181,26 @@
 
 
 
-<h3 id="lambda的捕获和返回"><a href="#lambda的捕获和返回" class="headerlink" title="lambda的捕获和返回"></a>lambda的捕获和返回</h3>
+<h3 id="lambda的捕获和返回"><a href="#lambda的捕获和返回" class="headerlink" title="lambda的捕获和返回"></a>lambda的捕获和返回</h3><h4 id="值捕获和引用捕获"><a href="#值捕获和引用捕获" class="headerlink" title="值捕获和引用捕获"></a>值捕获和引用捕获</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ve] &#123; <span class="keyword">return</span> ve; &#125;;   <span class="comment">//值捕获</span></span><br><span class="line">[&amp;ve] &#123; <span class="keyword">return</span> ve; &#125;;  <span class="comment">//引用捕获</span></span><br></pre></td></tr></table></figure>
+
+<p>使用引用捕获必须保证在语句执行时引用仍然存在。如果捕获了迭代器，迭代器很有可能在语句执行时失效。</p>
+<h4 id="隐式捕获"><a href="#隐式捕获" class="headerlink" title="隐式捕获"></a>隐式捕获</h4><p>可以向[]中传递=或者&amp;来表示捕获的类型，这样当语句中出现函数中的变量时，它将遵循赋值或引用。可以不显示告知捕获类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&amp;](<span class="type">const</span> <span class="type">int</span>&amp; a) &#123; b++; &#125;;</span><br><span class="line">[=](<span class="type">const</span> <span class="type">int</span>&amp; a) &#123; <span class="keyword">return</span> a &lt; b; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用混合类型，指定特定的捕获为特定类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[=, &amp;b]() &#123; <span class="keyword">return</span> b &lt; c; &#125;;</span><br><span class="line">[&amp;, b]() &#123; <span class="keyword">return</span> b &lt; c; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如果默认类型为引用，显示指定的类型必须为赋值，即不能有<code>[&amp;, &amp;b]() &#123; return b &lt; a; &#125;</code>存在，赋值也一样。</p>
+<h4 id="可变lambda"><a href="#可变lambda" class="headerlink" title="可变lambda"></a>可变lambda</h4><p>拷贝的捕获不能修改值（并不是像函数的临时变量一样不会影响原始变量，编辑器直接禁止此类操作）。若要在函数中修改其值（函数外该值仍然未变，这一点不同于引用捕获），需使用关键字mutable。</p>
+<p><del>mutable有用情不专一的意思，真是笑死。</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[b]() <span class="keyword">mutable</span>&#123; <span class="keyword">return</span> ++b; &#125;;</span><br><span class="line"><span class="comment">//执行后，lambda表达式中的b++，然而上一级函数中的b未变。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="指定lambda的返回类型"><a href="#指定lambda的返回类型" class="headerlink" title="指定lambda的返回类型"></a>指定lambda的返回类型</h4><p>lambda可以通过return自动推断返回类型，但当函数体中不仅仅存在return语句时，lambda自动返回void，此时需要显式指定返回类型。lambda使用-&gt;来指出返回的数据类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[](<span class="type">int</span> a, <span class="type">int</span> b) -&gt; <span class="type">bool</span> &#123; <span class="keyword">if</span> (a + b &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line">                         <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>; &#125;;</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -293,7 +312,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">lambda表达式概览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91lambda%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">向lambda传递参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8D%95%E8%8E%B7%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">使用捕获列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lambda%E7%9A%84%E6%8D%95%E8%8E%B7%E5%92%8C%E8%BF%94%E5%9B%9E"><span class="toc-number">2.</span> <span class="toc-text">lambda的捕获和返回</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">lambda表达式概览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91lambda%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">向lambda传递参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8D%95%E8%8E%B7%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">使用捕获列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lambda%E7%9A%84%E6%8D%95%E8%8E%B7%E5%92%8C%E8%BF%94%E5%9B%9E"><span class="toc-number">2.</span> <span class="toc-text">lambda的捕获和返回</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%BC%E6%8D%95%E8%8E%B7%E5%92%8C%E5%BC%95%E7%94%A8%E6%8D%95%E8%8E%B7"><span class="toc-number">2.1.</span> <span class="toc-text">值捕获和引用捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E6%8D%95%E8%8E%B7"><span class="toc-number">2.2.</span> <span class="toc-text">隐式捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98lambda"><span class="toc-number">2.3.</span> <span class="toc-text">可变lambda</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9Alambda%E7%9A%84%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">指定lambda的返回类型</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
