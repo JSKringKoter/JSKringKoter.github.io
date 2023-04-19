@@ -459,8 +459,45 @@
 
 
 
+<p>传送门已搭建！：<a href="https://jskringkoter.github.io/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式 | JS_KringKoter | Personal blog (jskringkoter.github.io)</a></p>
+<h4 id="泛型算法结构"><a href="#泛型算法结构" class="headerlink" title="泛型算法结构"></a>泛型算法结构</h4><h5 id="迭代器类型"><a href="#迭代器类型" class="headerlink" title="迭代器类型"></a>迭代器类型</h5><ul>
+<li><p>输入迭代器：可以读取序列中的元素。</p>
+<p>其必须支持：相等和不等运算符（==，!=）</p>
+<p>​                       前置和后置++运算符。</p>
+<p>​                       解引用*运算符，只能作为右值。</p>
+<p>​                       成员运算符-&gt;和(*it).用于读取对象成员。</p>
+</li>
+<li><p>输出迭代器：输入迭代器的补集，只写不读元素。</p>
+</li>
+<li><p>前向迭代器：可以读写元素，只能单向访问元素。</p>
+</li>
+<li><p>双向迭代器：可以读写元素，可以双向访问元素。</p>
+</li>
+<li><p>随机访问迭代器：可以读写元素，可以随机访问元素，此外还支持：</p>
+<p>用于比较两个迭代器相对位置的&lt;, &lt;=, &gt;, &gt;=</p>
+<p>迭代器和一个整数的加减运算（+，+=，-，-=）。</p>
+<p>用于两个迭代器之间的-运算，得到两个迭代器的相对距离。</p>
+<p>下标运算符。</p>
+</li>
+</ul>
+<h5 id="算法形参模式"><a href="#算法形参模式" class="headerlink" title="算法形参模式"></a>算法形参模式</h5><p>大多数算法具有以下参数模式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alg</span>(beg, end, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, dest, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, beg2, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, beg2, end2, other args);</span><br></pre></td></tr></table></figure>
 
-
+<p>alg：算法名称；beg：迭代器范围开始；end：迭代器范围结束；dest：指向特定位置的迭代器；</p>
+<p>other args：可调用对象</p>
+<p>如果dest直接指向一个容器，调用算法时会将元素修改，一般dest是一个插入迭代器，用于将元素写入容器。dest还可以是一个ostream_iterator，用于插入到输出流中，这两者无需考虑空间是否足够。</p>
+<h5 id="算法命名规范"><a href="#算法命名规范" class="headerlink" title="算法命名规范"></a>算法命名规范</h5><ul>
+<li><p>一些算法提供谓词作为参量的重载形式，使用谓词来代替&lt;或==。</p>
+</li>
+<li><p>一些算法提供_if的变体，将第三个参数（值）变为谓词，通过返回true来判断：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">3</span>);            <span class="comment">//传递值</span></span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find_if</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">isShort</span>()); <span class="comment">//传递谓词</span></span><br></pre></td></tr></table></figure></li>
+<li><p>一些算法提供_copy版本，要求额外提供一个迭代器储存拷贝，操作的容器本身不会发生变化。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">reverse</span>(beg, end);        <span class="comment">//翻转元素顺序</span></span><br><span class="line"><span class="built_in">reverse</span>(beg, end, dest);  <span class="comment">//将翻转后的值拷贝到dest中</span></span><br></pre></td></tr></table></figure></li>
+<li><p>一些算法提供_copy_if版本，提供额外的迭代器和一个谓词，将符合谓词的元素拷贝至指定的迭代器。</p>
+<p><del>真就排列组合。</del></p>
+</li>
+</ul>
+<h4 id="特定容器算法"><a href="#特定容器算法" class="headerlink" title="特定容器算法"></a>特定容器算法</h4><p><del>诶list和forward_list，对对对，就你俩。</del></p>
 
       
 

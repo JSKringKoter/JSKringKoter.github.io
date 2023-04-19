@@ -16,7 +16,7 @@
 <meta property="og:description" content="初识泛型算法：好怪，再看一眼泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。 算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-13T10:06:11.000Z">
-<meta property="article:modified_time" content="2023-04-19T06:15:30.847Z">
+<meta property="article:modified_time" content="2023-04-19T06:52:33.297Z">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="c++">
@@ -240,8 +240,45 @@
 
 
 
+<p>传送门已搭建！：<a href="https://jskringkoter.github.io/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式 | JS_KringKoter | Personal blog (jskringkoter.github.io)</a></p>
+<h4 id="泛型算法结构"><a href="#泛型算法结构" class="headerlink" title="泛型算法结构"></a>泛型算法结构</h4><h5 id="迭代器类型"><a href="#迭代器类型" class="headerlink" title="迭代器类型"></a>迭代器类型</h5><ul>
+<li><p>输入迭代器：可以读取序列中的元素。</p>
+<p>其必须支持：相等和不等运算符（==，!=）</p>
+<p>​                       前置和后置++运算符。</p>
+<p>​                       解引用*运算符，只能作为右值。</p>
+<p>​                       成员运算符-&gt;和(*it).用于读取对象成员。</p>
+</li>
+<li><p>输出迭代器：输入迭代器的补集，只写不读元素。</p>
+</li>
+<li><p>前向迭代器：可以读写元素，只能单向访问元素。</p>
+</li>
+<li><p>双向迭代器：可以读写元素，可以双向访问元素。</p>
+</li>
+<li><p>随机访问迭代器：可以读写元素，可以随机访问元素，此外还支持：</p>
+<p>用于比较两个迭代器相对位置的&lt;, &lt;=, &gt;, &gt;=</p>
+<p>迭代器和一个整数的加减运算（+，+=，-，-=）。</p>
+<p>用于两个迭代器之间的-运算，得到两个迭代器的相对距离。</p>
+<p>下标运算符。</p>
+</li>
+</ul>
+<h5 id="算法形参模式"><a href="#算法形参模式" class="headerlink" title="算法形参模式"></a>算法形参模式</h5><p>大多数算法具有以下参数模式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alg</span>(beg, end, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, dest, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, beg2, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, beg2, end2, other args);</span><br></pre></td></tr></table></figure>
 
-
+<p>alg：算法名称；beg：迭代器范围开始；end：迭代器范围结束；dest：指向特定位置的迭代器；</p>
+<p>other args：可调用对象</p>
+<p>如果dest直接指向一个容器，调用算法时会将元素修改，一般dest是一个插入迭代器，用于将元素写入容器。dest还可以是一个ostream_iterator，用于插入到输出流中，这两者无需考虑空间是否足够。</p>
+<h5 id="算法命名规范"><a href="#算法命名规范" class="headerlink" title="算法命名规范"></a>算法命名规范</h5><ul>
+<li><p>一些算法提供谓词作为参量的重载形式，使用谓词来代替&lt;或==。</p>
+</li>
+<li><p>一些算法提供_if的变体，将第三个参数（值）变为谓词，通过返回true来判断：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">3</span>);            <span class="comment">//传递值</span></span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find_if</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">isShort</span>()); <span class="comment">//传递谓词</span></span><br></pre></td></tr></table></figure></li>
+<li><p>一些算法提供_copy版本，要求额外提供一个迭代器储存拷贝，操作的容器本身不会发生变化。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">reverse</span>(beg, end);        <span class="comment">//翻转元素顺序</span></span><br><span class="line"><span class="built_in">reverse</span>(beg, end, dest);  <span class="comment">//将翻转后的值拷贝到dest中</span></span><br></pre></td></tr></table></figure></li>
+<li><p>一些算法提供_copy_if版本，提供额外的迭代器和一个谓词，将符合谓词的元素拷贝至指定的迭代器。</p>
+<p><del>真就排列组合。</del></p>
+</li>
+</ul>
+<h4 id="特定容器算法"><a href="#特定容器算法" class="headerlink" title="特定容器算法"></a>特定容器算法</h4><p><del>诶list和forward_list，对对对，就你俩。</del></p>
 
       
 
@@ -371,7 +408,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E8%AF%86%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95%EF%BC%9A%E5%A5%BD%E6%80%AA%EF%BC%8C%E5%86%8D%E7%9C%8B%E4%B8%80%E7%9C%BC"><span class="toc-number">1.</span> <span class="toc-text">初识泛型算法：好怪，再看一眼</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">只读算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E4%B8%A4%E4%B8%AA%E5%BA%8F%E5%88%97%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">操作两个序列的算法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%AE%B9%E5%99%A8%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">写容器的算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#back-inserter%E6%8F%92%E5%85%A5%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">back_inserter插入迭代器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#copy%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">copy算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84copy%E5%8F%98%E4%BD%93"><span class="toc-number">1.2.3.</span> <span class="toc-text">函数的copy变体</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">排序算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#sort%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">sort算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E5%8D%95%E8%AF%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">一个例子：消除重复单词</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8unique"><span class="toc-number">1.3.3.</span> <span class="toc-text">使用unique</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.</span> <span class="toc-text">定制操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%91%E7%AE%97%E6%B3%95%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">向算法传递函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%B9%A6%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">一个书后习题</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E8%AF%86%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95%EF%BC%9A%E5%A5%BD%E6%80%AA%EF%BC%8C%E5%86%8D%E7%9C%8B%E4%B8%80%E7%9C%BC"><span class="toc-number">1.</span> <span class="toc-text">初识泛型算法：好怪，再看一眼</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">只读算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E4%B8%A4%E4%B8%AA%E5%BA%8F%E5%88%97%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">操作两个序列的算法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%AE%B9%E5%99%A8%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">写容器的算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#back-inserter%E6%8F%92%E5%85%A5%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">back_inserter插入迭代器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#copy%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">copy算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84copy%E5%8F%98%E4%BD%93"><span class="toc-number">1.2.3.</span> <span class="toc-text">函数的copy变体</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">排序算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#sort%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">sort算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E5%8D%95%E8%AF%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">一个例子：消除重复单词</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8unique"><span class="toc-number">1.3.3.</span> <span class="toc-text">使用unique</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.</span> <span class="toc-text">定制操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%91%E7%AE%97%E6%B3%95%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">向算法传递函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%B9%A6%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">一个书后习题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.</span> <span class="toc-text">泛型算法结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">迭代器类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%BD%A2%E5%8F%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.5.2.</span> <span class="toc-text">算法形参模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">1.5.3.</span> <span class="toc-text">算法命名规范</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E5%AE%9A%E5%AE%B9%E5%99%A8%E7%AE%97%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">特定容器算法</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
