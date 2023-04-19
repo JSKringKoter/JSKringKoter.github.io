@@ -141,6 +141,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/关联容器/关联容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">关联容器</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2023-04-19T10:50:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。</p>
+<p>STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。muti表示允许重复关键字，unordered表示无序组织。</p>
+<table>
+<thead>
+<tr>
+<th>按关键字有序保存元素</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>map</td>
+<td>关联数组；保存 关键字-值 对</td>
+</tr>
+<tr>
+<td>set</td>
+<td>只保存关键字的容器</td>
+</tr>
+<tr>
+<td>mutimap</td>
+<td>关键字可重复出现的map</td>
+</tr>
+<tr>
+<td>mutiset</td>
+<td>关键字可重复出现的set</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>无序集合</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>unordered_map</td>
+<td>用哈希函数组织的map</td>
+</tr>
+<tr>
+<td>unordered_set</td>
+<td>用哈希函数组织的set</td>
+</tr>
+<tr>
+<td>unordered_mutimap</td>
+<td>哈希组织map，关键字可重复出现</td>
+</tr>
+<tr>
+<td>unordered_mutiset</td>
+<td>哈希组织set，关键字可重复出现</td>
+</tr>
+</tbody></table>
+<h3 id="使用关联容器"><a href="#使用关联容器" class="headerlink" title="使用关联容器"></a>使用关联容器</h3><h4 id="使用map"><a href="#使用map" class="headerlink" title="使用map"></a>使用map</h4><p>一个经典的关联容器实例为单词计数器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">map&lt;string, <span class="type">int</span>&gt; wordCount;</span><br><span class="line">string word;</span><br><span class="line"><span class="keyword">while</span> (cin &gt;&gt; word) &#123;</span><br><span class="line">    ++wordCount[string];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x : wordCount) &#123;</span><br><span class="line">    cout &lt;&lt; x.first &lt;&lt; <span class="string">&quot; : &quot;</span> &lt;&lt; x.second &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出大致是：</p>
+<p>你说得对 : 2  啊对对对 : 3 …… （是否太过抽象了）</p>
+<p>在for语句中使用auto自动类型推断，此时生成的是一个pair对象，该对象中定义了first和second公有成员，分别储存关键字及值。</p>
+        
+          <a class="article-more-a" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++学习笔记/泛型算法/lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -391,114 +526,9 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> number = <span class="built_in">count</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 
 <p><strong>算法不会执行迭代器的操作，它建立在迭代器之上</strong></p>
-<h4 id="只读算法"><a href="#只读算法" class="headerlink" title="只读算法"></a>只读算法</h4><p>一些算法只会读取容器中的内容，比如find和count，还有一个是accumulate，它接受一对迭代器和一个初值，将容器内容遍历求和。要求容器元素支持+运算符。其中第三个参数决定了+运算符的类型以及返回值的类型。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> result = <span class="built_in">accumulate</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), <span class="number">3</span>);</span><br><span class="line"><span class="comment">//结果为vec中值的总和+3。</span></span><br></pre></td></tr></table></figure>
-
-<p>accumulate假定了容器元素能够转化为第三个参数类型，比如当第三个参数为int时，容器元素可以为int, long, double等任何可以转换为int的类型。另一个例子是由于string定义了+运算符，可以使用accumulate进行字符串拼接。</p>
-<h5 id="操作两个序列的算法"><a href="#操作两个序列的算法" class="headerlink" title="操作两个序列的算法"></a>操作两个序列的算法</h5><p>另一个只读算法为equal，它确定两个范围是否保存有相同的内容。此算法接受三个迭代器参数，且<strong>假定第二个序列至少与第一个一样长</strong>，即第二个序列大于等于第一个序列。</p>
-<p><em>所有接受单迭代器来表示第二个迭代器序列的算法都假定第二个至少与第一个一样长。</em></p>
-<h4 id="写容器的算法"><a href="#写容器的算法" class="headerlink" title="写容器的算法"></a>写容器的算法</h4><p>写入算法同样对迭代器操作，它<strong>不会改变容器大小</strong>。它只会向给定范围内写入元素，最多写入与给定序列一样多的元素。</p>
-<p>fill算法要求提供三个参量，第一个和第二个是迭代器，第三个是写入（若本来有元素，则为替换）的值。它将迭代器范围内所有元素替代为该值，注意容器元素必须存在，不能仅仅预留内存空间。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">vec.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">fill</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">1</span>);   <span class="comment">//将vec中所有元素重置为1</span></span><br></pre></td></tr></table></figure>
-
-<p>fill算法还有一个变体：fill_n。它接受一个迭代器参数，一个范围值，一个写入值。它将迭代器参数后范围值的内容替换为写入值。它并不检查迭代过程中是否越界，保证不越界还是他妈的程序员的责任。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">vec.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">fill_n</span>(vec.<span class="built_in">begin</span>(), <span class="number">5</span>, <span class="number">1</span>);    <span class="comment">//将vec中所有元素重置为1</span></span><br><span class="line"><span class="built_in">fill_n</span>(vec.<span class="built_in">begin</span>(), <span class="number">6</span>, <span class="number">1</span>);    <span class="comment">//越界，将在运行阶段报错</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="back-inserter插入迭代器"><a href="#back-inserter插入迭代器" class="headerlink" title="back_inserter插入迭代器"></a>back_inserter插入迭代器</h5><p>保证容器有足够的空间保存元素的添加元素的方法是使用插入迭代器。使用普通迭代器赋值时，迭代器指向的值被赋值；使用插入迭代器赋值时，一个新的元素被置入容器中。使用定义于头文件iterator的函数back_iterater来获取插入迭代器。back_iterater函数接受一个容器的引用，返回与该容器绑定的插入迭代器。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">back_inserter</span>(vec);</span><br><span class="line"><span class="built_in">fill_n</span>(<span class="built_in">back_inserter</span>(vec), <span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line"><span class="comment">//或直接fill_n(iter, 5, 10);</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="copy算法"><a href="#copy算法" class="headerlink" title="copy算法"></a>copy算法</h5><p>copy算法接受一对迭代器范围（表示输入范围）和一个迭代器（目的序列起始位置），算法将输入序列复制到目的序列中，应保证目的序列至少与输入序列一样长。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line">list&lt;<span class="type">int</span>&gt; lis;</span><br><span class="line">lis.<span class="built_in">resize</span>(<span class="number">5</span>);  <span class="comment">//别忘了必须有元素</span></span><br><span class="line"><span class="built_in">copy</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), lis.<span class="built_in">begin</span>());</span><br></pre></td></tr></table></figure>
-
-<p>可以使用copy算法将内置数组拷贝至容器（反之亦然）。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">3</span>]&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">copy</span>(a, a + <span class="number">3</span>, vec.<span class="built_in">begin</span>());       <span class="comment">//将数组元素拷贝至容器</span></span><br><span class="line"><span class="built_in">copy</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), a); <span class="comment">//将容器元素拷贝至数组</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="函数的copy变体"><a href="#函数的copy变体" class="headerlink" title="函数的copy变体"></a>函数的copy变体</h5><p>例如replace函数，其搜索给定值，将其替换为参数：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">replace</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">3</span>, <span class="number">0</span>);   <span class="comment">//(迭代器范围，搜索值，替换值)</span></span><br></pre></td></tr></table></figure>
-
-<p>其有一个copy变体，额外接受一个迭代器参数，将所得结果拷贝至该迭代器。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">replace</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">back_inserter</span>(ivec), <span class="number">3</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><p>排序算法将容器元素按某种方式排序。</p>
-<h5 id="sort算法"><a href="#sort算法" class="headerlink" title="sort算法"></a>sort算法</h5><p>一个典型例子为 sort算法，该函数要求提供一组迭代器范围，以 &lt;运算符排序其中的元素，对于自定义类型，需要提供operator&lt;()。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec1&#123; <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">45</span> &#125;;</span><br><span class="line"><span class="built_in">sort</span>(vec1.<span class="built_in">begin</span>(), vec1.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="一个例子：消除重复单词"><a href="#一个例子：消除重复单词" class="headerlink" title="一个例子：消除重复单词"></a>一个例子：消除重复单词</h5><p>假设给定一个句子：<strong>the quick red fox jumps over the slow red turtle</strong></p>
-<p>分配到容器中：**”the”,”quick”, “red”, “fox”, “jumps”, “over”, “the”, “slow”, “red”, “turtle”**</p>
-<p>首先使用sort将这些单词排序：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; vec&#123; <span class="string">&quot;the&quot;</span>, <span class="string">&quot;quick&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;fox&quot;</span>, <span class="string">&quot;jumps&quot;</span>, <span class="string">&quot;over&quot;</span>, <span class="string">&quot;the&quot;</span>, <span class="string">&quot;slow&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;turtle&quot;</span> &#125;;</span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-<p>得到：<strong>fox jumps over quick red red slow the the turtle</strong></p>
-<h5 id="使用unique"><a href="#使用unique" class="headerlink" title="使用unique"></a>使用unique</h5><p>unique将消除范围中重复的元素，返回指向不重复值超尾的迭代器。超尾之后的元素并未被删除，但已不可知（也没必要知道）。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">unique</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-<p>在获得不重复元素超尾迭代器之后，进行删除操作，必须使用erase，因为只有容器内方法才能操作容器本身。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vec.<span class="built_in">erase</span>(iter, vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="定制操作"><a href="#定制操作" class="headerlink" title="定制操作"></a>定制操作</h4><h5 id="向算法传递函数"><a href="#向算法传递函数" class="headerlink" title="向算法传递函数"></a>向算法传递函数</h5><p>sort有一个重载版本，它接受一个谓词，使得sort按照该谓词指定的规则排序。</p>
-<p><strong>谓词</strong>：</p>
-<p>谓词是一个可以调用的表达式，返回一个可转换为bool的值。根据表达式接受的值数目，谓词分为一元谓词和二元谓词。和函数一样，谓词接受的参数类型必须可转化成指定的类型。</p>
-<p>定义isShorter函数，使得sort按照字符串长度排序：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isShorter</span><span class="params">(<span class="type">const</span> string&amp; a, <span class="type">const</span> string&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">size</span>() &lt; b.<span class="built_in">size</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), isShorter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>sort还有一个stable_sort变体，使得排序后可维持原有的长度顺序，它同样可以接受第三个谓词参数。</p>
-<h6 id="一个书后习题"><a href="#一个书后习题" class="headerlink" title="一个书后习题"></a><em>一个书后习题</em></h6><p><em>pratition()函数，判断容器元素是否符合谓词描述，将true的元素置于容器前端，返回指向true最后一个元素超尾的迭代器。</em>要求将vector<string>按照大于4字符的为true排序，打印所有为true的元素。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">longerThen5</span><span class="params">(<span class="type">const</span> string&amp; str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.<span class="built_in">size</span>() &gt;= <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;string&gt; str&#123; <span class="string">&quot;the&quot;</span>, <span class="string">&quot;quick&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;fox&quot;</span>, <span class="string">&quot;jumps&quot;</span>, <span class="string">&quot;over&quot;</span>, <span class="string">&quot;the&quot;</span>, <span class="string">&quot;slow&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;turtle&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">auto</span> iter = <span class="built_in">partition</span>(str.<span class="built_in">begin</span>(), str.<span class="built_in">end</span>(), longerThen5);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it = str.<span class="built_in">begin</span>(); it != iter; it++)</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>传送门已搭建！：<a href="https://jskringkoter.github.io/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式 | JS_KringKoter | Personal blog (jskringkoter.github.io)</a></p>
-<h4 id="泛型算法结构"><a href="#泛型算法结构" class="headerlink" title="泛型算法结构"></a>泛型算法结构</h4><h5 id="迭代器类型"><a href="#迭代器类型" class="headerlink" title="迭代器类型"></a>迭代器类型</h5><ul>
-<li><p>输入迭代器：可以读取序列中的元素。</p>
-<p>其必须支持：相等和不等运算符（==，!=）</p>
-<p>​                       前置和后置++运算符。</p>
-<p>​                       解引用*运算符，只能作为右值。</p>
-<p>​                       成员运算符-&gt;和(*it).用于读取对象成员。</p>
-</li>
-<li><p>输出迭代器：输入迭代器的补集，只写不读元素。</p>
-</li>
-<li><p>前向迭代器：可以读写元素，只能单向访问元素。</p>
-</li>
-<li><p>双向迭代器：可以读写元素，可以双向访问元素。</p>
-</li>
-<li><p>随机访问迭代器：可以读写元素，可以随机访问元素，此外还支持：</p>
-<p>用于比较两个迭代器相对位置的&lt;, &lt;=, &gt;, &gt;=</p>
-<p>迭代器和一个整数的加减运算（+，+=，-，-=）。</p>
-<p>用于两个迭代器之间的-运算，得到两个迭代器的相对距离。</p>
-<p>下标运算符。</p>
-</li>
-</ul>
-<h5 id="算法形参模式"><a href="#算法形参模式" class="headerlink" title="算法形参模式"></a>算法形参模式</h5><p>大多数算法具有以下参数模式：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alg</span>(beg, end, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, dest, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, beg2, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, beg2, end2, other args);</span><br></pre></td></tr></table></figure>
-
-<p>alg：算法名称；beg：迭代器范围开始；end：迭代器范围结束；dest：指向特定位置的迭代器；</p>
-<p>other args：可调用对象</p>
-<p>如果dest直接指向一个容器，调用算法时会将元素修改，一般dest是一个插入迭代器，用于将元素写入容器。dest还可以是一个ostream_iterator，用于插入到输出流中，这两者无需考虑空间是否足够。</p>
-<h5 id="算法命名规范"><a href="#算法命名规范" class="headerlink" title="算法命名规范"></a>算法命名规范</h5><ul>
-<li><p>一些算法提供谓词作为参量的重载形式，使用谓词来代替&lt;或==。</p>
-</li>
-<li><p>一些算法提供_if的变体，将第三个参数（值）变为谓词，通过返回true来判断：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">3</span>);            <span class="comment">//传递值</span></span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find_if</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">isShort</span>()); <span class="comment">//传递谓词</span></span><br></pre></td></tr></table></figure></li>
-<li><p>一些算法提供_copy版本，要求额外提供一个迭代器储存拷贝，操作的容器本身不会发生变化。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">reverse</span>(beg, end);        <span class="comment">//翻转元素顺序</span></span><br><span class="line"><span class="built_in">reverse</span>(beg, end, dest);  <span class="comment">//将翻转后的值拷贝到dest中</span></span><br></pre></td></tr></table></figure></li>
-<li><p>一些算法提供_copy_if版本，提供额外的迭代器和一个谓词，将符合谓词的元素拷贝至指定的迭代器。</p>
-<p><del>真就排列组合。</del></p>
-</li>
-</ul>
-<h4 id="特定容器算法"><a href="#特定容器算法" class="headerlink" title="特定容器算法"></a>特定容器算法</h4><p><del>诶list和forward_list，对对对，就你俩。</del></p>
-
+        
+          <a class="article-more-a" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/#more">more >></a>
+        
       
 
       
@@ -1131,100 +1161,6 @@
 
 
   
-    <article id="post-UE4学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">UE4学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2023-03-27T11:06:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="从零开始的FPS"><a href="#从零开始的FPS" class="headerlink" title="从零开始的FPS"></a>从零开始的FPS</h2><h3 id="一、创建材质-amp-为Actor附加材质"><a href="#一、创建材质-amp-为Actor附加材质" class="headerlink" title="一、创建材质 &amp; 为Actor附加材质"></a>一、创建材质 &amp; 为Actor附加材质</h3><p>创建 材质 蓝图后，查找</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VectorParameter <span class="comment">//设置颜色</span></span><br><span class="line">ScalarParameter <span class="comment">//设置高光度与粗糙度 (推荐默认值0.1)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="二、在发生碰撞时改变Actor的材质"><a href="#二、在发生碰撞时改变Actor的材质" class="headerlink" title="二、在发生碰撞时改变Actor的材质"></a>二、在发生碰撞时改变Actor的材质</h3><p>创建Actor的蓝图，打开事件图表。</p>
-<p>查找 <code> 事件命中</code> 以及<code>设置材质</code></p>
-<p>连接二者，编译运行，此Actor在任何目标碰撞时都会改变颜色。</p>
-<h4 id="优化1：仅响应子弹（FirstPersonProjectile）的碰撞"><a href="#优化1：仅响应子弹（FirstPersonProjectile）的碰撞" class="headerlink" title="优化1：仅响应子弹（FirstPersonProjectile）的碰撞"></a>优化1：仅响应子弹（FirstPersonProjectile）的碰撞</h4><p>查找 <code>类型转换为FirstPersonProjectile</code>，连接<code>事件命中</code>的 <em>Other</em> 输出引脚和其<em>Object</em> 输入引脚。</p>
-<h4 id="优化2：两种颜色来回切换"><a href="#优化2：两种颜色来回切换" class="headerlink" title="优化2：两种颜色来回切换"></a>优化2：两种颜色来回切换</h4><p>查找<code>Flip Flop</code>，连接A和B引脚至两个<code>设置材质</code></p>
-<h4 id="优化3：在击中两次后销毁"><a href="#优化3：在击中两次后销毁" class="headerlink" title="优化3：在击中两次后销毁"></a>优化3：在击中两次后销毁</h4><p>创建bool类型变量（命名为isHited，默认值false）用于储存 <strong>是否击中过</strong>  这一信息。</p>
-<p>查找<code>分支</code>，<em>False</em>引脚后设置isHited为真（表示击中过），连接<code>设置材质</code>；<em>True</em>引脚连接<code>销毁Actor</code>。</p>
-<h5 id="优化3-1：在击中后添加音效和特效"><a href="#优化3-1：在击中后添加音效和特效" class="headerlink" title="优化3.1：在击中后添加音效和特效"></a>优化3.1：在击中后添加音效和特效</h5><p>依次搜索<br><code>在位置处生成音效</code>和<code>在位置处生成发射器</code>，将<em>Location</em>输入引脚依次和<code>事件命中</code>的<em>Hit Location</em>输出引脚相连（生成位置为碰撞处）。</p>
-<h5 id="优化3-2：为摧毁的Actor计数"><a href="#优化3-2：为摧毁的Actor计数" class="headerlink" title="优化3.2：为摧毁的Actor计数"></a>优化3.2：为摧毁的Actor计数</h5><p>创建int类型变量hitCount，默认值0，用于储存 <strong>击中次数</strong>。</p>
-<p>在<code>销毁Actor</code>后连接<code>设置Hit Count</code>，将变量拖到蓝图中，选择获取变量，连接<code>整数+整数</code>并将值设置为1，在连接<code>设置Hit Count</code>与<code>整数+整数</code>。</p>
-        
-          <a class="article-more-a" href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Unreal Engine</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1330,15 +1266,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Do not touch!</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Unreal Engine</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Do not touch!</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1350,15 +1290,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
+                <a href="javascript:void(0)" class="js-tag color3">散文</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">散文</a>
               </li>
              
               <li class="article-tag-list-item">
