@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://JSKringKoter.github.io">
   <title>关联容器 | JS_KringKoter | Personal blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。 STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。muti表示允许重复关键字，unordered表示无序组织。    按关键字有序保存元素 作用    map 关联数组；保存 关">
+  <meta name="description" content="不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。 STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。multi表示允许重复关键字，unordered表示无序组织。    按关键字有序保存元素 作用    map 关联数组；保存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关联容器">
 <meta property="og:url" content="https://jskringkoter.github.io/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/index.html">
 <meta property="og:site_name" content="JS_KringKoter | Personal blog">
-<meta property="og:description" content="不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。 STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。muti表示允许重复关键字，unordered表示无序组织。    按关键字有序保存元素 作用    map 关联数组；保存 关">
+<meta property="og:description" content="不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。 STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。multi表示允许重复关键字，unordered表示无序组织。    按关键字有序保存元素 作用    map 关联数组；保存">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-19T10:50:36.000Z">
-<meta property="article:modified_time" content="2023-04-19T12:23:41.059Z">
+<meta property="article:modified_time" content="2023-04-20T12:11:38.950Z">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="STL">
@@ -163,7 +163,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。</p>
-<p>STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。muti表示允许重复关键字，unordered表示无序组织。</p>
+<p>STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。multi表示允许重复关键字，unordered表示无序组织。</p>
 <table>
 <thead>
 <tr>
@@ -180,11 +180,11 @@
 <td>只保存关键字的容器</td>
 </tr>
 <tr>
-<td>mutimap</td>
+<td>multimap</td>
 <td>关键字可重复出现的map</td>
 </tr>
 <tr>
-<td>mutiset</td>
+<td>multiset</td>
 <td>关键字可重复出现的set</td>
 </tr>
 </tbody></table>
@@ -204,11 +204,11 @@
 <td>用哈希函数组织的set</td>
 </tr>
 <tr>
-<td>unordered_mutimap</td>
+<td>unordered_multimap</td>
 <td>哈希组织map，关键字可重复出现</td>
 </tr>
 <tr>
-<td>unordered_mutiset</td>
+<td>unordered_multiset</td>
 <td>哈希组织set，关键字可重复出现</td>
 </tr>
 </tbody></table>
@@ -225,7 +225,50 @@
 
 
 
-<h3 id="关联容器概述"><a href="#关联容器概述" class="headerlink" title="关联容器概述"></a>关联容器概述</h3><h4 id="定义关联容器"><a href="#定义关联容器" class="headerlink" title="定义关联容器"></a>定义关联容器</h4>
+<h3 id="关联容器概述"><a href="#关联容器概述" class="headerlink" title="关联容器概述"></a>关联容器概述</h3><h4 id="定义关联容器"><a href="#定义关联容器" class="headerlink" title="定义关联容器"></a>定义关联容器</h4><p>可以构造空容器或使用列表初始化来构造容器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">map&lt;string, <span class="type">int</span>&gt; wordCount&#123; &#123;<span class="string">&quot;string&quot;</span>, <span class="number">1</span>&#125;, &#123;<span class="string">&quot;Kring&quot;</span>, <span class="number">2</span>&#125; &#125;;   <span class="comment">//key-value放在一对中括号内，使用，隔开</span></span><br><span class="line">set&lt;<span class="type">int</span>&gt; iset = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">set&lt;<span class="type">int</span>&gt; iset2;   <span class="comment">//创建一个空容器</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用mutimap和mutiset"><a href="#使用mutimap和mutiset" class="headerlink" title="使用mutimap和mutiset"></a>使用mutimap和mutiset</h4><p>一个multimap和multiset中的元素不要求是唯一的（对于一个给定的关键字，只有一个值能够等于它。），这两者很适合用于处理单词释义不唯一的情况。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; ivec;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;   <span class="comment">//创建一个1~9重复元素的vector</span></span><br><span class="line">	ivec.<span class="built_in">push_back</span>(i);</span><br><span class="line">	ivec.<span class="built_in">push_back</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">multiset&lt;<span class="type">int</span>&gt; <span class="title">imset</span><span class="params">(ivec.begin(), ivec.end())</span></span>;  <span class="comment">//使用来自vector的迭代器初始化multiset和set</span></span><br><span class="line"><span class="function">set&lt;<span class="type">int</span>&gt; <span class="title">iset</span><span class="params">(ivec.begin(), ivec.end())</span></span>;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; imset.<span class="built_in">size</span>() &lt;&lt; endl;                   <span class="comment">//打印imset和iset的大小</span></span><br><span class="line">cout &lt;&lt; iset.<span class="built_in">size</span>() &lt;&lt; endl;                    <span class="comment">//前者为20，后者为10</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="有序关联容器关键字类型"><a href="#有序关联容器关键字类型" class="headerlink" title="有序关联容器关键字类型"></a>有序关联容器关键字类型</h4><p>有序关联容器关键字类型需要支持使用&lt;排序，也可以提供自定义的排序函数用以排序。排序函数必须遵守<strong>严格弱序</strong>，可以理解为“小于等于”。在实际编程中，一个类型定义了行为正常的&lt;运算符，则可以将其用作关键字类型。</p>
+<p>可以在创建容器时使用关键字类型的比较函数，将比较函数的函数指针传递给容器用以构造类，<strong>不同排序函数创建的容器类型不同</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">set&lt;COBNumber, <span class="title">decltype</span><span class="params">(compare)</span>*&gt; <span class="title">cob</span><span class="params">(compare)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用decltype关键字来指出自定义操作的类型，使用其来获得函数指针类型时，需用*来指出使用一个函数类型的指针</strong></p>
+<h4 id="pair类型"><a href="#pair类型" class="headerlink" title="pair类型"></a>pair类型</h4><p>pair类型定义在头文件utility中，它保存两个公有数据成员，可以通过.first和.second来访问它们。map容器的元素即为pair。以下是STL定义的pair操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;t1, t2&gt; p;                  <span class="comment">//创建pair的方法</span></span><br><span class="line"><span class="function">pair&lt;t1, t2&gt; <span class="title">p</span><span class="params">(v1, v2)</span></span>;</span><br><span class="line">pair&lt;ti, t2&gt; p = &#123; v1, v2 &#125;;</span><br><span class="line"><span class="built_in">make_pair</span>(v1, v2);               <span class="comment">//返回一个pair类型，类型通过v1， v2自动推断</span></span><br><span class="line">p.first, p.second;</span><br><span class="line">p1 relop p2;                     <span class="comment">//relop为运算符</span></span><br></pre></td></tr></table></figure>
+
+<p>可以通过列表初始化的方法返回pair对象，假设一个需要返回pair的函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">pair&lt;string, <span class="type">int</span>&gt;</span></span><br><span class="line"><span class="function"><span class="title">poss</span><span class="params">(vector&lt;string&gt;&amp; v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!v.<span class="built_in">empty</span>())</span><br><span class="line">		<span class="keyword">return</span> &#123; v.<span class="built_in">back</span>(), v.<span class="built_in">back</span>().<span class="built_in">size</span>() &#125;;   <span class="comment">//返回一个由v最后一个元素和v最后一个元素的长度组成的pair</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">pair</span>&lt;string, <span class="type">int</span>&gt;();             <span class="comment">//返回一个空pair&lt;string, int&gt;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="关联容器操作"><a href="#关联容器操作" class="headerlink" title="关联容器操作"></a>关联容器操作</h3><p>关联容器保存了三个类型别名，表示容器关键字的值和类型。</p>
+<ul>
+<li>key_type  此容器类型的关键字类型</li>
+<li>mapped_type  每个关键字关联的值类型；只能适用于map</li>
+<li>value_type  对于set，即为key_type；对于map，为pair&lt;const key_type, mapped_type&gt;</li>
+</ul>
+<h4 id="关联容器迭代器"><a href="#关联容器迭代器" class="headerlink" title="关联容器迭代器"></a>关联容器迭代器</h4><p>对一个map容器的迭代器解引用将获得一个pair对象，其first即为关键字，second为值；对一个set容器解引用即得到其关键字。map的key_type值为const，set的value_type也为const，意味着解引用+赋值操作为非法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取一个map容器的迭代器，且解引用</span></span><br><span class="line">map&lt;string, <span class="type">int</span>&gt; vi&#123; &#123;<span class="string">&quot;kaing&quot;</span>, <span class="number">2</span>&#125;, &#123;<span class="string">&quot;koter&quot;</span>, <span class="number">3</span>&#125; &#125;;</span><br><span class="line">map&lt;string, <span class="type">int</span>&gt;::iterator iter = vi.<span class="built_in">begin</span>();</span><br><span class="line">cout &lt;&lt; (*iter).first &lt;&lt; iter-&gt;second &lt;&lt; endl;</span><br><span class="line"><span class="comment">//获取一个set容器的迭代器，且解引用</span></span><br><span class="line">set&lt;<span class="type">int</span>&gt; vs&#123; <span class="number">1</span>, <span class="number">23</span>, <span class="number">3</span> &#125;;</span><br><span class="line"><span class="keyword">auto</span> iters = vs.<span class="built_in">begin</span>();</span><br><span class="line">cout &lt;&lt; *iters &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="遍历关联容器"><a href="#遍历关联容器" class="headerlink" title="遍历关联容器"></a>遍历关联容器</h4><p>map和set都支持begin和end，可以像对顺序容器那样对关联容器执行遍历操作。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = vc.<span class="built_in">begin</span>();</span><br><span class="line"><span class="keyword">while</span> (iter != vc.<span class="built_in">end</span>()) &#123;</span><br><span class="line">    cout &lt;&lt; (*vc).first &lt;&lt; <span class="string">&quot; : &quot;</span> &lt;&lt; vc-&gt;second &lt;&lt; endl;</span><br><span class="line">    iter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><p>关联容器的insert成员函数向容器中添加一个元素或者一个范围，由于map和set不允许重复关键字，所以理论上随便加就行了，添加一个存在的元素对容器没有影响。insert有两个版本，一个版本接受一个迭代器，一个版本接受一个初始化列表。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set&lt;<span class="type">int</span>&gt; set2;</span><br><span class="line">set2.<span class="built_in">insert</span>(<span class="number">5</span>);                       <span class="comment">//接受一个单值</span></span><br><span class="line">set2.<span class="built_in">insert</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());  <span class="comment">//接受一对迭代器</span></span><br><span class="line">set2.<span class="built_in">insert</span>(&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;);             <span class="comment">//接受一个初始化列表</span></span><br></pre></td></tr></table></figure>
+
+<p>对于map容器，需要注意map元素时pair，在使用insert时需要传递pair或能转化为pair的初始化列表：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">map&lt;string, <span class="type">int</span>&gt; sm;</span><br><span class="line">sm.<span class="built_in">insert</span>(&#123; <span class="string">&quot;string&quot;</span>, <span class="number">1</span> &#125;);</span><br><span class="line">sm.<span class="built_in">insert</span>(<span class="built_in">pair</span>&lt;string, <span class="type">int</span>&gt;(word, <span class="number">1</span>));</span><br><span class="line">sm.<span class="built_in">insert</span>(<span class="built_in">make_pair</span>(word, <span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -341,7 +384,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">使用关联容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8map"><span class="toc-number">1.1.</span> <span class="toc-text">使用map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8set"><span class="toc-number">1.2.</span> <span class="toc-text">使用set</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">关联容器概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">定义关联容器</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">使用关联容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8map"><span class="toc-number">1.1.</span> <span class="toc-text">使用map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8set"><span class="toc-number">1.2.</span> <span class="toc-text">使用set</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">关联容器概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">定义关联容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8mutimap%E5%92%8Cmutiset"><span class="toc-number">2.2.</span> <span class="toc-text">使用mutimap和mutiset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8%E5%85%B3%E9%94%AE%E5%AD%97%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">有序关联容器关键字类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pair%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">pair类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">关联容器操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">关联容器迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="toc-number">3.2.</span> <span class="toc-text">遍历关联容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-number">3.3.</span> <span class="toc-text">添加元素</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
