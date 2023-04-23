@@ -141,6 +141,150 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-从入门到入门的python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/23/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8%E7%9A%84python/">从入门到入门的python</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/23/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8%E7%9A%84python/" class="archive-article-date">
+  	<time datetime="2023-04-23T07:42:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>某个闲来无事旷了c++课的下着小雨的下午，克林沃特坐在电脑前，寻找着一点可以做的事情。经过了大半个月的苦战，他终于学完了c++的STL。现在，没活整的他决定学一学python，以度过他的Effective C++发货前无聊的时光。由于python实在没什么东西，这篇笔记将只记录有用的语法。</p>
+<h3 id="输入输出和数据成员"><a href="#输入输出和数据成员" class="headerlink" title="输入输出和数据成员"></a>输入输出和数据成员</h3><p>python不需要显示指明变量类型，变量之间的转换也极其方便</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>()              <span class="comment">#输出</span></span><br><span class="line">name = <span class="built_in">input</span>()       <span class="comment">#输入，默认为string类型</span></span><br><span class="line">name = <span class="built_in">int</span>(<span class="built_in">input</span>())  <span class="comment">#使用int()函数将输入转换为int类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#类型转换函数：</span></span><br><span class="line"><span class="built_in">int</span>()</span><br><span class="line">string()</span><br><span class="line"><span class="built_in">float</span>()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h4><p>string类型变量可以拼接：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title = <span class="string">&quot;玩原神玩的&quot;</span></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&quot;你说的对&quot;</span></span><br><span class="line"></span><br><span class="line">final = title + <span class="built_in">str</span>                    <span class="comment">#使用+号拼接</span></span><br><span class="line">final = <span class="string">&quot;你说的对%s&quot;</span> % title            <span class="comment">#使用占位符拼接单个字符串</span></span><br><span class="line">final = <span class="string">&quot;你说%s的对%s&quot;</span> % (title, <span class="built_in">str</span>)   <span class="comment">#使用占位符拼接多个字符串</span></span><br><span class="line">final = <span class="string">f&quot;你说的对<span class="subst">&#123;title&#125;</span>&quot;</span>              <span class="comment">#以f打头的字符串可以使用&#123;value&#125;拼接</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="条件和循环"><a href="#条件和循环" class="headerlink" title="条件和循环"></a>条件和循环</h3><p>python条件和循环使用4个空格来分级，if等只会执行当前等级的代码</p>
+<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><p>单个if：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a &lt; b:</span><br><span class="line">    <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="built_in">print</span>(b)</span><br><span class="line"><span class="comment">#从这里开始向上都会执行</span></span><br><span class="line"><span class="built_in">print</span>(c)</span><br></pre></td></tr></table></figure>
+
+<p>if-else：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a &lt; b:</span><br><span class="line">    <span class="built_in">print</span>(a)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+
+<p>if-elif-else：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a &lt; b:</span><br><span class="line">    <span class="built_in">print</span>(a)</span><br><span class="line"><span class="keyword">elif</span> a == b:</span><br><span class="line">    <span class="built_in">print</span>(b)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(a + b)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><h5 id="for"><a href="#for" class="headerlink" title="for"></a>for</h5><p>range()是一个范围，string和list等都属于此范围。理论上py的for不能做到无限循环。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>():</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"><span class="comment">#可以使用range(begin, end, step)函数创建循环范围:[begin, end) per step </span></span><br><span class="line"><span class="built_in">range</span>(<span class="number">10</span>)       <span class="comment">#0~9</span></span><br><span class="line"><span class="built_in">range</span>(<span class="number">5</span>, <span class="number">10</span>)    <span class="comment">#5~9</span></span><br><span class="line"><span class="built_in">range</span>(<span class="number">5</span>, <span class="number">10</span>, <span class="number">2</span>) <span class="comment">#5, 7, 9</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="while"><a href="#while" class="headerlink" title="while"></a>while</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> x &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line">    x += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>python的循环可以使用break和continue。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>基本语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">function</span>(<span class="params">data1, data2……</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    说明文档</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(data1)</span><br><span class="line">    <span class="built_in">print</span>(data2)</span><br><span class="line">    <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
+
+<p>若不返回值，可不写return，或return None。</p>
+<p>函数可以返回多个值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#函数返回多个返回值</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>, <span class="number">2</span></span><br><span class="line"><span class="comment">#可以用多个变量接受</span></span><br><span class="line">x, y = function()</span><br></pre></td></tr></table></figure>
+
+<p>可以显示指定参数名称，可以混合指定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">function</span>(<span class="params">name, age, score</span>):</span><br><span class="line">    function_body</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">function(name = <span class="string">&quot;kring&quot;</span>, age = <span class="number">1</span>, score = <span class="number">100</span>)</span><br><span class="line">function(<span class="string">&quot;kring&quot;</span>, score = <span class="number">100</span>, age = <span class="number">1</span>)         <span class="comment">#可以打乱顺序</span></span><br></pre></td></tr></table></figure>
+
+<p>接受另一个函数的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">function</span>):</span><br><span class="line">    result = function(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+
+<p>lambda函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">function</span>):</span><br><span class="line">    result = function(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">test(<span class="keyword">lambda</span> x, y: x + y)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><h4 id="list链表"><a href="#list链表" class="headerlink" title="list链表"></a>list链表</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义和初始化</span></span><br><span class="line">li = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1.1</span>, <span class="string">&quot;string&quot;</span>] <span class="comment">#list的数据类型可以不一样</span></span><br><span class="line">li_em = <span class="built_in">list</span>()             <span class="comment">#空链表</span></span><br><span class="line">li_em2 = []                <span class="comment">#空链表</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#下标访问</span></span><br><span class="line">li[n]                      <span class="comment">#正向索引</span></span><br><span class="line">li[-n]                     <span class="comment">#反向索引</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查找元素</span></span><br><span class="line">locate = li.index(value)   <span class="comment">#查找value，返回locate（int）；若未找到，valueError错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#插入元素</span></span><br><span class="line">li.insert(locate, value)   <span class="comment">#在locate（之前）插入值为value的元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#追加元素</span></span><br><span class="line">li.append(value)           <span class="comment">#将value添加到末尾</span></span><br><span class="line">li.extand(other <span class="built_in">range</span>)     <span class="comment">#将其他数据容器追加到末尾</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除元素 </span></span><br><span class="line"><span class="keyword">del</span> li[n]                  <span class="comment">#删除下标为n的元素</span></span><br><span class="line">element li.pop(n)          <span class="comment">#取出下表为n的元素，并存储在element中</span></span><br><span class="line"></span><br><span class="line">li.remove(value)           <span class="comment">#删除第一个值为value的元素</span></span><br><span class="line">li.clear()                 <span class="comment">#清空列表</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#统计元素</span></span><br><span class="line">number = li.count(value)   <span class="comment">#统计value的数量</span></span><br><span class="line">lenth = <span class="built_in">len</span>(li)            <span class="comment">#返回li的长度</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="tuple元组"><a href="#tuple元组" class="headerlink" title="tuple元组"></a>tuple元组</h4><p>元组相当于一个const数组，长度和数据成员均不能修改。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义和初始化</span></span><br><span class="line">tp = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">1.1</span>, <span class="string">&quot;string&quot;</span>)</span><br><span class="line">tp = ()</span><br><span class="line">tp = <span class="built_in">tuple</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">#查找</span></span><br><span class="line">locate = tp.index(value)</span><br><span class="line"></span><br><span class="line"><span class="comment">#统计</span></span><br><span class="line">number = tp.count(value)</span><br><span class="line">lenth = <span class="built_in">len</span>(tp)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h4><p>set不是序列，由于元素储存顺序随机，不支持下标索引。set不支持重复。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义集合</span></span><br><span class="line">mySet = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;</span><br><span class="line">mySet = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">#不支持下标索引</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#添加元素</span></span><br><span class="line">mySet.add(value)</span><br><span class="line"></span><br><span class="line"><span class="comment">#移除元素</span></span><br><span class="line">mySet.remove(value)        <span class="comment">#移除value的元素</span></span><br><span class="line">mySet.clear()              <span class="comment">#清空元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#随机取出一个元素</span></span><br><span class="line">element = mySet.pop()      <span class="comment">#随机取出值，存放于element</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#取集合1和集合2的差集（集合1有但集合2没有），集合本身不变</span></span><br><span class="line">mySet1.diffence(mySet2)</span><br><span class="line"><span class="comment">#删除集合1中，集合1和集合2的差集</span></span><br><span class="line">mySet1.diffence_update(mySet2)</span><br><span class="line"></span><br><span class="line"><span class="comment">#取并集，得到新集合，原集合不变</span></span><br><span class="line">mySet1.union(mySet2)</span><br><span class="line"></span><br><span class="line"><span class="comment">#统计集合元素数量</span></span><br><span class="line">mySet1.count()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="dict字典"><a href="#dict字典" class="headerlink" title="dict字典"></a>dict字典</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义和初始化</span></span><br><span class="line">dic = &#123; key:value, key:value &#125;</span><br><span class="line">dic = &#123;&#125;</span><br><span class="line">dic = <span class="built_in">dict</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">#不支持下标索引</span></span><br><span class="line"><span class="comment">#可以使用key索引获取value</span></span><br><span class="line">value = dic[key]</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除元素，返回删除key的value</span></span><br><span class="line">value = dic.pop(key)</span><br><span class="line"><span class="comment">#清空元素</span></span><br><span class="line">dic.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment">#获得dict中所有元素</span></span><br><span class="line"><span class="built_in">all</span> = dic.keys()  <span class="comment">#可以基于此使用for遍历</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#获得元素数量</span></span><br><span class="line">number = <span class="built_in">len</span>(dic)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="容器切片"><a href="#容器切片" class="headerlink" title="容器切片"></a>容器切片</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">li2 = li[begin, end, step]   <span class="comment">#将li在begin和end中每step步切片</span></span><br><span class="line"><span class="comment">#如果步长为负，则反向取</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/23/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8%E7%9A%84python/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++学习笔记/关联容器/关联容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -388,19 +532,19 @@
 
 
   
-    <article id="post-Novel/风乎舞雩" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-文章/风乎舞雩" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/16/Novel/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/">风乎舞雩</a>
+      <a class="article-title" href="/2023/04/16/%E6%96%87%E7%AB%A0/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/">风乎舞雩</a>
     </h1>
   
 
         
-        <a href="/2023/04/16/Novel/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/" class="archive-article-date">
+        <a href="/2023/04/16/%E6%96%87%E7%AB%A0/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/" class="archive-article-date">
   	<time datetime="2023-04-16T15:26:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-16</time>
 </a>
         
@@ -467,7 +611,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/16/Novel/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/16/%E6%96%87%E7%AB%A0/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/">展开全文 >></a>
         </p>
       
 
@@ -589,19 +733,19 @@
 
 
   
-    <article id="post-Travel/远山与落日，半城 2023.04.08" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-旅行手记/远山与落日，半城 2023.04.08" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/10/Travel/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/">远山与落日，半城</a>
+      <a class="article-title" href="/2023/04/10/%E6%97%85%E8%A1%8C%E6%89%8B%E8%AE%B0/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/">远山与落日，半城</a>
     </h1>
   
 
         
-        <a href="/2023/04/10/Travel/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/" class="archive-article-date">
+        <a href="/2023/04/10/%E6%97%85%E8%A1%8C%E6%89%8B%E8%AE%B0/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/" class="archive-article-date">
   	<time datetime="2023-04-10T04:12:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-10</time>
 </a>
         
@@ -617,7 +761,7 @@
 </blockquote>
 <p>那些故事历过时光的沉淀，去除了纷乱的琐事，留下了如一瞥般短暂的结晶，只能容下最值得珍惜的故事，在阳光下熠熠生辉。</p>
         
-          <a class="article-more-a" href="/2023/04/10/Travel/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/#more">more >></a>
+          <a class="article-more-a" href="/2023/04/10/%E6%97%85%E8%A1%8C%E6%89%8B%E8%AE%B0/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/#more">more >></a>
         
       
 
@@ -631,11 +775,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Rainimator</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">旅行</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">旅行</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Rainimator</a>
         		</li>
       		
 		</ul>
@@ -645,7 +789,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/10/Travel/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/10/%E6%97%85%E8%A1%8C%E6%89%8B%E8%AE%B0/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/">展开全文 >></a>
         </p>
       
 
@@ -1082,85 +1226,6 @@
 
 
   
-    <article id="post-平白无奇的人设图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/03/%E5%B9%B3%E7%99%BD%E6%97%A0%E5%A5%87%E7%9A%84%E4%BA%BA%E8%AE%BE%E5%9B%BE/">平白无奇的人设图</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/03/%E5%B9%B3%E7%99%BD%E6%97%A0%E5%A5%87%E7%9A%84%E4%BA%BA%E8%AE%BE%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2023-04-03T12:54:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="平白无奇的人设图"><a href="#平白无奇的人设图" class="headerlink" title="平白无奇的人设图"></a>平白无奇的人设图</h2><blockquote>
-<p>by见习魔导师JS_KringKoter</p>
-</blockquote>
-<p>Attention:含有不宜在工作期间访问的部分！</p>
-        
-          <a class="article-more-a" href="/2023/04/03/%E5%B9%B3%E7%99%BD%E6%97%A0%E5%A5%87%E7%9A%84%E4%BA%BA%E8%AE%BE%E5%9B%BE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Do not touch!</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/03/%E5%B9%B3%E7%99%BD%E6%97%A0%E5%A5%87%E7%9A%84%E4%BA%BA%E8%AE%BE%E5%9B%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1258,10 +1323,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Personal Information</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
@@ -1270,11 +1331,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Do not touch!</a>
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1290,11 +1351,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">散文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+                <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1303,6 +1360,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">STL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">散文</a>
               </li>
             
             <div class="clearfix"></div>
