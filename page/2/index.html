@@ -141,6 +141,127 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/STL标准模板库/顺序容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">顺序容器</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2023-04-06T06:13:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="顺序容器的分类"><a href="#顺序容器的分类" class="headerlink" title="顺序容器的分类"></a>顺序容器的分类</h3><p>容器特定对象（包括内置数据类型，结构，类等）的集合。顺序容器则提供了按顺序储存或访问它们的能力。</p>
+<p>理解为一个很牛逼的数组就行了。</p>
+<p>下面是顺序容器的类型和特点：</p>
+<table>
+<thead>
+<tr>
+<th>容器类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vector</td>
+<td>大小可变，可以增添或删除，可以随机访问。在尾部之外的地方插入数据可能很慢。</td>
+</tr>
+<tr>
+<td>deque</td>
+<td>双端队列，在头部插入数据很快。</td>
+</tr>
+<tr>
+<td>list</td>
+<td>双向链表，在任何位置插入数据很快，但访问很慢。</td>
+</tr>
+<tr>
+<td>forward_list</td>
+<td>单向链表，只支持单向数据访问，在任何位置插入数据很快。</td>
+</tr>
+<tr>
+<td>array</td>
+<td>固定数组，无法变化大小，可随机访问。</td>
+</tr>
+<tr>
+<td>string</td>
+<td>类似于vector<string></td>
+</tr>
+</tbody></table>
+<p>应在不同情况下选择不同的容器，一般除非有特殊理由，则使用vector。避免使用数组，容器的数据处理效率要大于数组。如果不确定应选择何种容器，则在只使用vector和list的情况下使用迭代器（而不是下标访问）。</p>
+<h3 id="顺序容器的迭代器"><a href="#顺序容器的迭代器" class="headerlink" title="顺序容器的迭代器"></a>顺序容器的迭代器</h3><p>所有的容器迭代器都有++操作，–仅forward_list不支持（无法双向访问）。支持随机访问的迭代器才能使用+, -运算符。</p>
+<p>可以对迭代器使用&lt;, &lt;=, &gt;, =&gt;运算符，但list和forward_list不支持。</p>
+        
+          <a class="article-more-a" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++学习笔记/STL标准模板库/概念，改进和模型，深入探讨迭代器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -946,94 +1067,6 @@
 
 
   
-    <article id="post-文章/永远的铁道" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/">永远的铁道</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/" class="archive-article-date">
-  	<time datetime="2023-03-23T09:00:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p> 写于2023.01.25 记一段梦境</p>
-<hr>
-<p>铁路修了很多年，如今仍在修着。</p>
-<p>没人知道铁路的起讫地点，它就这样一直延伸着，穿过无边的草原和湿地，遇水搭桥，逢山开路。或许它经过了无数个小镇，或许它经过了无数座城市，它仍然不断延伸，如同时光般永不停歇。</p>
-<p>铁路修了很多年，当然，还没有火车经过这里。</p>
-<p>铁轨下的枕木，经过多年风和雨的摧残，已经腐朽得不成样子，完全无法承受火车的重量。即便如此，没有人将它们更换掉，它们被遗弃在这里，兀自记载着岁月的痕迹。</p>
-<p>老一辈人还记得铁路修到这里的时候，很多人站在路边看热闹的样子。工人扛着木头，沉重的铁镐挥击着大地，发出有规律的，触及人心的震颤声。那时候人人都以为火车会在不久的将来冒着热气，在汽笛声中缓缓开进站台。人们带着行李，在烟雾缭绕中走上火车，前往不可知的远方，寻找各自的目的地。</p>
-<p>铁路逐渐远去，它倒是去了远方，在人们日复一日的期盼中隐没在了无边的飞雪和雾气中，渺无音讯。</p>
-<p>北国的小镇，交通不便。群山环绕之中，一年里除了飞雪，很难看到其他东西。</p>
-<p>总有人想出去，而那些出去的人们，也不会再回来。偶尔有鸽子携着信穿越群山来到这里，带来来自远方的问候。几天之后它又会飞走，带走憧憬和祝愿，消失在人们的视野中。</p>
-<p>铁路修了很多年，如今又如何呢？</p>
-<p>老一辈人都离开了人世，终于没有人记得曾经的期愿了。铁路被封在大雪中，那桦木的小巧玲珑的车站破损不堪。没人在乎，当然也没必要在乎。当它早就废弃了就好。</p>
-        
-          <a class="article-more-a" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1172,6 +1205,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">散文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
               </li>
             
             <div class="clearfix"></div>

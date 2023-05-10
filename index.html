@@ -141,6 +141,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/C++并发编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/08/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">C++并发编程</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/08/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2023-05-08T12:01:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="线程管控"><a href="#线程管控" class="headerlink" title="线程管控"></a>线程管控</h2><h3 id="线程的基本管控"><a href="#线程的基本管控" class="headerlink" title="线程的基本管控"></a>线程的基本管控</h3><p>线程通过一个thread对象创建，thread的构造函数接受一个可调用对象，在构造对象的同时创建新线程。传递的函数称为起始函数，当它返回时，线程结束。</p>
+<p>一旦启动了线程，就需要指定是等它结束（再继续往下运行）还是将其分离（使其独自运行）。如果在其析构时还未指定状态，析构函数会调用std::terminate()函数终止程序。</p>
+<p>如果需要等待线程完成，调用join()；若需要分离，调用detach()。调用后对象的joinable()函数会变为false。</p>
+<h4 id="使用资源管理对象处理异常问题"><a href="#使用资源管理对象处理异常问题" class="headerlink" title="使用资源管理对象处理异常问题"></a>使用资源管理对象处理异常问题</h4><p>当异常抛出时，线程很可能没有指定join或detach，或略过了二者。可以使用threadGuard对象来管理线程，当threadGuard对象析构时，它会检测其中的thread对象是否指定了状态，若未指定，则指定为join：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">threadGuard</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::thread&amp; t;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">threadGuard</span>(std::thread&amp; t_)</span><br><span class="line">        : <span class="built_in">t</span>(t_)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    ~<span class="built_in">threadGuard</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (t.<span class="built_in">joinable</span>()) &#123;</span><br><span class="line">            t.<span class="built_in">join</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">threadGuard</span>(<span class="type">const</span> threadGuard&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    threadGuard&amp; <span class="keyword">operator</span>=(<span class="type">const</span> threadGuard&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果不需要等待线程结束，可以将其分离，调用detach函数。</p>
+<h4 id="在后台运行线程"><a href="#在后台运行线程" class="headerlink" title="在后台运行线程"></a>在后台运行线程</h4><p>调用thread的detach方法会令线程在后台运行，无法与其直接通信。如果线程分离，就无法等待其完结，也不可能获得与其相关的thread对象。</p>
+<p>文字处理函数很适合多线程操作，后台可能有数个线程，分别处理不同的文件，它们互不干扰。简化后将其改为处理数字，其接受一个数字，返回<code>2*n + n*n</code>，将其储存在文件中：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">file</span><span class="params">(<span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">std::ofstream <span class="title">os</span><span class="params">(<span class="string">&quot;data.txt&quot;</span>, std::ios_base::app)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (!os.<span class="built_in">is_open</span>()) &#123;</span><br><span class="line">		<span class="built_in">abort</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	os &lt;&lt; val &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">editNumber</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;输入一个数：&quot;</span>;</span><br><span class="line">	<span class="type">int</span> number;</span><br><span class="line">	<span class="keyword">while</span> (std::cin &gt;&gt; number) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="function">std::thread <span class="title">newThread</span><span class="params">(editNumber)</span></span>;</span><br><span class="line">		newThread.<span class="built_in">detach</span>();</span><br><span class="line"></span><br><span class="line">		<span class="built_in">postpone</span>(<span class="number">4</span>);                                                 <span class="comment">//处理时间4秒</span></span><br><span class="line">		<span class="type">int</span> newNum = <span class="built_in">plus</span>(number, number) + <span class="built_in">muti</span>(number, number);   <span class="comment">//计算a+b+a*b</span></span><br><span class="line">		<span class="built_in">file</span>(newNum);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">并发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/08/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-赛博佛祖保佑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -212,7 +300,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/25/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Effective%20C++/">More Effective C++</a>
+      <a class="article-title" href="/2023/04/25/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Effective%20C++/">Effective C++</a>
     </h1>
   
 
@@ -1038,127 +1126,6 @@
 
 
   
-    <article id="post-C++学习笔记/STL标准模板库/顺序容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">顺序容器</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2023-04-06T06:13:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="顺序容器的分类"><a href="#顺序容器的分类" class="headerlink" title="顺序容器的分类"></a>顺序容器的分类</h3><p>容器特定对象（包括内置数据类型，结构，类等）的集合。顺序容器则提供了按顺序储存或访问它们的能力。</p>
-<p>理解为一个很牛逼的数组就行了。</p>
-<p>下面是顺序容器的类型和特点：</p>
-<table>
-<thead>
-<tr>
-<th>容器类型</th>
-<th>特点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>vector</td>
-<td>大小可变，可以增添或删除，可以随机访问。在尾部之外的地方插入数据可能很慢。</td>
-</tr>
-<tr>
-<td>deque</td>
-<td>双端队列，在头部插入数据很快。</td>
-</tr>
-<tr>
-<td>list</td>
-<td>双向链表，在任何位置插入数据很快，但访问很慢。</td>
-</tr>
-<tr>
-<td>forward_list</td>
-<td>单向链表，只支持单向数据访问，在任何位置插入数据很快。</td>
-</tr>
-<tr>
-<td>array</td>
-<td>固定数组，无法变化大小，可随机访问。</td>
-</tr>
-<tr>
-<td>string</td>
-<td>类似于vector<string></td>
-</tr>
-</tbody></table>
-<p>应在不同情况下选择不同的容器，一般除非有特殊理由，则使用vector。避免使用数组，容器的数据处理效率要大于数组。如果不确定应选择何种容器，则在只使用vector和list的情况下使用迭代器（而不是下标访问）。</p>
-<h3 id="顺序容器的迭代器"><a href="#顺序容器的迭代器" class="headerlink" title="顺序容器的迭代器"></a>顺序容器的迭代器</h3><p>所有的容器迭代器都有++操作，–仅forward_list不支持（无法双向访问）。支持随机访问的迭代器才能使用+, -运算符。</p>
-<p>可以对迭代器使用&lt;, &lt;=, &gt;, =&gt;运算符，但list和forward_list不支持。</p>
-        
-          <a class="article-more-a" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1297,6 +1264,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">散文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
               </li>
             
             <div class="clearfix"></div>
