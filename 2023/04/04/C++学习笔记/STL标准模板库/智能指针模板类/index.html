@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://JSKringKoter.github.io">
-  <title>泛型算法 | JS_KringKoter | Personal blog</title>
+  <title>智能指针模板类 | JS_KringKoter | Personal blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初识泛型算法：好怪，再看一眼泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。 算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算">
+  <meta name="description" content="1.智能指针的作用智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。 如： 12345std::string * ps &#x3D; new string(str);int i &#x3D; 0;if (i &#x3D; 0)    throw();  &#x2F;&#x2F;若引发异常，delete将不被执行。delete ps;      2.使用智能指针智能指针共有四种：auto_ptr,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛型算法">
-<meta property="og:url" content="https://jskringkoter.github.io/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="智能指针模板类">
+<meta property="og:url" content="https://jskringkoter.github.io/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/index.html">
 <meta property="og:site_name" content="JS_KringKoter | Personal blog">
-<meta property="og:description" content="初识泛型算法：好怪，再看一眼泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。 算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算">
+<meta property="og:description" content="1.智能指针的作用智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。 如： 12345std::string * ps &#x3D; new string(str);int i &#x3D; 0;if (i &#x3D; 0)    throw();  &#x2F;&#x2F;若引发异常，delete将不被执行。delete ps;      2.使用智能指针智能指针共有四种：auto_ptr,">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-04-13T10:06:11.000Z">
-<meta property="article:modified_time" content="2023-04-19T07:03:07.518Z">
+<meta property="article:published_time" content="2023-04-04T09:42:46.000Z">
+<meta property="article:modified_time" content="2023-04-13T10:03:02.492Z">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="c++">
@@ -143,148 +143,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C++学习笔记/关联容器/泛型算法/泛型算法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-C++学习笔记/STL标准模板库/智能指针模板类" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      泛型算法
+      智能指针模板类
     </h1>
   
 
         
-        <a href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2023-04-13T10:06:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-13</time>
+        <a href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2023-04-04T09:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="初识泛型算法：好怪，再看一眼"><a href="#初识泛型算法：好怪，再看一眼" class="headerlink" title="初识泛型算法：好怪，再看一眼"></a>初识泛型算法：好怪，再看一眼</h3><p>泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。</p>
-<p>算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算符也要求提供重载函数。</p>
-<p>以下是一个find()函数，它接受两个迭代器组成的迭代器范围和一个值，若找到了这个值，则返回指向这个值的迭代器，否则返回迭代器范围的末尾。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), <span class="number">30</span>);</span><br><span class="line"><span class="keyword">if</span> (iter == vec.<span class="built_in">cend</span>())</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;find it&quot;</span>;</span><br><span class="line"><span class="comment">//若没有找到，则返回vec.cend();若传递的迭代器末尾为vec.cend() - 2，则返回vec.cend() - 2。</span></span><br></pre></td></tr></table></figure>
+        <h3 id="1-智能指针的作用"><a href="#1-智能指针的作用" class="headerlink" title="1.智能指针的作用"></a>1.智能指针的作用</h3><p>智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。</p>
+<p>如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::string * ps = <span class="keyword">new</span> <span class="built_in">string</span>(str);</span><br><span class="line"><span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (i = <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span>();  <span class="comment">//若引发异常，delete将不被执行。</span></span><br><span class="line"><span class="keyword">delete</span> ps;  </span><br></pre></td></tr></table></figure>
 
-<p>在书后习题中还有一个函数count()，接受两个迭代器组成的范围和一个值，返回迭代器范围中该值的数量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> number = <span class="built_in">count</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 
-<p><strong>算法不会执行迭代器的操作，它建立在迭代器之上</strong></p>
+
+<h3 id="2-使用智能指针"><a href="#2-使用智能指针" class="headerlink" title="2.使用智能指针"></a>2.使用智能指针</h3><p>智能指针共有四种：auto_ptr, unique_ptr, share_ptr, weak_ptr。其中auto_ptr已被抛弃，weak_ptr不作讨论。</p>
+<h4 id="2-1-创建智能指针对象"><a href="#2-1-创建智能指针对象" class="headerlink" title="2.1 创建智能指针对象"></a>2.1 创建智能指针对象</h4><p>智能指针作为模板类，应使用模板类语法：</p>
+<p><code>auto_ptr&lt;Type&gt; name(new Type);</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">auto_ptr&lt;<span class="type">double</span>&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> <span class="type">double</span>)</span></span>;</span><br><span class="line"><span class="function">atuo_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>所有智能指针类都有一个explicit构造函数，避免将普通指针直接转换为智能指针（但可以使用普通指针为参量的构造函数）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shared_ptr&lt;<span class="type">double</span>&gt; pd;</span><br><span class="line"><span class="type">double</span>* ps = <span class="keyword">new</span> <span class="type">double</span>;</span><br><span class="line">pd = ps;                      <span class="comment">//非法</span></span><br><span class="line">pd = <span class="built_in">shared_ptr</span>&lt;<span class="type">double</span>&gt; (ps); <span class="comment">//合法</span></span><br><span class="line">shared_ptr&lt;<span class="type">double</span>&gt; ptr = ps;  <span class="comment">//非法</span></span><br><span class="line"><span class="function">shared_ptr&lt;<span class="type">double</span>&gt; <span class="title">ptr</span><span class="params">(ps)</span></span>;   <span class="comment">//合法</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>注意：智能指针必须使用new，否则将对非堆内存使用 delete</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">str</span><span class="params">(<span class="string">&quot;你说的对&quot;</span>)</span></span>;</span><br><span class="line"><span class="function">auto_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(&amp;str)</span></span>; <span class="comment">//非法！</span></span><br></pre></td></tr></table></figure>
+
 <span id="more"></span>
 
-<h4 id="只读算法"><a href="#只读算法" class="headerlink" title="只读算法"></a>只读算法</h4><p>一些算法只会读取容器中的内容，比如find和count，还有一个是accumulate，它接受一对迭代器和一个初值，将容器内容遍历求和。要求容器元素支持+运算符。其中第三个参数决定了+运算符的类型以及返回值的类型。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> result = <span class="built_in">accumulate</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), <span class="number">3</span>);</span><br><span class="line"><span class="comment">//结果为vec中值的总和+3。</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-auto-ptr的缺点"><a href="#2-2-auto-ptr的缺点" class="headerlink" title="2.2 auto_ptr的缺点"></a>2.2 auto_ptr的缺点</h4><p>先看以下语句：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">auto_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">auto_ptr&lt;string&gt; pd;</span><br><span class="line">pd = ps;</span><br><span class="line">cout &lt;&lt; pd &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; ps &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
 
-<p>accumulate假定了容器元素能够转化为第三个参数类型，比如当第三个参数为int时，容器元素可以为int, long, double等任何可以转换为int的类型。另一个例子是由于string定义了+运算符，可以使用accumulate进行字符串拼接。</p>
-<h5 id="操作两个序列的算法"><a href="#操作两个序列的算法" class="headerlink" title="操作两个序列的算法"></a>操作两个序列的算法</h5><p>另一个只读算法为equal，它确定两个范围是否保存有相同的内容。此算法接受三个迭代器参数，且<strong>假定第二个序列至少与第一个一样长</strong>，即第二个序列大于等于第一个序列。</p>
-<p><em>所有接受单迭代器来表示第二个迭代器序列的算法都假定第二个至少与第一个一样长。</em></p>
-<h4 id="写容器的算法"><a href="#写容器的算法" class="headerlink" title="写容器的算法"></a>写容器的算法</h4><p>写入算法同样对迭代器操作，它<strong>不会改变容器大小</strong>。它只会向给定范围内写入元素，最多写入与给定序列一样多的元素。</p>
-<p>fill算法要求提供三个参量，第一个和第二个是迭代器，第三个是写入（若本来有元素，则为替换）的值。它将迭代器范围内所有元素替代为该值，注意容器元素必须存在，不能仅仅预留内存空间。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">vec.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">fill</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">1</span>);   <span class="comment">//将vec中所有元素重置为1</span></span><br></pre></td></tr></table></figure>
-
-<p>fill算法还有一个变体：fill_n。它接受一个迭代器参数，一个范围值，一个写入值。它将迭代器参数后范围值的内容替换为写入值。它并不检查迭代过程中是否越界，保证不越界还是他妈的程序员的责任。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">vec.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">fill_n</span>(vec.<span class="built_in">begin</span>(), <span class="number">5</span>, <span class="number">1</span>);    <span class="comment">//将vec中所有元素重置为1</span></span><br><span class="line"><span class="built_in">fill_n</span>(vec.<span class="built_in">begin</span>(), <span class="number">6</span>, <span class="number">1</span>);    <span class="comment">//越界，将在运行阶段报错</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="back-inserter插入迭代器"><a href="#back-inserter插入迭代器" class="headerlink" title="back_inserter插入迭代器"></a>back_inserter插入迭代器</h5><p>保证容器有足够的空间保存元素的添加元素的方法是使用插入迭代器。使用普通迭代器赋值时，迭代器指向的值被赋值；使用插入迭代器赋值时，一个新的元素被置入容器中。使用定义于头文件iterator的函数back_iterater来获取插入迭代器。back_iterater函数接受一个容器的引用，返回与该容器绑定的插入迭代器。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">back_inserter</span>(vec);</span><br><span class="line"><span class="built_in">fill_n</span>(<span class="built_in">back_inserter</span>(vec), <span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line"><span class="comment">//或直接fill_n(iter, 5, 10);</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="copy算法"><a href="#copy算法" class="headerlink" title="copy算法"></a>copy算法</h5><p>copy算法接受一对迭代器范围（表示输入范围）和一个迭代器（目的序列起始位置），算法将输入序列复制到目的序列中，应保证目的序列至少与输入序列一样长。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line">list&lt;<span class="type">int</span>&gt; lis;</span><br><span class="line">lis.<span class="built_in">resize</span>(<span class="number">5</span>);  <span class="comment">//别忘了必须有元素</span></span><br><span class="line"><span class="built_in">copy</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), lis.<span class="built_in">begin</span>());</span><br></pre></td></tr></table></figure>
-
-<p>可以使用copy算法将内置数组拷贝至容器（反之亦然）。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">3</span>]&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">copy</span>(a, a + <span class="number">3</span>, vec.<span class="built_in">begin</span>());       <span class="comment">//将数组元素拷贝至容器</span></span><br><span class="line"><span class="built_in">copy</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), a); <span class="comment">//将容器元素拷贝至数组</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="函数的copy变体"><a href="#函数的copy变体" class="headerlink" title="函数的copy变体"></a>函数的copy变体</h5><p>例如replace函数，其搜索给定值，将其替换为参数：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">replace</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">3</span>, <span class="number">0</span>);   <span class="comment">//(迭代器范围，搜索值，替换值)</span></span><br></pre></td></tr></table></figure>
-
-<p>其有一个copy变体，额外接受一个迭代器参数，将所得结果拷贝至该迭代器。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">replace</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">back_inserter</span>(ivec), <span class="number">3</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><p>排序算法将容器元素按某种方式排序。</p>
-<h5 id="sort算法"><a href="#sort算法" class="headerlink" title="sort算法"></a>sort算法</h5><p>一个典型例子为 sort算法，该函数要求提供一组迭代器范围，以 &lt;运算符排序其中的元素，对于自定义类型，需要提供operator&lt;()。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec1&#123; <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">45</span> &#125;;</span><br><span class="line"><span class="built_in">sort</span>(vec1.<span class="built_in">begin</span>(), vec1.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="一个例子：消除重复单词"><a href="#一个例子：消除重复单词" class="headerlink" title="一个例子：消除重复单词"></a>一个例子：消除重复单词</h5><p>假设给定一个句子：<strong>the quick red fox jumps over the slow red turtle</strong></p>
-<p>分配到容器中：**”the”,”quick”, “red”, “fox”, “jumps”, “over”, “the”, “slow”, “red”, “turtle”**</p>
-<p>首先使用sort将这些单词排序：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; vec&#123; <span class="string">&quot;the&quot;</span>, <span class="string">&quot;quick&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;fox&quot;</span>, <span class="string">&quot;jumps&quot;</span>, <span class="string">&quot;over&quot;</span>, <span class="string">&quot;the&quot;</span>, <span class="string">&quot;slow&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;turtle&quot;</span> &#125;;</span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-<p>得到：<strong>fox jumps over quick red red slow the the turtle</strong></p>
-<h5 id="使用unique"><a href="#使用unique" class="headerlink" title="使用unique"></a>使用unique</h5><p>unique将消除范围中重复的元素，返回指向不重复值超尾的迭代器。超尾之后的元素并未被删除，但已不可知（也没必要知道）。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">unique</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-<p>在获得不重复元素超尾迭代器之后，进行删除操作，必须使用erase，因为只有容器内方法才能操作容器本身。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vec.<span class="built_in">erase</span>(iter, vec.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="定制操作"><a href="#定制操作" class="headerlink" title="定制操作"></a>定制操作</h4><h5 id="向算法传递函数"><a href="#向算法传递函数" class="headerlink" title="向算法传递函数"></a>向算法传递函数</h5><p>sort有一个重载版本，它接受一个谓词，使得sort按照该谓词指定的规则排序。</p>
-<p><strong>谓词</strong>：</p>
-<p>谓词是一个可以调用的表达式，返回一个可转换为bool的值。根据表达式接受的值数目，谓词分为一元谓词和二元谓词。和函数一样，谓词接受的参数类型必须可转化成指定的类型。</p>
-<p>定义isShorter函数，使得sort按照字符串长度排序：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isShorter</span><span class="params">(<span class="type">const</span> string&amp; a, <span class="type">const</span> string&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">size</span>() &lt; b.<span class="built_in">size</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), isShorter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>sort还有一个stable_sort变体，使得排序后可维持原有的长度顺序，它同样可以接受第三个谓词参数。</p>
-<h6 id="一个书后习题"><a href="#一个书后习题" class="headerlink" title="一个书后习题"></a><em>一个书后习题</em></h6><p><em>pratition()函数，判断容器元素是否符合谓词描述，将true的元素置于容器前端，返回指向true最后一个元素超尾的迭代器。</em>要求将vector<string>按照大于4字符的为true排序，打印所有为true的元素。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">longerThen5</span><span class="params">(<span class="type">const</span> string&amp; str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.<span class="built_in">size</span>() &gt;= <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;string&gt; str&#123; <span class="string">&quot;the&quot;</span>, <span class="string">&quot;quick&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;fox&quot;</span>, <span class="string">&quot;jumps&quot;</span>, <span class="string">&quot;over&quot;</span>, <span class="string">&quot;the&quot;</span>, <span class="string">&quot;slow&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;turtle&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">auto</span> iter = <span class="built_in">partition</span>(str.<span class="built_in">begin</span>(), str.<span class="built_in">end</span>(), longerThen5);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it = str.<span class="built_in">begin</span>(); it != iter; it++)</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>传送门已搭建！：<a href="https://jskringkoter.github.io/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式 | JS_KringKoter | Personal blog (jskringkoter.github.io)</a></p>
-<h4 id="泛型算法结构"><a href="#泛型算法结构" class="headerlink" title="泛型算法结构"></a>泛型算法结构</h4><h5 id="迭代器类型"><a href="#迭代器类型" class="headerlink" title="迭代器类型"></a>迭代器类型</h5><ul>
-<li><p>输入迭代器：可以读取序列中的元素。</p>
-<p>其必须支持：相等和不等运算符（==，!=）</p>
-<p>​                       前置和后置++运算符。</p>
-<p>​                       解引用*运算符，只能作为右值。</p>
-<p>​                       成员运算符-&gt;和(*it).用于读取对象成员。</p>
+<p>会出现什么情况？pd = ps;将字符串“JS_KringKoter”的控制权转移给了pd，此时ps指向的是空指针，将不会输出任何内容。</p>
+<p>为解决此问题，引入了unique_ptr和shared_ptr两种指针。</p>
+<ul>
+<li><p>unique_ptr和auto_ptr都使用了所有权概念，对于同一个对象，只有一个指针可以拥有它。auto_ptr在转让所有权之后置空原有指针，unique_ptr则更加严格，它不会允许这样的赋值。</p>
 </li>
-<li><p>输出迭代器：输入迭代器的补集，只写不读元素。</p>
-</li>
-<li><p>前向迭代器：可以读写元素，只能单向访问元素。</p>
-</li>
-<li><p>双向迭代器：可以读写元素，可以双向访问元素。</p>
-</li>
-<li><p>随机访问迭代器：可以读写元素，可以随机访问元素，此外还支持：</p>
-<p>用于比较两个迭代器相对位置的&lt;, &lt;=, &gt;, &gt;=</p>
-<p>迭代器和一个整数的加减运算（+，+=，-，-=）。</p>
-<p>用于两个迭代器之间的-运算，得到两个迭代器的相对距离。</p>
-<p>下标运算符。</p>
+<li><p>shared_ptr使用引用计数，它计数指向目标的指针，仅在计数为零时调用析构函数。</p>
 </li>
 </ul>
-<h5 id="算法形参模式"><a href="#算法形参模式" class="headerlink" title="算法形参模式"></a>算法形参模式</h5><p>大多数算法具有以下参数模式：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alg</span>(beg, end, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, dest, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, beg2, other args);</span><br><span class="line"><span class="built_in">alg</span>(beg, end, beg2, end2, other args);</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-为何unique-ptr优于auto-ptr"><a href="#2-3-为何unique-ptr优于auto-ptr" class="headerlink" title="2.3 为何unique_ptr优于auto_ptr"></a>2.3 为何unique_ptr优于auto_ptr</h4><p>将上一点的语句使用unique_ptr改写。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">unique_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">ps = pd;   <span class="comment">//非法！</span></span><br></pre></td></tr></table></figure>
 
-<p>alg：算法名称；beg：迭代器范围开始；end：迭代器范围结束；dest：指向特定位置的迭代器；</p>
-<p>other args：可调用对象</p>
-<p>如果dest直接指向一个容器，调用算法时会将元素修改，一般dest是一个插入迭代器，用于将元素写入容器。dest还可以是一个ostream_iterator，用于插入到输出流中，这两者无需考虑空间是否足够。</p>
-<h5 id="算法命名规范"><a href="#算法命名规范" class="headerlink" title="算法命名规范"></a>算法命名规范</h5><ul>
-<li><p>一些算法提供谓词作为参量的重载形式，使用谓词来代替&lt;或==。</p>
-</li>
-<li><p>一些算法提供_if的变体，将第三个参数（值）变为谓词，通过返回true来判断：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">3</span>);            <span class="comment">//传递值</span></span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find_if</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">isShort</span>()); <span class="comment">//传递谓词</span></span><br></pre></td></tr></table></figure></li>
-<li><p>一些算法提供_copy版本，要求额外提供一个迭代器储存拷贝，操作的容器本身不会发生变化。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">reverse</span>(beg, end);        <span class="comment">//翻转元素顺序</span></span><br><span class="line"><span class="built_in">reverse</span>(beg, end, dest);  <span class="comment">//将翻转后的值拷贝到dest中</span></span><br></pre></td></tr></table></figure></li>
-<li><p>一些算法提供_copy_if版本，提供额外的迭代器和一个谓词，将符合谓词的元素拷贝至指定的迭代器。</p>
-<p><del>真就排列组合。</del></p>
-</li>
-</ul>
-<h4 id="特定容器算法"><a href="#特定容器算法" class="headerlink" title="特定容器算法"></a>特定容器算法</h4><p><del>诶list和forward_list，对对对，就你俩。</del></p>
-<p>由于list和forward_list只分别只提供双向迭代器和前向迭代器，它定义了独有的sort, merge, remove, reverse, unique函数。链表定义的其他通用算法可以使用其通用形式，但代价太高。<strong>能用list版本就用list版本。</strong></p>
-<p>以下是链表成员函数版的算法：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">lst.<span class="built_in">merge</span>(lst2);        <span class="comment">//将lst2的元素并入lst1。lst1和lst2必须是有序的</span></span><br><span class="line">lst.<span class="built_in">merge</span>(lst2, comp);  <span class="comment">//合并之后lst2置空</span></span><br><span class="line"></span><br><span class="line">lst.<span class="built_in">remove</span>(val);</span><br><span class="line">lst.<span class="built_in">remove</span>(pred);       <span class="comment">//调用erase删除值为val或令谓词为真的元素</span></span><br><span class="line"></span><br><span class="line">lst.<span class="built_in">reverse</span>();          <span class="comment">//翻转lst</span></span><br><span class="line"></span><br><span class="line">lst.<span class="built_in">sort</span>();</span><br><span class="line">lst.<span class="built_in">sort</span>(comp);         <span class="comment">//使用&lt;或给定比较操作排序</span></span><br><span class="line"></span><br><span class="line">lst.<span class="built_in">unique</span>();</span><br><span class="line">lst.<span class="built_in">unique</span>(pred);</span><br></pre></td></tr></table></figure>
+<p>编辑器将不允许这样的赋值。但可以这样做：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">pd = <span class="built_in">unique_ptr</span>&lt;string&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;JS_KringKoter&quot;</span>));  <span class="comment">//合法</span></span><br></pre></td></tr></table></figure>
 
+<p>如果右值临时存在，在赋值结束后即销毁，则可以这样做。如果右值将存在一段时间，编辑器将会静止这样的行为。</p>
+<p>另一个优点是，auto_ptr只能使用new和delete，unique_ptr可以使用new[]和delete[]。</p>
+<h6 id="std-move-函数：安全地重用unique-ptr"><a href="#std-move-函数：安全地重用unique-ptr" class="headerlink" title="std::move()函数：安全地重用unique_ptr"></a>std::move()函数：安全地重用unique_ptr</h6><p>要安全的重用unique_ptr，可以考虑给其赋新值。标准库函数move()可以做到这一点。该函数返回一个unique_ptr<Type>对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">unique_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string(<span class="string">&quot;JS_KringKoter&quot;</span>))</span></span>;</span><br><span class="line">unique_ptr&lt;string&gt; pd;</span><br><span class="line">pd = <span class="built_in">move</span>(ps);  <span class="comment">//转移所有权，置空ps</span></span><br><span class="line">ps = <span class="built_in">unique_ptr</span>&lt;string&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;JS&quot;</span>));  <span class="comment">//重新赋值</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：调用move()函数后，ps指针仍被置空，此时需要对其进行赋值才能重新使用。</strong></p>
 
       
 
@@ -362,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://jskringkoter.github.io/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://jskringkoter.github.io/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -376,18 +300,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/04/16/%E6%96%87%E7%AB%A0/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/vector%E6%A8%A1%E6%9D%BF%E5%BA%93%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          风乎舞雩
+          vector模板库和迭代器
         
       </div>
     </a>
   
   
-    <a href="/2023/04/10/%E6%97%85%E8%A1%8C%E6%89%8B%E8%AE%B0/%E8%BF%9C%E5%B1%B1%E4%B8%8E%E8%90%BD%E6%97%A5%EF%BC%8C%E5%8D%8A%E5%9F%8E%202023.04.08/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">远山与落日，半城</div>
+    <a href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">UE4学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -414,7 +338,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E8%AF%86%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95%EF%BC%9A%E5%A5%BD%E6%80%AA%EF%BC%8C%E5%86%8D%E7%9C%8B%E4%B8%80%E7%9C%BC"><span class="toc-number">1.</span> <span class="toc-text">初识泛型算法：好怪，再看一眼</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">只读算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E4%B8%A4%E4%B8%AA%E5%BA%8F%E5%88%97%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">操作两个序列的算法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%AE%B9%E5%99%A8%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">写容器的算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#back-inserter%E6%8F%92%E5%85%A5%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">back_inserter插入迭代器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#copy%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">copy算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84copy%E5%8F%98%E4%BD%93"><span class="toc-number">1.2.3.</span> <span class="toc-text">函数的copy变体</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">排序算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#sort%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">sort算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D%E5%8D%95%E8%AF%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">一个例子：消除重复单词</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8unique"><span class="toc-number">1.3.3.</span> <span class="toc-text">使用unique</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.</span> <span class="toc-text">定制操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%91%E7%AE%97%E6%B3%95%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">向算法传递函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%B9%A6%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">一个书后习题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.</span> <span class="toc-text">泛型算法结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">迭代器类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%BD%A2%E5%8F%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.5.2.</span> <span class="toc-text">算法形参模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">1.5.3.</span> <span class="toc-text">算法命名规范</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E5%AE%9A%E5%AE%B9%E5%99%A8%E7%AE%97%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">特定容器算法</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">1.智能指针的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">2.</span> <span class="toc-text">2.使用智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E5%88%9B%E5%BB%BA%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 创建智能指针对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-auto-ptr%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 auto_ptr的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E4%B8%BA%E4%BD%95unique-ptr%E4%BC%98%E4%BA%8Eauto-ptr"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 为何unique_ptr优于auto_ptr</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#std-move-%E5%87%BD%E6%95%B0%EF%BC%9A%E5%AE%89%E5%85%A8%E5%9C%B0%E9%87%8D%E7%94%A8unique-ptr"><span class="toc-number">2.3.0.1.</span> <span class="toc-text">std::move()函数：安全地重用unique_ptr</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -526,6 +450,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">琐碎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
@@ -538,10 +466,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
@@ -550,11 +474,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小说</a>
+                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,6 +483,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小说</a>
               </li>
              
               <li class="article-tag-list-item">

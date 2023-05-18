@@ -141,6 +141,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-QT下载速度慢的解决办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/17/QT%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">QT下载速度慢的解决办法</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/17/QT%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2023-05-17T12:15:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在命令行中执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\qt-unified-windows-x86-online.exe --mirror https://mirrors.ustc.edu.cn/qtproject</span><br></pre></td></tr></table></figure>
+
+<p>前面是qt安装器地址，可自行更改。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">琐碎</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/17/QT%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++学习笔记/C++数据结构与算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -161,7 +238,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="数据结构部分"><a href="#数据结构部分" class="headerlink" title="数据结构部分"></a>数据结构部分</h2><h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><p>线性表（linear list）又称为线性表，它的是元素的一个有序集合，形式为e0, e1, e2……en-1。ei是线性表的元素，i是索引，n是线性表的长度或大小。当n=0时，线性表为空。</p>
+<p>对线性表至少需要执行以下操作：</p>
+<ul>
+<li>创建一个线性表</li>
+<li>撤销一个线性表</li>
+<li>确定线性表是否为空</li>
+<li>确定线性表的长度</li>
+<li>按给定索引查找元素</li>
+<li>按给定元素查找索引</li>
+<li>按给定索引删除元素</li>
+<li>按一个给定的索引插入一个元素</li>
+<li>从左至右输出线性元素表</li>
+</ul>
+<h4 id="抽象数据类型linear-list"><a href="#抽象数据类型linear-list" class="headerlink" title="抽象数据类型linear list"></a>抽象数据类型linear list</h4><p>将线性表用跨语言的抽象概念表示为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">抽象数据类型linear list</span><br><span class="line">&#123;</span><br><span class="line">实例：</span><br><span class="line">  有限个元素的有序集合</span><br><span class="line">操作：</span><br><span class="line">empty()：若表空，返回false</span><br><span class="line">size()：返回线性表的大小（元素个数）</span><br><span class="line">get(index)：返回线性表中索引为index的元素</span><br><span class="line">indexOf(x)：返回线性表中元素为x的索引</span><br><span class="line">erase(index)：删除线性表中索引为index的元素</span><br><span class="line">insert(index, x)：向index处插入x</span><br><span class="line">output()：从左至右输出元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用c++语言描述抽象概念：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">linearList</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">virtual</span> ~<span class="built_in">linearList</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//返回线性表是否为空</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">int</span> <span class="title">size</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//返回线性表元素个数</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> T&amp; <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//返回索引为index的元素</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">int</span> <span class="title">indexOf</span><span class="params">(<span class="type">const</span> T&amp; theElement)</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//返回第一个元素为theEnement的索引</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">erase</span><span class="params">(<span class="type">int</span> index)</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//删除index的元素，无法操作const对象</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> index, <span class="type">const</span> T&amp; theElement)</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//在index处插入theElement，无法操作const对象</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">output</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//从左至右输出元素</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="线性表——数组描述"><a href="#线性表——数组描述" class="headerlink" title="线性表——数组描述"></a>线性表——数组描述</h4><p>从抽象类型linear list中派生出arraylist：</p>
+<p>arrayList.h:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">arrayList</span> : <span class="keyword">public</span> linearList&lt;T&gt; &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">arrayList</span>(<span class="type">int</span> initialCapacity = <span class="number">10</span>);</span><br><span class="line">	<span class="built_in">arrayList</span>(<span class="type">const</span> arrayList&lt;T&gt;&amp;);</span><br><span class="line">	~<span class="built_in">arrayList</span>() &#123; <span class="keyword">delete</span> element; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> listSize == <span class="number">0</span>; &#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">size</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> listSize; &#125;</span><br><span class="line">	<span class="function">T&amp; <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> <span class="type">const</span></span>;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">indexOf</span><span class="params">(<span class="type">const</span> T&amp; theElement)</span> <span class="type">const</span></span>;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">erase</span><span class="params">(<span class="type">int</span> index)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> index, <span class="type">const</span> T&amp; theElement)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">output</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">checkIndex</span><span class="params">(<span class="type">int</span> index)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= listSize) &#123;</span><br><span class="line">			std::cout &lt;&lt; <span class="string">&quot;Index : &quot;</span> &lt;&lt; index &lt;&lt; <span class="string">&quot; illegal!\n&quot;</span>;</span><br><span class="line">			<span class="built_in">abort</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	T* element;</span><br><span class="line">	<span class="type">int</span> arrayLenth;</span><br><span class="line">	<span class="type">int</span> listSize;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>arrayList.cpp:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">changeLenth</span><span class="params">(T*&amp; t, <span class="type">int</span> oldLenth, <span class="type">int</span> newLenth)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//改变数组长度</span></span><br><span class="line">	<span class="keyword">if</span> (newLenth &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">abort</span>();</span><br><span class="line"></span><br><span class="line">	T* temp = <span class="keyword">new</span> T[newLenth];</span><br><span class="line">	<span class="type">int</span> number = std::<span class="built_in">min</span>(oldLenth, newLenth);   <span class="comment">//确定拷贝的元素长度</span></span><br><span class="line">	<span class="built_in">copy</span>(t, t + number, temp);</span><br><span class="line">	<span class="keyword">delete</span>[] t;                                  <span class="comment">//释放原数组内存</span></span><br><span class="line">	t = temp;                                    <span class="comment">//将原指针指向新数组</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">arrayList&lt;T&gt;::<span class="built_in">arrayList</span>(<span class="type">int</span> initialCapacity)</span><br><span class="line">&#123;<span class="comment">//构造函数，时间复杂度为O(initialCapacity)（当自定义类）或O(1)（当基本类型）</span></span><br><span class="line">	<span class="keyword">if</span> (initialCapacity &lt; <span class="number">1</span>) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;initialCapacity = &quot;</span> &lt;&lt; initialCapacity &lt;&lt; <span class="string">&quot; Must be &gt; 0 \n&quot;</span>;</span><br><span class="line">		<span class="built_in">abort</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	arrayLenth = initialCapacity;</span><br><span class="line">	element = <span class="keyword">new</span> T[arrayLenth];</span><br><span class="line">	listSize = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">arrayList&lt;T&gt;::<span class="built_in">arrayList</span>(<span class="type">const</span> arrayList&amp; theList)</span><br><span class="line">&#123;<span class="comment">//复制构造函数</span></span><br><span class="line">	arrayLenth = theList.arrayLenth;</span><br><span class="line">	listSize = theList.listSize;</span><br><span class="line">	element = <span class="keyword">new</span> T[arrayLenth];</span><br><span class="line">	<span class="built_in">copy</span>(theList, theList + theList.listSize, element);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">T&amp; arrayList&lt;T&gt;::<span class="built_in">get</span>(<span class="type">int</span> index) <span class="type">const</span></span><br><span class="line">&#123;<span class="comment">//获取下标为index的元素，时间复杂度为O(1)</span></span><br><span class="line">	<span class="built_in">checkIndex</span>(index);</span><br><span class="line">	<span class="keyword">return</span> element[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="type">int</span> arrayList&lt;T&gt;::<span class="built_in">indexOf</span>(<span class="type">const</span> T&amp; theElement) <span class="type">const</span></span><br><span class="line">&#123;<span class="comment">//获取元素为theElement的下标，时间复杂度为O(max&#123;listSize, 1&#125;)，简单起见记作O(listSize)</span></span><br><span class="line">	<span class="type">int</span> index = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt; (<span class="built_in">find</span>(element, element + listSize, theElement) - element);</span><br><span class="line">	<span class="keyword">if</span> (index == listSize)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="type">void</span> arrayList&lt;T&gt;::<span class="built_in">erase</span>(<span class="type">int</span> index)</span><br><span class="line">&#123;<span class="comment">//将index删除，时间复杂度为O(listSize - index)</span></span><br><span class="line">	<span class="built_in">checkIndex</span>(index);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//调用copy函数，将index后的元素向前复制一位</span></span><br><span class="line">	<span class="built_in">copy</span>(element + index + <span class="number">1</span>, element + listSize, element + index);</span><br><span class="line">	<span class="comment">//调用最后一位元素的析构函数</span></span><br><span class="line">	element[--listSize].~<span class="built_in">T</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="type">void</span> arrayList&lt;T&gt;::<span class="built_in">insert</span>(<span class="type">int</span> index, <span class="type">const</span> T&amp; theElement)</span><br><span class="line">&#123;<span class="comment">//在index插入theElement</span></span><br><span class="line">	<span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; listSize) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;Index : &quot;</span> &lt;&lt; index &lt;&lt; <span class="string">&quot; illegal!\n&quot;</span>;</span><br><span class="line">		<span class="built_in">abort</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (listSize == arrayLenth) &#123;</span><br><span class="line">		<span class="built_in">changeLenth</span>(element, arrayLenth, arrayLenth * <span class="number">2</span>);</span><br><span class="line">		arrayLenth *= <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = listSize; i &gt; index; i--) &#123;</span><br><span class="line">		element[i] = element[i - <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	element[index] = theElement;</span><br><span class="line">	listSize++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="type">void</span> arrayList&lt;T&gt;::<span class="built_in">output</span>()</span><br><span class="line">&#123;<span class="comment">//从左至右输出</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;[ &quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; listSize; i++) &#123;</span><br><span class="line">		cout &lt;&lt; element[i] &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;]&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
       
 
       
@@ -665,19 +774,19 @@
 
 
   
-    <article id="post-C++学习笔记/关联容器/关联容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-C++学习笔记/STL标准模板库/关联容器/关联容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">关联容器</a>
+      <a class="article-title" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">关联容器</a>
     </h1>
   
 
         
-        <a href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" class="archive-article-date">
+        <a href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" class="archive-article-date">
   	<time datetime="2023-04-19T10:50:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
 </a>
         
@@ -742,7 +851,7 @@
 <p>你说得对 : 2  啊对对对 : 3 …… （是否太过抽象了）</p>
 <p>在for语句中使用auto自动类型推断，此时生成的是一个pair对象，该对象中定义了first和second公有成员，分别储存关键字及值。</p>
         
-          <a class="article-more-a" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/#more">more >></a>
+          <a class="article-more-a" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/#more">more >></a>
         
       
 
@@ -770,7 +879,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">展开全文 >></a>
         </p>
       
 
@@ -800,19 +909,19 @@
 
 
   
-    <article id="post-C++学习笔记/关联容器/泛型算法/lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-C++学习笔记/STL标准模板库/泛型算法/lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a>
+      <a class="article-title" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a>
     </h1>
   
 
         
-        <a href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+        <a href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
   	<time datetime="2023-04-18T00:23:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-18</time>
 </a>
         
@@ -882,7 +991,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
         </p>
       
 
@@ -1021,98 +1130,6 @@
 
 
   
-    <article id="post-C++学习笔记/关联容器/泛型算法/泛型算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/">泛型算法</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2023-04-13T10:06:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="初识泛型算法：好怪，再看一眼"><a href="#初识泛型算法：好怪，再看一眼" class="headerlink" title="初识泛型算法：好怪，再看一眼"></a>初识泛型算法：好怪，再看一眼</h3><p>泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。</p>
-<p>算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算符也要求提供重载函数。</p>
-<p>以下是一个find()函数，它接受两个迭代器组成的迭代器范围和一个值，若找到了这个值，则返回指向这个值的迭代器，否则返回迭代器范围的末尾。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), <span class="number">30</span>);</span><br><span class="line"><span class="keyword">if</span> (iter == vec.<span class="built_in">cend</span>())</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;find it&quot;</span>;</span><br><span class="line"><span class="comment">//若没有找到，则返回vec.cend();若传递的迭代器末尾为vec.cend() - 2，则返回vec.cend() - 2。</span></span><br></pre></td></tr></table></figure>
-
-<p>在书后习题中还有一个函数count()，接受两个迭代器组成的范围和一个值，返回迭代器范围中该值的数量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> number = <span class="built_in">count</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>算法不会执行迭代器的操作，它建立在迭代器之上</strong></p>
-        
-          <a class="article-more-a" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1210,6 +1227,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">琐碎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
@@ -1222,10 +1243,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
@@ -1234,11 +1251,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小说</a>
+                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1247,6 +1260,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Rainimator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小说</a>
               </li>
              
               <li class="article-tag-list-item">
