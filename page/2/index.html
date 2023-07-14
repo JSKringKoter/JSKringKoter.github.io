@@ -141,219 +141,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-C++学习笔记/STL标准模板库/泛型算法/泛型算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/">泛型算法</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2023-04-13T10:06:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="初识泛型算法：好怪，再看一眼"><a href="#初识泛型算法：好怪，再看一眼" class="headerlink" title="初识泛型算法：好怪，再看一眼"></a>初识泛型算法：好怪，再看一眼</h3><p>泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。</p>
-<p>算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算符也要求提供重载函数。</p>
-<p>以下是一个find()函数，它接受两个迭代器组成的迭代器范围和一个值，若找到了这个值，则返回指向这个值的迭代器，否则返回迭代器范围的末尾。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), <span class="number">30</span>);</span><br><span class="line"><span class="keyword">if</span> (iter == vec.<span class="built_in">cend</span>())</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;find it&quot;</span>;</span><br><span class="line"><span class="comment">//若没有找到，则返回vec.cend();若传递的迭代器末尾为vec.cend() - 2，则返回vec.cend() - 2。</span></span><br></pre></td></tr></table></figure>
-
-<p>在书后习题中还有一个函数count()，接受两个迭代器组成的范围和一个值，返回迭代器范围中该值的数量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> number = <span class="built_in">count</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>算法不会执行迭代器的操作，它建立在迭代器之上</strong></p>
-        
-          <a class="article-more-a" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C++学习笔记/STL标准模板库/顺序容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">顺序容器</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2023-04-06T06:13:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="顺序容器的分类"><a href="#顺序容器的分类" class="headerlink" title="顺序容器的分类"></a>顺序容器的分类</h3><p>容器特定对象（包括内置数据类型，结构，类等）的集合。顺序容器则提供了按顺序储存或访问它们的能力。</p>
-<p>理解为一个很牛逼的数组就行了。</p>
-<p>下面是顺序容器的类型和特点：</p>
-<table>
-<thead>
-<tr>
-<th>容器类型</th>
-<th>特点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>vector</td>
-<td>大小可变，可以增添或删除，可以随机访问。在尾部之外的地方插入数据可能很慢。</td>
-</tr>
-<tr>
-<td>deque</td>
-<td>双端队列，在头部插入数据很快。</td>
-</tr>
-<tr>
-<td>list</td>
-<td>双向链表，在任何位置插入数据很快，但访问很慢。</td>
-</tr>
-<tr>
-<td>forward_list</td>
-<td>单向链表，只支持单向数据访问，在任何位置插入数据很快。</td>
-</tr>
-<tr>
-<td>array</td>
-<td>固定数组，无法变化大小，可随机访问。</td>
-</tr>
-<tr>
-<td>string</td>
-<td>类似于vector<string></td>
-</tr>
-</tbody></table>
-<p>应在不同情况下选择不同的容器，一般除非有特殊理由，则使用vector。避免使用数组，容器的数据处理效率要大于数组。如果不确定应选择何种容器，则在只使用vector和list的情况下使用迭代器（而不是下标访问）。</p>
-<h3 id="顺序容器的迭代器"><a href="#顺序容器的迭代器" class="headerlink" title="顺序容器的迭代器"></a>顺序容器的迭代器</h3><p>所有的容器迭代器都有++操作，–仅forward_list不支持（无法双向访问）。支持随机访问的迭代器才能使用+, -运算符。</p>
-<p>可以对迭代器使用&lt;, &lt;=, &gt;, =&gt;运算符，但list和forward_list不支持。</p>
-        
-          <a class="article-more-a" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-C++学习笔记/STL标准模板库/概念，改进和模型，深入探讨迭代器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -399,11 +186,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -489,11 +276,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -592,11 +379,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1076,9 +863,194 @@
 
 
   
+    <article id="post-文章/永远的铁道" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/">永远的铁道</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/" class="archive-article-date">
+  	<time datetime="2023-03-23T09:00:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p> 写于2023.01.25 记一段梦境</p>
+<hr>
+<p>铁路修了很多年，如今仍在修着。</p>
+<p>没人知道铁路的起讫地点，它就这样一直延伸着，穿过无边的草原和湿地，遇水搭桥，逢山开路。或许它经过了无数个小镇，或许它经过了无数座城市，它仍然不断延伸，如同时光般永不停歇。</p>
+<p>铁路修了很多年，当然，还没有火车经过这里。</p>
+<p>铁轨下的枕木，经过多年风和雨的摧残，已经腐朽得不成样子，完全无法承受火车的重量。即便如此，没有人将它们更换掉，它们被遗弃在这里，兀自记载着岁月的痕迹。</p>
+<p>老一辈人还记得铁路修到这里的时候，很多人站在路边看热闹的样子。工人扛着木头，沉重的铁镐挥击着大地，发出有规律的，触及人心的震颤声。那时候人人都以为火车会在不久的将来冒着热气，在汽笛声中缓缓开进站台。人们带着行李，在烟雾缭绕中走上火车，前往不可知的远方，寻找各自的目的地。</p>
+<p>铁路逐渐远去，它倒是去了远方，在人们日复一日的期盼中隐没在了无边的飞雪和雾气中，渺无音讯。</p>
+<p>北国的小镇，交通不便。群山环绕之中，一年里除了飞雪，很难看到其他东西。</p>
+<p>总有人想出去，而那些出去的人们，也不会再回来。偶尔有鸽子携着信穿越群山来到这里，带来来自远方的问候。几天之后它又会飞走，带走憧憬和祝愿，消失在人们的视野中。</p>
+<p>铁路修了很多年，如今又如何呢？</p>
+<p>老一辈人都离开了人世，终于没有人记得曾经的期愿了。铁路被封在大雪中，那桦木的小巧玲珑的车站破损不堪。没人在乎，当然也没必要在乎。当它早就废弃了就好。</p>
+        
+          <a class="article-more-a" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-文章/尘埃深处" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/">尘埃深处</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/23/%E6%96%87%E7%AB%A0/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/" class="archive-article-date">
+  	<time datetime="2023-03-23T09:00:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最后更新日期：2023.03.26</p>
+<hr>
+<h4 id="序"><a href="#序" class="headerlink" title="-序-"></a>-序-</h4><p>时钟打了六点，已然是黄昏了。</p>
+<p>我伫立在窗边，空气中满是的沙尘在逐渐散去，阳光透过窗户，洒的满桌都是金黄。</p>
+<p>梧桐叶满秋，风帆影动，桂树花浓。</p>
+<p>秋天了呀。</p>
+<p>秋天呀，秋天。</p>
+<p>我反复念叨着这个词。</p>
+<p>我所生活的世界里，从来没有秋天。</p>
+<p>这里没有桂花和梧桐，没有渐凉的秋风，也没有越来越高的天空。</p>
+<p>这里是EHIS-4，一个没有季节的星球，一个没有生命的星球，这里几乎所有的陆地都是荒漠，高温覆盖了四季的每一天。伴随着高温的还有沙尘，无边的沙尘将天空染成了黄褐色，难得看见太阳，至于蓝天，那更是只能存在于老一辈人的记忆中了。</p>
+<p>然而，这里是三亿人的家园。无论他们情愿或不情愿，他们都生活在这里。因为这里是全宇宙经济最发达的地区之一，许多人为了生计不远万里前来，只为了能养活自己和家人。所以即使被风沙划破了脸颊，他们依然生活在此。几十年过去了，他们也适应了这样的天气，他们的后代从小在这里长大，这样的天气对他们来说便如每日的白昼一样平常。</p>
+<p>曾经，我也是他们中的一员。</p>
+<p>秋天呀，秋天。我时常挂在嘴边。</p>
+<p>还会有人记得这个世界本来的模样吗？还会有人记得四季轮转吗？</p>
+<p>就连我，也从未见过它本身的模样。可仅仅是书中的那只言片语，也能激起我不尽的念想。书的封面上印着“EARTH”的艺术字，在那后面，是一个青绿的星球，陆地衬着海洋，明媚地，仿佛周围深邃的银河也不再冷寂。</p>
+<p>谁能想到，EHIS-4的法律禁止种植植物，星球的植物和动物都遭到灭绝，为的是那可笑的工业发展。</p>
+<p>这里的人们不记得地球，不记得那是人类的本源，也不再记得那郁郁葱葱的世界。 </p>
+<p>不再记得春天的野花，冬天的雪。</p>
+<p>不再记得秋天呀，秋天。</p>
+<p>书是一年前，那个少年，送给我的。</p>
+<p>那是一场彻彻底底的意外。但那场意外，却将一点来之不易的生机，给了我，和这个世界。从此我相信，荒漠中，细雨仍在，它会在意想不到的时候降落。</p>
+        
+          <a class="article-more-a" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </nav>
   
 
@@ -1173,7 +1145,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">琐碎</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1181,19 +1153,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Unreal Engine</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
+                <a href="javascript:void(0)" class="js-tag color3">小说</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,11 +1169,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">旧作为新</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小说</a>
+                <a href="javascript:void(0)" class="js-tag color4">Unreal Engine</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">音乐🎶</a>
               </li>
              
               <li class="article-tag-list-item">
