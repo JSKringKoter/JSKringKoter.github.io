@@ -141,6 +141,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/STL标准模板库/泛型算法/lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-04-18T00:23:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="lambda表达式概览"><a href="#lambda表达式概览" class="headerlink" title="lambda表达式概览"></a>lambda表达式概览</h3><p>可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为：</p>
+<p><strong>[捕获列表] (参数列表) -&gt; 返回类型{函数体}</strong></p>
+<p>可以忽略返回类型和参数列表。当忽略返回类型时，返回类型根据return的类型自动推断，否则类型为void。不加()表明忽略参数列表，等价于指定一个空参数列表（空括号）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> f = [] &#123; <span class="keyword">return</span> <span class="number">42</span>; &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="向lambda传递参数"><a href="#向lambda传递参数" class="headerlink" title="向lambda传递参数"></a>向lambda传递参数</h4><p>参数列表括号中可以添加对lambda传递的参数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一个具有比较功能的lambda表达式</span></span><br><span class="line"><span class="keyword">auto</span> f = [](<span class="type">const</span> <span class="type">int</span>&amp; a, <span class="type">const</span> <span class="type">int</span>&amp; b) &#123; <span class="keyword">return</span> a &lt; b; &#125;;</span><br><span class="line"><span class="comment">//使用lambda表达式的sort</span></span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), f);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="使用捕获列表"><a href="#使用捕获列表" class="headerlink" title="使用捕获列表"></a>使用捕获列表</h4><p>空捕获列表表示不会使用表达式所在函数中的任何参数。可以在参数列表中给定所需参量，该参量必须在表达式之前声明。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ve = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">auto</span> f = [ve](<span class="type">const</span> <span class="type">int</span>&amp; a) &#123; <span class="keyword">return</span> a &lt; ve; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以传递多个参量，之间使用逗号隔开：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ve, i;</span><br><span class="line"><span class="keyword">auto</span> f = [ve, i](<span class="type">const</span> <span class="type">int</span>&amp; a) &#123; <span class="keyword">return</span> a + i &lt; ve; &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="lambda的捕获和返回"><a href="#lambda的捕获和返回" class="headerlink" title="lambda的捕获和返回"></a>lambda的捕获和返回</h3><h4 id="值捕获和引用捕获"><a href="#值捕获和引用捕获" class="headerlink" title="值捕获和引用捕获"></a>值捕获和引用捕获</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ve] &#123; <span class="keyword">return</span> ve; &#125;;   <span class="comment">//值捕获</span></span><br><span class="line">[&amp;ve] &#123; <span class="keyword">return</span> ve; &#125;;  <span class="comment">//引用捕获</span></span><br></pre></td></tr></table></figure>
+
+<p>使用引用捕获必须保证在语句执行时引用仍然存在。如果捕获了迭代器，迭代器很有可能在语句执行时失效。</p>
+<h4 id="隐式捕获"><a href="#隐式捕获" class="headerlink" title="隐式捕获"></a>隐式捕获</h4><p>可以向[]中传递=或者&amp;来表示捕获的类型，这样当语句中出现函数中的变量时，它将遵循赋值或引用。可以不显示告知捕获类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&amp;](<span class="type">const</span> <span class="type">int</span>&amp; a) &#123; b++; &#125;;</span><br><span class="line">[=](<span class="type">const</span> <span class="type">int</span>&amp; a) &#123; <span class="keyword">return</span> a &lt; b; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用混合类型，指定特定的捕获为特定类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[=, &amp;b]() &#123; <span class="keyword">return</span> b &lt; c; &#125;;</span><br><span class="line">[&amp;, b]() &#123; <span class="keyword">return</span> b &lt; c; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如果默认类型为引用，显示指定的类型必须为赋值，即不能有<code>[&amp;, &amp;b]() &#123; return b &lt; a; &#125;</code>存在，赋值也一样。</p>
+<h4 id="可变lambda"><a href="#可变lambda" class="headerlink" title="可变lambda"></a>可变lambda</h4><p>拷贝的捕获不能修改值（并不是像函数的临时变量一样不会影响原始变量，编辑器直接禁止此类操作）。若要在函数中修改其值（函数外该值仍然未变，这一点不同于引用捕获），需使用关键字mutable。</p>
+<p><del>mutable有用情不专一的意思，真是笑死。</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[b]() <span class="keyword">mutable</span>&#123; <span class="keyword">return</span> ++b; &#125;;</span><br><span class="line"><span class="comment">//执行后，lambda表达式中的b++，然而上一级函数中的b未变。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="指定lambda的返回类型"><a href="#指定lambda的返回类型" class="headerlink" title="指定lambda的返回类型"></a>指定lambda的返回类型</h4><p>lambda可以通过return自动推断返回类型，但当函数体中不仅仅存在return语句时，lambda自动返回void，此时需要显式指定返回类型。lambda使用-&gt;来指出返回的数据类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[](<span class="type">int</span> a, <span class="type">int</span> b) -&gt; <span class="type">bool</span> &#123; <span class="keyword">if</span> (a + b &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line">                         <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>; &#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-文章/风乎舞雩" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -989,89 +1101,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/27/%E6%96%87%E7%AB%A0/%E4%B8%94%E5%90%AC%E9%A3%8E%E9%9B%AA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-文章/斯通古堡的往事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/">斯通古堡的往事</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/" class="archive-article-date">
-  	<time datetime="2023-03-23T10:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="斯通古堡的往事"><a href="#斯通古堡的往事" class="headerlink" title="-斯通古堡的往事-"></a>-斯通古堡的往事-</h3><hr>
-<p>古老的歌谣一直传唱着，几千年来，从未间断。</p>
-<p>斯通古城堡墙壁上的砖石，在阳光和风的侵蚀下，慢慢露出里面只属于石头的纹路。人们会小心地敲下破损的砖头，然后换上新的，代替原来的接受时光的冲刷。替换用的石头摆在城堡的外面，像小山一样，黄色的砖石让人们有一种温暖的感觉，总会有小孩子爬上石头玩，秋天的太阳把他们晒得暖洋洋地。</p>
-<p>他们在咿呀学语，在摸爬滚打中学会走路，在傍晚天快黑的时候被赶回去用餐。第二天放学后，他们一定会像平常一样在这里爬上爬下，在这里嬉戏打闹，在这里唱着那传唱了几千年的歌谣。</p>
-<p>连人们都数不清多少年之后，这里的砖石也变得和那城堡上的砖头一样破损了。但它们一直堆在这里，从没有人挪动过位置，仿佛这就是法律所规定的一般，神圣不可侵犯。当年的孩子长大了，结婚了，生育了下一代，生病了，死去了，和这一堆石头都没有关系。它只是默默地看着他们成长，然后死去，仅此而已。</p>
-<p>笔者是在那里长大的孩子中的一员。虽然这一堆石头，以及那座城堡，和它伴着成长的那些人，早已经湮没在了时光中，但笔者仍然想提起笔，写下那里发生的一些事情。笔者的私心：这些故事，希望能给更多的人看到。</p>
-<p>故事零零散散，笔者已经不可能将它们拼凑完整，留白的部分就请读者自由想象吧。</p>
-<p>历460年 11 月 8 日</p>
-        
-          <a class="article-more-a" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/">展开全文 >></a>
         </p>
       
 
