@@ -141,6 +141,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++学习笔记/STL标准模板库/关联容器/关联容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">关联容器</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2023-04-19T10:50:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。</p>
+<p>STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。multi表示允许重复关键字，unordered表示无序组织。</p>
+<table>
+<thead>
+<tr>
+<th>按关键字有序保存元素</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>map</td>
+<td>关联数组；保存 关键字-值 对</td>
+</tr>
+<tr>
+<td>set</td>
+<td>只保存关键字的容器</td>
+</tr>
+<tr>
+<td>multimap</td>
+<td>关键字可重复出现的map</td>
+</tr>
+<tr>
+<td>multiset</td>
+<td>关键字可重复出现的set</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>无序集合</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>unordered_map</td>
+<td>用哈希函数组织的map</td>
+</tr>
+<tr>
+<td>unordered_set</td>
+<td>用哈希函数组织的set</td>
+</tr>
+<tr>
+<td>unordered_multimap</td>
+<td>哈希组织map，关键字可重复出现</td>
+</tr>
+<tr>
+<td>unordered_multiset</td>
+<td>哈希组织set，关键字可重复出现</td>
+</tr>
+</tbody></table>
+<h3 id="使用关联容器"><a href="#使用关联容器" class="headerlink" title="使用关联容器"></a>使用关联容器</h3><h4 id="使用map"><a href="#使用map" class="headerlink" title="使用map"></a>使用map</h4><p>一个经典的关联容器实例为单词计数器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">map&lt;string, <span class="type">int</span>&gt; wordCount;</span><br><span class="line">string word;</span><br><span class="line"><span class="keyword">while</span> (cin &gt;&gt; word) &#123;</span><br><span class="line">    ++wordCount[string];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x : wordCount) &#123;</span><br><span class="line">    cout &lt;&lt; x.first &lt;&lt; <span class="string">&quot; : &quot;</span> &lt;&lt; x.second &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出大致是：</p>
+<p>你说得对 : 2  啊对对对 : 3 …… （是否太过抽象了）</p>
+<p>在for语句中使用auto自动类型推断，此时生成的是一个pair对象，该对象中定义了first和second公有成员，分别储存关键字及值。</p>
+        
+          <a class="article-more-a" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++学习笔记/STL标准模板库/泛型算法/lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1042,94 +1177,6 @@
 
 
   
-    <article id="post-文章/且听风雪" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/27/%E6%96%87%E7%AB%A0/%E4%B8%94%E5%90%AC%E9%A3%8E%E9%9B%AA/">且听风雪</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/27/%E6%96%87%E7%AB%A0/%E4%B8%94%E5%90%AC%E9%A3%8E%E9%9B%AA/" class="archive-article-date">
-  	<time datetime="2023-03-27T04:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="旧作为新-lt-一-gt"><a href="#旧作为新-lt-一-gt" class="headerlink" title="旧作为新&lt;一&gt;"></a>旧作为新&lt;一&gt;</h5><p>写于2022.10.06</p>
-<hr>
-<p>铺开纸笔，墨水饱蘸，本想就此落笔，你却犹豫了。</p>
-<p>不是忘了掭笔，只是话到临头，却只剩了满腹空文。蘸满了墨水的笔又搁在了笔架上，你知道天寒地冻，这支笔很快就会冻住的吧。</p>
-<p>窗外，初雪纷飞，落在树枝上，不知什么时候已经堆积了起来。明明只是多么常见的意象，可总有可笑的诗人，千树万树梨花开。</p>
-<p>你还记得多少，他的故事？他的信件，一封一封，堆满了你的床头——几年来你一直放在那里，如今也已染上了尘埃的模样。又是一年新春，又是一年初雪，为什么总是同一天？难道是记得他离开的那天吗？</p>
-<p>铜铃声碎，新春又一年，不闻烟火人间。</p>
-<p>霓虹宛若初见。</p>
-<p>他去了哪里，现在身处何方，你还记得吗？你只知道那天，峰回路转，他倏忽隐没在了群山间，只留下了蜿蜒的车辙印迹，剩得漫天的飞雪，从此音讯全无。</p>
-        
-          <a class="article-more-a" href="/2023/03/27/%E6%96%87%E7%AB%A0/%E4%B8%94%E5%90%AC%E9%A3%8E%E9%9B%AA/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">旧作为新</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">小说</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/27/%E6%96%87%E7%AB%A0/%E4%B8%94%E5%90%AC%E9%A3%8E%E9%9B%AA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1268,6 +1315,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">散文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
             
             <div class="clearfix"></div>
