@@ -1,7 +1,241 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JS_KringKoter | Personal blog</title><meta name="author" content="JS_KringKoter"><meta name="copyright" content="JS_KringKoter"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="克林沃特的个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JS_KringKoter | Personal blog">
+<meta property="og:url" content="https://jskringkoter.github.io/page/3/index.html">
+<meta property="og:site_name" content="JS_KringKoter | Personal blog">
+<meta property="og:description" content="克林沃特的个人博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="JS_KringKoter">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jskringkoter.github.io/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JS_KringKoter | Personal blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-09-24 08:36:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  include ./includes/mixins/post-ui.pug
-  #recent-posts.recent-posts
-    +postUI
-    include includes/pagination.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="JS_KringKoter | Personal blog"><span class="site-name">JS_KringKoter | Personal blog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">JS_KringKoter | Personal blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/27/%E6%96%87%E7%AB%A0/%E5%A2%A8%E9%9B%A8%E6%98%A5%E5%88%86/" title="墨雨春分">墨雨春分</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-27T04:07:34.000Z" title="发表于 2023-03-27 12:07:34">2023-03-27</time></span></div><div class="content">旧作为新&lt;二&gt;写于2022.10.11
+
+烟柳画桥，长亭旁边人家，习雨和微风，老树又是新芽。
+你在如丝的细雨中行船，油纸伞面湿润的江南，风动衣袖宽。岸边榆树正茂盛，随意取下几篇叶子，便可以去那风幡舞动的地方小斟一杯吧。绿蚁新酿，浅浅的白沫，或许还有几支樱花，对于你来说就是悠闲的一个下午。也许是春天惹人醉，下午的微醺，总会把相思赋了一梦中。
+离家已经二月有五日了，沿路总有些没化尽的晚雪，仿佛不舍得离去般停留在树枝上。你不懈地打听着，算是找到了他当年的熟人，为你指了一个方向，那里是江南的一个古镇。古镇虽小，可风光却不错，大运河背靠着山峦，古渡口深色的木，细雨湿流光。
+不同于你的家乡——淮北的景色，他应该已经很熟悉了吧。
+半城樱花半城柳
+试问君 曾记否
+ 
+
+花开花谢几载，春风在柳条上轻轻勾勒着，女孩挽起了长发。
+给他的发簪，也该派上用场了吧。
+船行到了岸边，船的新木和渡口的古木碰撞着，两朝的时光。也许是江南的细雨，让木缝中细小的青苔浸满了水分，悄悄地，暗中生长着。渡口旁边是十里长亭，黛瓦飞檐，栽的柳树正青翠。
+十里，十里，这里见证了多少回别离呢？
+会有那客人说：
+“已经送了十里 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/27/%E6%96%87%E7%AB%A0/%E4%B8%94%E5%90%AC%E9%A3%8E%E9%9B%AA/" title="且听风雪">且听风雪</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-27T04:04:18.000Z" title="发表于 2023-03-27 12:04:18">2023-03-27</time></span></div><div class="content">旧作为新&lt;一&gt;写于2022.10.06
+
+铺开纸笔，墨水饱蘸，本想就此落笔，你却犹豫了。
+不是忘了掭笔，只是话到临头，却只剩了满腹空文。蘸满了墨水的笔又搁在了笔架上，你知道天寒地冻，这支笔很快就会冻住的吧。
+窗外，初雪纷飞，落在树枝上，不知什么时候已经堆积了起来。明明只是多么常见的意象，可总有可笑的诗人，千树万树梨花开。
+你还记得多少，他的故事？他的信件，一封一封，堆满了你的床头——几年来你一直放在那里，如今也已染上了尘埃的模样。又是一年新春，又是一年初雪，为什么总是同一天？难道是记得他离开的那天吗？
+铜铃声碎，新春又一年，不闻烟火人间。
+霓虹宛若初见。
+他去了哪里，现在身处何方，你还记得吗？你只知道那天，峰回路转，他倏忽隐没在了群山间，只留下了蜿蜒的车辙印迹，剩得漫天的飞雪，从此音讯全无。
+ 
+
+今日是他的生辰，你不会忘记的。
+那年这时候，你找到城南的银匠，求他雕了一枚发簪。发簪上的图案，是你用了三个时辰画出来的一双鸳鸯，不知道他能不能看懂其中的意思啊。
+家门前长街上，人来人往，车马声喧嚣。斑斓烟火盈空，他俯下身，在你耳边浅吟低唱。你还记得他的歌词吧，他说那是为你而写。可 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%96%AF%E9%80%9A%E5%8F%A4%E5%A0%A1%E7%9A%84%E5%BE%80%E4%BA%8B/" title="斯通古堡的往事">斯通古堡的往事</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-23T10:16:04.000Z" title="发表于 2023-03-23 18:16:04">2023-03-23</time></span></div><div class="content">-斯通古堡的往事-
+古老的歌谣一直传唱着，几千年来，从未间断。
+斯通古城堡墙壁上的砖石，在阳光和风的侵蚀下，慢慢露出里面只属于石头的纹路。人们会小心地敲下破损的砖头，然后换上新的，代替原来的接受时光的冲刷。替换用的石头摆在城堡的外面，像小山一样，黄色的砖石让人们有一种温暖的感觉，总会有小孩子爬上石头玩，秋天的太阳把他们晒得暖洋洋地。
+他们在咿呀学语，在摸爬滚打中学会走路，在傍晚天快黑的时候被赶回去用餐。第二天放学后，他们一定会像平常一样在这里爬上爬下，在这里嬉戏打闹，在这里唱着那传唱了几千年的歌谣。
+连人们都数不清多少年之后，这里的砖石也变得和那城堡上的砖头一样破损了。但它们一直堆在这里，从没有人挪动过位置，仿佛这就是法律所规定的一般，神圣不可侵犯。当年的孩子长大了，结婚了，生育了下一代，生病了，死去了，和这一堆石头都没有关系。它只是默默地看着他们成长，然后死去，仅此而已。
+笔者是在那里长大的孩子中的一员。虽然这一堆石头，以及那座城堡，和它伴着成长的那些人，早已经湮没在了时光中，但笔者仍然想提起笔，写下那里发生的一些事情。笔者的私心：这些故事，希望能给更多的人看到。
+故事零零散散，笔者 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/23/%E9%9F%B3%E4%B9%90%E5%A1%AB%E8%AF%8D/" title="音乐填词">音乐填词</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-23T09:56:42.000Z" title="发表于 2023-03-23 17:56:42">2023-03-23</time></span></div><div class="content">
+初雪·群山
+
+
+古琴声声 拨动了流年倚歌执念 旋起相思的雪触动群山间 飞鸟迹已绝是峰回路转 君才不见
+问君何归处 白雪覆人间路独扫玉镯环步 昨夜梨花一树树下何人伫 却盼君在归途吱呀细声户枢 自有青幡舞
+琉璃砖瓦残 梅逊雪三分白奈何断墙遗落 古琴唤几多愁枝头雪忽落 是车马声过赋情愫两句 不为多
+问君何归处 望穿一山初雪独伫斑驳断墙 却忆檀门斓窗窗前何人伫 君能饮一杯无看酒家城楼处 亦有青幡舞
+是霜重寒鼓 故意把旌旗缚是繁花一簇 忆中叶簌簌是念滴落在 水墨和江山是素手赠簪 为君生辰恭祝
+
+
+
+新年历·生辰祝
+
+
+万物庆神州 问君能有几多愁莲灯曳城楼 封冻渔舟灯火留飞雪灯影错 是谁把门环轻扣提一壶温酒 叙家常与情愁
+捉一曲韵脚 赋一著今宵三岁小童拽着行人衣角千树梨花绛 叶挂铜铃响行商之人为何关上了门窗为将家事忙 残烛复明朗不忘为君生辰祝一章
+小楼飞檐上 旧羽埋没新朝张灯结彩屋旁长街热闹自离京城繁华处置杯落盏酒盈满咏千秋 赏雪于小舟自离京城繁华处铺纸提笔绘山海荡千秋 长眠于小舟
+犹记那年人来人往 君附身唱唱尽群山 唱淡了金簪怎奈今朝人来人往 不见君唱望穿群山 忘却了金簪
+城外芦苇长 鸳鸯收起 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E6%B0%B8%E8%BF%9C%E7%9A%84%E9%93%81%E9%81%93/" title="永远的铁道">永远的铁道</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-23T09:00:28.000Z" title="发表于 2023-03-23 17:00:28">2023-03-23</time></span></div><div class="content">
+ 写于2023.01.25 记一段梦境
+
+铁路修了很多年，如今仍在修着。
+没人知道铁路的起讫地点，它就这样一直延伸着，穿过无边的草原和湿地，遇水搭桥，逢山开路。或许它经过了无数个小镇，或许它经过了无数座城市，它仍然不断延伸，如同时光般永不停歇。
+铁路修了很多年，当然，还没有火车经过这里。
+铁轨下的枕木，经过多年风和雨的摧残，已经腐朽得不成样子，完全无法承受火车的重量。即便如此，没有人将它们更换掉，它们被遗弃在这里，兀自记载着岁月的痕迹。
+老一辈人还记得铁路修到这里的时候，很多人站在路边看热闹的样子。工人扛着木头，沉重的铁镐挥击着大地，发出有规律的，触及人心的震颤声。那时候人人都以为火车会在不久的将来冒着热气，在汽笛声中缓缓开进站台。人们带着行李，在烟雾缭绕中走上火车，前往不可知的远方，寻找各自的目的地。
+铁路逐渐远去，它倒是去了远方，在人们日复一日的期盼中隐没在了无边的飞雪和雾气中，渺无音讯。
+北国的小镇，交通不便。群山环绕之中，一年里除了飞雪，很难看到其他东西。
+总有人想出去，而那些出去的人们，也不会再回来。偶尔有鸽子携着信穿越群山来到这里，带来来自远方的问候。几天之后它又会飞走， ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/23/%E6%96%87%E7%AB%A0/%E5%B0%98%E5%9F%83%E6%B7%B1%E5%A4%84/" title="尘埃深处">尘埃深处</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-23T09:00:12.000Z" title="发表于 2023-03-23 17:00:12">2023-03-23</time></span></div><div class="content">最后更新日期：2023.03.26
+
+-序-时钟打了六点，已然是黄昏了。
+我伫立在窗边，空气中满是的沙尘在逐渐散去，阳光透过窗户，洒的满桌都是金黄。
+梧桐叶满秋，风帆影动，桂树花浓。
+秋天了呀。
+秋天呀，秋天。
+我反复念叨着这个词。
+我所生活的世界里，从来没有秋天。
+这里没有桂花和梧桐，没有渐凉的秋风，也没有越来越高的天空。
+这里是EHIS-4，一个没有季节的星球，一个没有生命的星球，这里几乎所有的陆地都是荒漠，高温覆盖了四季的每一天。伴随着高温的还有沙尘，无边的沙尘将天空染成了黄褐色，难得看见太阳，至于蓝天，那更是只能存在于老一辈人的记忆中了。
+然而，这里是三亿人的家园。无论他们情愿或不情愿，他们都生活在这里。因为这里是全宇宙经济最发达的地区之一，许多人为了生计不远万里前来，只为了能养活自己和家人。所以即使被风沙划破了脸颊，他们依然生活在此。几十年过去了，他们也适应了这样的天气，他们的后代从小在这里长大，这样的天气对他们来说便如每日的白昼一样平常。
+曾经，我也是他们中的一员。
+秋天呀，秋天。我时常挂在嘴边。
+还会有人记得这个世界本来的模样吗？还会有人记得四季轮转吗？
+就连我，也从未见 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JS_KringKoter</div><div class="author-info__description">克林沃特的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="前端工程化">前端工程化</a><time datetime="2023-09-21T08:25:29.000Z" title="发表于 2023-09-21 16:25:29">2023-09-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/18/HTML/" title="HTML">HTML</a><time datetime="2023-09-18T08:00:23.000Z" title="发表于 2023-09-18 16:00:23">2023-09-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" title="黄昏的魔术师">黄昏的魔术师</a><time datetime="2023-09-13T01:02:45.000Z" title="发表于 2023-09-13 09:02:45">2023-09-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" title="Galgame：《天空之梦·Dreamland Sky》">Galgame：《天空之梦·Dreamland Sky》</a><time datetime="2023-08-31T07:17:46.000Z" title="发表于 2023-08-31 15:17:46">2023-08-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" title="空箱">空箱</a><time datetime="2023-08-31T07:11:06.000Z" title="发表于 2023-08-31 15:11:06">2023-08-31</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Java/" style="font-size: 1.1em; color: #999">Java</a> <a href="/tags/Unreal-Engine/" style="font-size: 1.1em; color: #999">Unreal Engine</a> <a href="/tags/%E6%97%A7%E4%BD%9C%E4%B8%BA%E6%96%B0/" style="font-size: 1.2em; color: #999da3">旧作为新</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 1.1em; color: #999">并发</a> <a href="/tags/STL/" style="font-size: 1.3em; color: #99a1ac">STL</a> <a href="/tags/%E9%9F%B3%E4%B9%90%F0%9F%8E%B6/" style="font-size: 1.1em; color: #999">音乐🎶</a> <a href="/tags/%E5%B0%8F%E8%AF%B4/" style="font-size: 1.4em; color: #99a5b6">小说</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.2em; color: #999da3">前端</a> <a href="/tags/%E6%95%A3%E6%96%87/" style="font-size: 1.1em; color: #999">散文</a> <a href="/tags/c/" style="font-size: 1.5em; color: #99a9bf">c++</a> <a href="/tags/python/" style="font-size: 1.1em; color: #999">python</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.3em; color: #99a1ac">笔记</a> <a href="/tags/HTML/" style="font-size: 1.1em; color: #999">HTML</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">7</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">26</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-09-24T00:36:31.826Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By JS_KringKoter</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

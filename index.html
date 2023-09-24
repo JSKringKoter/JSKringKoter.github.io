@@ -1,7 +1,284 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JS_KringKoter | Personal blog</title><meta name="author" content="JS_KringKoter"><meta name="copyright" content="JS_KringKoter"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="克林沃特的个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JS_KringKoter | Personal blog">
+<meta property="og:url" content="https://jskringkoter.github.io/index.html">
+<meta property="og:site_name" content="JS_KringKoter | Personal blog">
+<meta property="og:description" content="克林沃特的个人博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="JS_KringKoter">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jskringkoter.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JS_KringKoter | Personal blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-09-24 08:36:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  include ./includes/mixins/post-ui.pug
-  #recent-posts.recent-posts
-    +postUI
-    include includes/pagination.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="JS_KringKoter | Personal blog"><span class="site-name">JS_KringKoter | Personal blog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">JS_KringKoter | Personal blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="前端工程化">前端工程化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-21T08:25:29.000Z" title="发表于 2023-09-21 16:25:29">2023-09-21</time></span></div><div class="content">Vue项目开发环境配置自己找去
+项目文件的组成结构public文件夹包括发布的内容；
+public/index.html 网站发布页；
+src文件夹包括源代码文件（重要；
+src/App.vue 入口vue文件，是重点需要修改的文件，代码修改主要在这里；
+src/main.js 入口js文件，可以不用动。
+Element组件库来自饿了么团队倾情开发！
+安装组件库：
+1npm install element-ui@2.15.3 (版本号)
+
+在view文件夹中添加组件，文件后缀为.vue，主要需要使用驼峰命名法。其基本代码如下：
+12345678910111213&lt;template&gt;    &lt;div&gt;        这里放需要显示的东西    &lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default &#123;&#125;&lt;/script&gt;&lt;style&gt;&lt;/style&gt;
+
+新建组件完成后，需要在main.js中引入ElementUi包，在全局区域复制以下代码：
+1234 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/18/HTML/" title="HTML">HTML</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-18T08:00:23.000Z" title="发表于 2023-09-18 16:00:23">2023-09-18</time></span></div><div class="content">HTML&amp;JavaScript学习笔记标签标题标签123&lt;h1&gt;&lt;/h1&gt;...&lt;h6&gt;&lt;/h6&gt;   重要程度依次降低
+
+水平线标签1&lt;hr&gt;
+
+图片标签1&lt;img src=&quot;图片路径&quot; width=&quot;图片宽度&quot; height=&quot;图片长度&quot;&gt;
+
+图片路径分为绝对磁盘路径，绝对网络路径和相对磁盘路径。在相对磁盘路径中，./表示当前目录，../表示上一级目录。
+当width或height只指定了一个时，另一个会按照比例缩放。
+注释1&lt;!-- 注释正文 --&gt;
+
+在html中，任何文本都能被直接识别
+Spanspan标签是一个没有任何语义的布局标签，但可以用它来设置字体样式
+1&lt;span style=&quot;...&quot;&gt;Coffee Bar&lt;/span&gt;
+
+
+
+超链接123&lt;a url=&quot;&quot; target=&quot;_self&quot;&gt;    &lt;/a&gt;
+
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" title="黄昏的魔术师">黄昏的魔术师</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-13T01:02:45.000Z" title="发表于 2023-09-13 09:02:45">2023-09-13</time></span></div><div class="content">“如果我说，这其实是魔法，晓先生会相信吗？”
+她坐在麦田旁的草地上，枕着我的肩。秋天的晚风裹着刚刚收割过麦芒的细屑，夕阳在远山的那头缓缓沉入地平线。
+时隔多年，我仍然记得那个黄昏中她的模样。她留给我的物件，像是某种信仰一般，多年来未曾离身。历经如长河般的时光，那串项链与那颗水晶仍如崭新的一般，它们并不畏惧时间。
+我常常憧憬着，当我再次走过漫长的道路，到达与她初次相遇的地方，我还能再见到她吗？那座小木屋，还会像当初一样，如同是魔术一般，倏忽出现在我的眼中吗？
+&lt;黄昏的魔术师·The Magician of Twilight&gt;来到这座城市，已经过了七个年头。
+斯通古城堡偌大的铁质城门外是一片宽敞的空地，站在这里，映入眼帘的是一片辽阔到望不到边的麦田，九月的麦子还未完全成熟，棕黄色的麦穗里夹杂着几分青涩的绿。再过一个半月，等到麦子染上了熟透的颜色，城中的人们就会提着镰刀和箩筐来收割了。
+来到这座城市的第七年，这里人们生息的规律都被我摸得清清楚楚。
+七年前，为了所谓少年风发的意气，我独自一人离开家乡，几近辗转，来到了这座说大也不大说小也不小的城市。斯通古城的气候和家乡相差无几，每次 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" title="Galgame：《天空之梦·Dreamland Sky》">Galgame：《天空之梦·Dreamland Sky》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-31T07:17:46.000Z" title="发表于 2023-08-31 15:17:46">2023-08-31</time></span></div><div class="content">有事没事会更两行的Galgame，改编自此人高中写的小说。
+有立绘，但不多（你可以帮我画）；有背景，但不多（你也可以帮我画）；没有配音（你可以帮我配）。
+点击链接跳转
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" title="空箱">空箱</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-31T07:11:06.000Z" title="发表于 2023-08-31 15:11:06">2023-08-31</time></span></div><div class="content">箱子放在阁楼里，有幸也有不幸，自从它被放在这里，就再也未曾动过。
+箱子还是新的。七彩的漆色依旧鲜艳着，铜钉在木板上，还未染上青绿的锈。
+阁楼里积灰盈寸，蛛网缠绕着房梁，箱子上盖着的油纸已然破损。她擎着烛，在某个落日将熄的黄昏踉跄着走上了这寂寞的小楼，在黑暗中摸索着。箱子放在阁楼的一角，放在那黄昏中不甚明朗的窗边，独守着时间。
+她是何种缘故，想起了这遗弃了多年的箱子，又在抽屉或者柜中寻找了许久，才找到了一截短烛和钥匙。箱子上的锁还未锈蚀，反倒是钥匙——黄铜做的——已经布满了黑色或是青灰色的锈。
+烛光暗淡，她将钥匙插进锁孔，钥匙卡住了。
+她是何种缘故，才想起打开这箱子。她是做了母亲吗，是孩子满月了吗，亦或者是孩子长高了、长大了，需要再做一套衣装吗？箱子里放着她手织的布匹吗？她在出嫁之前就已经为自己，为孩子准备好了吗？
+ 
+
+苎麻生长在水边，她弯着腰，一株株地刈下，堆在藤条编的箩筐中。那时候她还小，苎麻是母亲种的，箩筐是母亲编的，她还比长在院子里的苎麻高不了多少。她学着母亲用小刀划去苎麻青绿的硬的皮壳，露出里面雪白的丝，又沾了水晾在门外一排排竹竿上，等晴朗的天气，将它们浸在清水中，涴洗着剥下 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/23/%E6%96%87%E7%AB%A0/%E5%B1%B1%E6%B5%B7%E8%A1%8C%E4%BA%BA/" title="山海行人">山海行人</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-23T04:50:15.000Z" title="发表于 2023-07-23 12:50:15">2023-07-23</time></span></div><div class="content">The Demigod of mountain and seaJS_KringKoter 于2023年7月23日写毕。
+
+他从未告诉过我他的过往。
+很多年前，他就是这山间的神；很多年后，亦然。
+神总是孤独的，正如他所说，你需要做的只是聆听人们的祈祷，筛选出真心实意的一小部分，然后力所能及地帮助他们。
+做完事，走人，不留名号，当然也留不下名号。人们只会感谢神，而不会感谢他这“山间的小神”。
+“为什么要当神呢？”我问他。
+他苦笑，命数罢了。
+他的神祠位于深山里，位置偏僻，以前时不时会有人来。梧桐种了很多，梧桐絮和落叶堆积了一年四季。每当有人来祈祷时，他会一袭白衣，一边扫罗祠前的落叶，一边唱着他写的歌谣。
+站在神祠的栏杆前，大海和小城尽收眼底。他很喜欢此处的风光，作为神，对人间的烟火居然会有兴趣？
+“偶尔我会去你们那转转。”他倚在栏杆上，长发随风飘动，“我倒是挺羡慕你们的，这儿永远只有我一个人。”
+神祠建于民国年间。我出生的那一年香火还很盛，现在确乎只有他一人了。
+祠堂是一座山行人祠——行人，这里的人们这样称呼神。我总觉得有些不敬的意味，仿佛在人们看来，神已经成了碌碌的世人。
+他倒无所谓。
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/10/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Java学习笔记">Java学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-10T03:46:44.000Z" title="发表于 2023-07-10 11:46:44">2023-07-10</time></span></div><div class="content">Java学习笔记一、基础部分程序设计结构
+main方法需要为public static void
+文件名需要和公共类的名字相同，且使用.java作为扩展名
+
+注释
+可以通过/** **/来生成注释文档
+
+swith语句
+可以将switch语句作为右值
+使用分号而不是break
+case使用-&gt;
+
+12345678910public class Main &#123;    public static void main(String[] args) &#123;        int a = 0;        int b = switch (a) &#123;                case 1 -&gt; 10;                case 2 -&gt; 20;                default -&gt; 30;        &#125;    &#125;&#125;
+
+输入和输出
+输出
+
+java使用System.out的方法print系列进行输出：
+123456public class Main &#123;    public s ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/16/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="C++数据结构与算法">C++数据结构与算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-16T02:12:42.000Z" title="发表于 2023-05-16 10:12:42">2023-05-16</time></span></div><div class="content">数据结构部分线性表线性表（linear list）又称为线性表，它的是元素的一个有序集合，形式为e0, e1, e2……en-1。ei是线性表的元素，i是索引，n是线性表的长度或大小。当n=0时，线性表为空。
+对线性表至少需要执行以下操作：
+
+创建一个线性表
+撤销一个线性表
+确定线性表是否为空
+确定线性表的长度
+按给定索引查找元素
+按给定元素查找索引
+按给定索引删除元素
+按一个给定的索引插入一个元素
+从左至右输出线性元素表
+
+抽象数据类型linear list将线性表用跨语言的抽象概念表示为：
+12345678910111213抽象数据类型linear list&#123;实例：  有限个元素的有序集合操作：empty()：若表空，返回falsesize()：返回线性表的大小（元素个数）get(index)：返回线性表中索引为index的元素indexOf(x)：返回线性表中元素为x的索引erase(index)：删除线性表中索引为index的元素insert(index, x)：向index处插入xoutput()：从左至右输出元素&#125;
+
+使用c++语言描述抽象概念：
+123 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/08/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="C++并发编程">C++并发编程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-08T12:01:15.000Z" title="发表于 2023-05-08 20:01:15">2023-05-08</time></span></div><div class="content">线程管控线程的基本管控线程通过一个thread对象创建，thread的构造函数接受一个可调用对象，在构造对象的同时创建新线程。传递的函数称为起始函数，当它返回时，线程结束。
+一旦启动了线程，就需要指定是等它结束（再继续往下运行）还是将其分离（使其独自运行）。如果在其析构时还未指定状态，析构函数会调用std::terminate()函数终止程序。
+如果需要等待线程完成，调用join()；若需要分离，调用detach()。调用后对象的joinable()函数会变为false。
+使用资源管理对象处理异常问题当异常抛出时，线程很可能没有指定join或detach，或略过了二者。可以使用threadGuard对象来管理线程，当threadGuard对象析构时，它会检测其中的thread对象是否指定了状态，若未指定，则指定为join：
+123456789101112131415161718class threadGuard &#123;private:    std::thread&amp; t;public:    threadGuard(std::thread&amp; t_)         ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/25/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Effective%20C++/" title="Effective C++">Effective C++</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-04-25T08:56:49.000Z" title="发表于 2023-04-25 16:56:49">2023-04-25</time></span></div><div class="content">一、让自己习惯C++条款01：视c++为一个语言联邦如今的c++是一种多重泛型编程语言，同时支持面向过程，面向对象，函数形式，泛型形式，元编程形式的语言。可以这样理解C++：C++是一个由相关语言组成的语言联邦而并非单一语言。c++的主要次语言有四种：
+
+C部分：区块，语句，预处理器，内置数据类型，数组，指针等。
+Object-Oriented C++（面向对象）：类型，封装，继承，多态等。
+Template C++：泛型编程部分，提供了模板元编程。
+STL标准模板库：包含容器，迭代器，算法以及函数对象等
+
+C++并不是一个带有一组守则的一体语言，而是四个次语言组成的联邦。
+条款02：尽量以const，emum，inline替换 #define“宁可以编译器替换预处理器。“
+将#define NUMBER 1.63替换为
+1const double Number = 1.63;
+
+当使用const替换时，有两种特殊情况：
+
+定义常量指针时
+
+常量表达式通常放在头文件内方便不同源码包含，有必要将指针（而不是指针所指之物声明为const）：
+123const char* const aut ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JS_KringKoter</div><div class="author-info__description">克林沃特的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="前端工程化">前端工程化</a><time datetime="2023-09-21T08:25:29.000Z" title="发表于 2023-09-21 16:25:29">2023-09-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/18/HTML/" title="HTML">HTML</a><time datetime="2023-09-18T08:00:23.000Z" title="发表于 2023-09-18 16:00:23">2023-09-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" title="黄昏的魔术师">黄昏的魔术师</a><time datetime="2023-09-13T01:02:45.000Z" title="发表于 2023-09-13 09:02:45">2023-09-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" title="Galgame：《天空之梦·Dreamland Sky》">Galgame：《天空之梦·Dreamland Sky》</a><time datetime="2023-08-31T07:17:46.000Z" title="发表于 2023-08-31 15:17:46">2023-08-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" title="空箱">空箱</a><time datetime="2023-08-31T07:11:06.000Z" title="发表于 2023-08-31 15:11:06">2023-08-31</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Java/" style="font-size: 1.1em; color: #999">Java</a> <a href="/tags/Unreal-Engine/" style="font-size: 1.1em; color: #999">Unreal Engine</a> <a href="/tags/%E6%97%A7%E4%BD%9C%E4%B8%BA%E6%96%B0/" style="font-size: 1.2em; color: #999da3">旧作为新</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 1.1em; color: #999">并发</a> <a href="/tags/STL/" style="font-size: 1.3em; color: #99a1ac">STL</a> <a href="/tags/%E9%9F%B3%E4%B9%90%F0%9F%8E%B6/" style="font-size: 1.1em; color: #999">音乐🎶</a> <a href="/tags/%E5%B0%8F%E8%AF%B4/" style="font-size: 1.4em; color: #99a5b6">小说</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.2em; color: #999da3">前端</a> <a href="/tags/%E6%95%A3%E6%96%87/" style="font-size: 1.1em; color: #999">散文</a> <a href="/tags/c/" style="font-size: 1.5em; color: #99a9bf">c++</a> <a href="/tags/python/" style="font-size: 1.1em; color: #999">python</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.3em; color: #99a1ac">笔记</a> <a href="/tags/HTML/" style="font-size: 1.1em; color: #999">HTML</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">7</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">26</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-09-24T00:36:31.826Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By JS_KringKoter</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
