@@ -1,166 +1,299 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JS_KringKoter | Personal blog</title><meta name="author" content="JS_KringKoter"><meta name="copyright" content="JS_KringKoter"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="克林沃特的个人博客">
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>JS_KringKoter | Personal blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="克林沃特的个人博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="JS_KringKoter | Personal blog">
 <meta property="og:url" content="https://jskringkoter.github.io/index.html">
 <meta property="og:site_name" content="JS_KringKoter | Personal blog">
 <meta property="og:description" content="克林沃特的个人博客">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jskringkoter.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'JS_KringKoter | Personal blog',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2023-09-24 08:44:05'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
+    <link rel="alternate" href="/atom.xml" title="JS_KringKoter | Personal blog" type="application/atom+xml">
   
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
   
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  
+  
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
+<div id="banner" class=" is_home ">
+  <img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/Bai-sky(1).png?raw=true" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=" is_home "  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>JS_KringKoter | Personal blog </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/avatar.jpg?raw=true></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">JS_KringKoter </div>
+      <div class="dot"></div>
+      <div class="subtitle">山河皆有幸 </div>
+      <div class="link-list">
         
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://steamcommunity.com/id/JS_KringKoter/" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/JSKringKoter" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="JS_KringKoter | Personal blog"><span class="site-name">JS_KringKoter | Personal blog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">JS_KringKoter | Personal blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="前端工程化">前端工程化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-21T08:25:29.000Z" title="发表于 2023-09-21 16:25:29">2023-09-21</time></span></div><div class="content">Vue项目开发环境配置自己找去
+      
+
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%8F%E8%AF%B4/" rel="tag">小说</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%A3%E6%96%87/" rel="tag">散文</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%97%A7%E4%BD%9C%E4%B8%BA%E6%96%B0/" rel="tag">旧作为新</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90%F0%9F%8E%B6/" rel="tag">音乐🎶</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">归档</h3>
+      
+      
+        <a class="archive-link" href="/archives/2023/09 ">
+          九月 2023 
+          <div class="archive-count">3 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/08 ">
+          八月 2023 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/07 ">
+          七月 2023 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/05 ">
+          五月 2023 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/04 ">
+          四月 2023 
+          <div class="archive-count">10 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/03 ">
+          三月 2023 
+          <div class="archive-count">7 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最新文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="前端工程化" >
+            <div class="recent-link-text">
+              前端工程化
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/18/HTML/" title="HTML" >
+            <div class="recent-link-text">
+              HTML
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" title="黄昏的魔术师" >
+            <div class="recent-link-text">
+              黄昏的魔术师
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" title="Galgame：《天空之梦·Dreamland Sky》" >
+            <div class="recent-link-text">
+              Galgame：《天空之梦·Dreamland Sky》
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" title="空箱" >
+            <div class="recent-link-text">
+              空箱
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+      
+   
+
+<article id="post-前端工程化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-09-21T08:25:29.000Z" itemprop="datePublished">2023-09-21</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            670 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            Vue项目开发环境配置自己找去
 项目文件的组成结构public文件夹包括发布的内容；
 public/index.html 网站发布页；
 src文件夹包括源代码文件（重要；
@@ -174,111 +307,800 @@ Element组件库来自饿了么团队倾情开发！
 12345678910111213&lt;template&gt;    &lt;div&gt;        这里放需要显示的东西    &lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default &#123;&#125;&lt;/script&gt;&lt;style&gt;&lt;/style&gt;
 
 新建组件完成后，需要在main.js中引入ElementUi包，在全局区域复制以下代码：
-1234 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/18/HTML/" title="HTML">HTML</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-18T08:00:23.000Z" title="发表于 2023-09-18 16:00:23">2023-09-18</time></span></div><div class="content">HTML&amp;JavaScript学习笔记标签标题标签123&lt;h1&gt;&lt;/h1&gt;...&lt;h6&gt;&lt;/h6&gt;   重要程度依次降低
+1...  
+          </div>
+        
+      </div>
 
-水平线标签1&lt;hr&gt;
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
 
-图片标签1&lt;img src=&quot;图片路径&quot; width=&quot;图片宽度&quot; height=&quot;图片长度&quot;&gt;
+ 
 
-图片路径分为绝对磁盘路径，绝对网络路径和相对磁盘路径。在相对磁盘路径中，./表示当前目录，../表示上一级目录。
-当width或height只指定了一个时，另一个会按照比例缩放。
-注释1&lt;!-- 注释正文 --&gt;
+   
 
-在html中，任何文本都能被直接识别
-Spanspan标签是一个没有任何语义的布局标签，但可以用它来设置字体样式
-1&lt;span style=&quot;...&quot;&gt;Coffee Bar&lt;/span&gt;
+<article id="post-HTML" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/09/18/HTML/">HTML</a>
+      </h1>
+    
+  
+</div>
 
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-09-18T08:00:23.000Z" itemprop="datePublished">2023-09-18</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            5.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
 
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="HTML-amp-JavaScript学习笔记"><a href="#HTML-amp-JavaScript学习笔记" class="headerlink" title="HTML&amp;JavaScript学习笔记"></a>HTML&amp;JavaScript学习笔记</h1><h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">h6</span>&gt;</span><span class="tag">&lt;/<span class="name">h6</span>&gt;</span>   重要程度依次降低</span><br></pre></td></tr></table></figure>
 
-超链接123&lt;a url=&quot;&quot; target=&quot;_self&quot;&gt;    &lt;/a&gt;
+<h3 id="水平线标签"><a href="#水平线标签" class="headerlink" title="水平线标签"></a>水平线标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
- ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" title="黄昏的魔术师">黄昏的魔术师</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-13T01:02:45.000Z" title="发表于 2023-09-13 09:02:45">2023-09-13</time></span></div><div class="content">“如果我说，这其实是魔法，晓先生会相信吗？”
+<h3 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;图片路径&quot;</span> <span class="attr">width</span>=<span class="string">&quot;图片宽度&quot;</span> <span class="attr">height</span>=<span class="string">&quot;图片长度&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>图片路径分为绝对磁盘路径，绝对网络路径和相对磁盘路径。在相对磁盘路径中，./表示当前目录，../表示上一级目录。</p>
+<p>当width或height只指定了一个时，另一个会按照比例缩放。</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 注释正文 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在html中，任何文本都能被直接识别</p>
+<h3 id="Span"><a href="#Span" class="headerlink" title="Span"></a>Span</h3><p>span标签是一个没有任何语义的布局标签，但可以用它来设置字体样式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;...&quot;</span>&gt;</span>Coffee Bar<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/09/18/HTML/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-文章/黄昏的魔术师" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/">黄昏的魔术师</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-09-13T01:02:45.000Z" itemprop="datePublished">2023-09-13</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            8.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E8%AF%B4/" rel="tag">小说</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            “如果我说，这其实是魔法，晓先生会相信吗？”
 她坐在麦田旁的草地上，枕着我的肩。秋天的晚风裹着刚刚收割过麦芒的细屑，夕阳在远山的那头缓缓沉入地平线。
 时隔多年，我仍然记得那个黄昏中她的模样。她留给我的物件，像是某种信仰一般，多年来未曾离身。历经如长河般的时光，那串项链与那颗水晶仍如崭新的一般，它们并不畏惧时间。
 我常常憧憬着，当我再次走过漫长的道路，到达与她初次相遇的地方，我还能再见到她吗？那座小木屋，还会像当初一样，如同是魔术一般，倏忽出现在我的眼中吗？
 &lt;黄昏的魔术师·The Magician of Twilight&gt;来到这座城市，已经过了七个年头。
 斯通古城堡偌大的铁质城门外是一片宽敞的空地，站在这里，映入眼帘的是一片辽阔到望不到边的麦田，九月的麦子还未完全成熟，棕黄色的麦穗里夹杂着几分青涩的绿。再过一个半月，等到麦子染上了熟透的颜色，城中的人们就会提着镰刀和箩筐来收割了。
 来到这座城市的第七年，这里人们生息的规律都被我摸得清清楚楚。
-七年前，为了所谓少年风发的意气，我独自一人离开家乡，几近辗转，来到了这座说大也不大说小也不小的城市。斯通古城的气候和家乡相差无几，每次 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" title="Galgame：《天空之梦·Dreamland Sky》">Galgame：《天空之梦·Dreamland Sky》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-31T07:17:46.000Z" title="发表于 2023-08-31 15:17:46">2023-08-31</time></span></div><div class="content">有事没事会更两行的Galgame，改编自此人高中写的小说。
+七年前，为了所谓少年风发的意气，我独自一人离开家乡，几近辗转，来到了这座说大也不大说小也不小的城市。斯通古城的气候和家乡相差无几...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-天空之梦" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/">Galgame：《天空之梦·Dreamland Sky》</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-08-31T07:17:46.000Z" itemprop="datePublished">2023-08-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            81 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            有事没事会更两行的Galgame，改编自此人高中写的小说。
 有立绘，但不多（你可以帮我画）；有背景，但不多（你也可以帮我画）；没有配音（你可以帮我配）。
 点击链接跳转
 
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" title="空箱">空箱</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-31T07:11:06.000Z" title="发表于 2023-08-31 15:11:06">2023-08-31</time></span></div><div class="content">箱子放在阁楼里，有幸也有不幸，自从它被放在这里，就再也未曾动过。
-箱子还是新的。七彩的漆色依旧鲜艳着，铜钉在木板上，还未染上青绿的锈。
-阁楼里积灰盈寸，蛛网缠绕着房梁，箱子上盖着的油纸已然破损。她擎着烛，在某个落日将熄的黄昏踉跄着走上了这寂寞的小楼，在黑暗中摸索着。箱子放在阁楼的一角，放在那黄昏中不甚明朗的窗边，独守着时间。
-她是何种缘故，想起了这遗弃了多年的箱子，又在抽屉或者柜中寻找了许久，才找到了一截短烛和钥匙。箱子上的锁还未锈蚀，反倒是钥匙——黄铜做的——已经布满了黑色或是青灰色的锈。
-烛光暗淡，她将钥匙插进锁孔，钥匙卡住了。
-她是何种缘故，才想起打开这箱子。她是做了母亲吗，是孩子满月了吗，亦或者是孩子长高了、长大了，需要再做一套衣装吗？箱子里放着她手织的布匹吗？她在出嫁之前就已经为自己，为孩子准备好了吗？
+  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
  
 
-苎麻生长在水边，她弯着腰，一株株地刈下，堆在藤条编的箩筐中。那时候她还小，苎麻是母亲种的，箩筐是母亲编的，她还比长在院子里的苎麻高不了多少。她学着母亲用小刀划去苎麻青绿的硬的皮壳，露出里面雪白的丝，又沾了水晾在门外一排排竹竿上，等晴朗的天气，将它们浸在清水中，涴洗着剥下 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/23/%E6%96%87%E7%AB%A0/%E5%B1%B1%E6%B5%B7%E8%A1%8C%E4%BA%BA/" title="山海行人">山海行人</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-23T04:50:15.000Z" title="发表于 2023-07-23 12:50:15">2023-07-23</time></span></div><div class="content">The Demigod of mountain and seaJS_KringKoter 于2023年7月23日写毕。
+   
 
-他从未告诉过我他的过往。
-很多年前，他就是这山间的神；很多年后，亦然。
-神总是孤独的，正如他所说，你需要做的只是聆听人们的祈祷，筛选出真心实意的一小部分，然后力所能及地帮助他们。
-做完事，走人，不留名号，当然也留不下名号。人们只会感谢神，而不会感谢他这“山间的小神”。
-“为什么要当神呢？”我问他。
-他苦笑，命数罢了。
-他的神祠位于深山里，位置偏僻，以前时不时会有人来。梧桐种了很多，梧桐絮和落叶堆积了一年四季。每当有人来祈祷时，他会一袭白衣，一边扫罗祠前的落叶，一边唱着他写的歌谣。
-站在神祠的栏杆前，大海和小城尽收眼底。他很喜欢此处的风光，作为神，对人间的烟火居然会有兴趣？
-“偶尔我会去你们那转转。”他倚在栏杆上，长发随风飘动，“我倒是挺羡慕你们的，这儿永远只有我一个人。”
-神祠建于民国年间。我出生的那一年香火还很盛，现在确乎只有他一人了。
-祠堂是一座山行人祠——行人，这里的人们这样称呼神。我总觉得有些不敬的意味，仿佛在人们看来，神已经成了碌碌的世人。
-他倒无所谓。
- ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/10/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Java学习笔记">Java学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-10T03:46:44.000Z" title="发表于 2023-07-10 11:46:44">2023-07-10</time></span></div><div class="content">Java学习笔记一、基础部分程序设计结构
-main方法需要为public static void
-文件名需要和公共类的名字相同，且使用.java作为扩展名
+<article id="post-文章/空箱" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/">空箱</a>
+      </h1>
+    
+  
+</div>
 
-注释
-可以通过/** **/来生成注释文档
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-08-31T07:11:06.000Z" itemprop="datePublished">2023-08-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E8%AF%B4/" rel="tag">小说</a></li></ul>
 
-swith语句
-可以将switch语句作为右值
-使用分号而不是break
-case使用-&gt;
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p>箱子放在阁楼里，有幸也有不幸，自从它被放在这里，就再也未曾动过。</p>
+<p>箱子还是新的。七彩的漆色依旧鲜艳着，铜钉在木板上，还未染上青绿的锈。</p>
+<p>阁楼里积灰盈寸，蛛网缠绕着房梁，箱子上盖着的油纸已然破损。她擎着烛，在某个落日将熄的黄昏踉跄着走上了这寂寞的小楼，在黑暗中摸索着。箱子放在阁楼的一角，放在那黄昏中不甚明朗的窗边，独守着时间。</p>
+<p>她是何种缘故，想起了这遗弃了多年的箱子，又在抽屉或者柜中寻找了许久，才找到了一截短烛和钥匙。箱子上的锁还未锈蚀，反倒是钥匙——黄铜做的——已经布满了黑色或是青灰色的锈。</p>
+<p>烛光暗淡，她将钥匙插进锁孔，钥匙卡住了。</p>
+<p>她是何种缘故，才想起打开这箱子。她是做了母亲吗，是孩子满月了吗，亦或者是孩子长高了、长大了，需要再做一套衣装吗？箱子里放着她手织的布匹吗？她在出嫁之前就已经为自己，为孩子准备好了吗？</p>
+        
+      </div>
 
-12345678910public class Main &#123;    public static void main(String[] args) &#123;        int a = 0;        int b = switch (a) &#123;                case 1 -&gt; 10;                case 2 -&gt; 20;                default -&gt; 30;        &#125;    &#125;&#125;
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
 
-输入和输出
-输出
+ 
 
-java使用System.out的方法print系列进行输出：
-123456public class Main &#123;    public s ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/16/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="C++数据结构与算法">C++数据结构与算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-16T02:12:42.000Z" title="发表于 2023-05-16 10:12:42">2023-05-16</time></span></div><div class="content">数据结构部分线性表线性表（linear list）又称为线性表，它的是元素的一个有序集合，形式为e0, e1, e2……en-1。ei是线性表的元素，i是索引，n是线性表的长度或大小。当n=0时，线性表为空。
-对线性表至少需要执行以下操作：
+   
 
-创建一个线性表
-撤销一个线性表
-确定线性表是否为空
-确定线性表的长度
-按给定索引查找元素
-按给定元素查找索引
-按给定索引删除元素
-按一个给定的索引插入一个元素
-从左至右输出线性元素表
+<article id="post-文章/山海行人" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/23/%E6%96%87%E7%AB%A0/%E5%B1%B1%E6%B5%B7%E8%A1%8C%E4%BA%BA/">山海行人</a>
+      </h1>
+    
+  
+</div>
 
-抽象数据类型linear list将线性表用跨语言的抽象概念表示为：
-12345678910111213抽象数据类型linear list&#123;实例：  有限个元素的有序集合操作：empty()：若表空，返回falsesize()：返回线性表的大小（元素个数）get(index)：返回线性表中索引为index的元素indexOf(x)：返回线性表中元素为x的索引erase(index)：删除线性表中索引为index的元素insert(index, x)：向index处插入xoutput()：从左至右输出元素&#125;
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-23T04:50:15.000Z" itemprop="datePublished">2023-07-23</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.9k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E8%AF%B4/" rel="tag">小说</a></li></ul>
 
-使用c++语言描述抽象概念：
-123 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/08/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="C++并发编程">C++并发编程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-08T12:01:15.000Z" title="发表于 2023-05-08 20:01:15">2023-05-08</time></span></div><div class="content">线程管控线程的基本管控线程通过一个thread对象创建，thread的构造函数接受一个可调用对象，在构造对象的同时创建新线程。传递的函数称为起始函数，当它返回时，线程结束。
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h5 id="The-Demigod-of-mountain-and-sea"><a href="#The-Demigod-of-mountain-and-sea" class="headerlink" title="The Demigod of mountain and sea"></a>The Demigod of mountain and sea</h5><p>JS_KringKoter 于2023年7月23日写毕。</p>
+<hr>
+<p>他从未告诉过我他的过往。</p>
+<p>很多年前，他就是这山间的神；很多年后，亦然。</p>
+<p>神总是孤独的，正如他所说，你需要做的只是聆听人们的祈祷，筛选出真心实意的一小部分，然后力所能及地帮助他们。</p>
+<p>做完事，走人，不留名号，当然也留不下名号。人们只会感谢神，而不会感谢他这“山间的小神”。</p>
+<p>“为什么要当神呢？”我问他。</p>
+<p>他苦笑，命数罢了。</p>
+<p>他的神祠位于深山里，位置偏僻，以前时不时会有人来。梧桐种了很多，梧桐絮和落叶堆积了一年四季。每当有人来祈祷时，他会一袭白衣，一边扫罗祠前的落叶，一边唱着他写的歌谣。</p>
+<p>站在神祠的栏杆前，大海和小城尽收眼底。他很喜欢此处的风光，作为神，对人间的烟火居然会有兴趣？</p>
+<p>“偶尔我会去你们那转转。”他倚在栏杆上，长发随风飘动，“我倒是挺羡慕你们的，这儿永远只有我一个人。”</p>
+<p>神祠建于民国年间。我出生的那一年香火还很盛，现在确乎只有他一人了。</p>
+<p>祠堂是一座山行人祠——行人，这里的人们这样称呼神。我总觉得有些不敬的意味，仿佛在人们看来，神已经成了碌碌的世人。</p>
+<p>他倒无所谓。</p>
+<p>“行人行人，行之予人，大抵我是为你们而存在的吧。”</p>
+<p>春夏秋冬，年复一年，他在山中采着茶，唱着歌，为值得的人们献上恩泽，为迷途的灵魂指引方向。</p>
+<p>他仍是山行人，仍是一袭白衣。</p>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/23/%E6%96%87%E7%AB%A0/%E5%B1%B1%E6%B5%B7%E8%A1%8C%E4%BA%BA/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-Java学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/10/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-10T03:46:44.000Z" itemprop="datePublished">2023-07-10</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            13k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="Java学习笔记"><a href="#Java学习笔记" class="headerlink" title="Java学习笔记"></a>Java学习笔记</h1><h2 id="一、基础部分"><a href="#一、基础部分" class="headerlink" title="一、基础部分"></a>一、基础部分</h2><h3 id="程序设计结构"><a href="#程序设计结构" class="headerlink" title="程序设计结构"></a>程序设计结构</h3><ul>
+<li>main方法需要为public static void</li>
+<li>文件名需要和公共类的名字相同，且使用.java作为扩展名</li>
+</ul>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ul>
+<li>可以通过/** **/来生成注释文档</li>
+</ul>
+<h3 id="swith语句"><a href="#swith语句" class="headerlink" title="swith语句"></a>swith语句</h3><ul>
+<li>可以将switch语句作为右值</li>
+<li>使用分号而不是break</li>
+<li>case使用-&gt;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">switch</span> (a) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1</span> -&gt; <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2</span> -&gt; <span class="number">20</span>;</span><br><span class="line">                <span class="keyword">default</span> -&gt; <span class="number">30</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h3><ul>
+<li>输出</li>
+</ul>
+<p>java使用System.out的方法print系列进行输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;Hello World&quot;</span>);    <span class="comment">//print打印一个对象</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World&quot;</span>);  <span class="comment">//println打印一个对象并换行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输入</li>
+</ul>
+<p>要想使用输入，必须包含包util</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br></pre></td></tr></table></figure>
+
+<p>使用输入前需要创建一个Scanner实例，将该实例与输入流绑定，再使用该输入流进行读取操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">cin</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> cin.next();</span><br><span class="line">        <span class="type">String</span> <span class="variable">b</span> <span class="operator">=</span> cin.nextLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下是输入Scanner实例的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String cin.next()           <span class="comment">//读取下一个单词的输入（空格为止</span></span><br><span class="line">String cin.nextLine()       <span class="comment">//读取下一行的输入（换行符为止</span></span><br><span class="line"><span class="type">int</span> cin.nextInt()           <span class="comment">//读取下一个int</span></span><br><span class="line"><span class="type">double</span> cin.nextDouble()     <span class="comment">//读取下一个double</span></span><br><span class="line"><span class="type">boolean</span> cin.hasNext()       <span class="comment">//检测输入中是否还有单词</span></span><br><span class="line"><span class="type">boolean</span> cin.hasNextInt()</span><br><span class="line"><span class="type">boolean</span> cin.hasNextDouble()</span><br></pre></td></tr></table></figure>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/10/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-C++学习笔记/C++数据结构与算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/05/16/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">C++数据结构与算法</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-05-16T02:12:42.000Z" itemprop="datePublished">2023-05-16</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            20k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="数据结构部分"><a href="#数据结构部分" class="headerlink" title="数据结构部分"></a>数据结构部分</h2><h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><p>线性表（linear list）又称为线性表，它的是元素的一个有序集合，形式为e0, e1, e2……en-1。ei是线性表的元素，i是索引，n是线性表的长度或大小。当n=0时，线性表为空。</p>
+<p>对线性表至少需要执行以下操作：</p>
+<ul>
+<li>创建一个线性表</li>
+<li>撤销一个线性表</li>
+<li>确定线性表是否为空</li>
+<li>确定线性表的长度</li>
+<li>按给定索引查找元素</li>
+<li>按给定元素查找索引</li>
+<li>按给定索引删除元素</li>
+<li>按一个给定的索引插入一个元素</li>
+<li>从左至右输出线性元素表</li>
+</ul>
+<h4 id="抽象数据类型linear-list"><a href="#抽象数据类型linear-list" class="headerlink" title="抽象数据类型linear list"></a>抽象数据类型linear list</h4><p>将线性表用跨语言的抽象概念表示为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">抽象数据类型linear list</span><br><span class="line">&#123;</span><br><span class="line">实例：</span><br><span class="line">  有限个元素的有序集合</span><br><span class="line">操作：</span><br><span class="line">empty()：若表空，返回false</span><br><span class="line">size()：返回线性表的大小（元素个数）</span><br><span class="line">get(index)：返回线性表中索引为index的元素</span><br><span class="line">indexOf(x)：返回线性表中元素为x的索引</span><br><span class="line">erase(index)：删除线性表中索引为index的元素</span><br><span class="line">insert(index, x)：向index处插入x</span><br><span class="line">output()：从左至右输出元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用c++语言描述抽象概念：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">linearList</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">virtual</span> ~<span class="built_in">linearList</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//返回线性表是否为空</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">int</span> <span class="title">size</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//返回线性表元素个数</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> T&amp; <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//返回索引为index的元素</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">int</span> <span class="title">indexOf</span><span class="params">(<span class="type">const</span> T&amp; theElement)</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//返回第一个元素为theEnement的索引</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">erase</span><span class="params">(<span class="type">int</span> index)</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//删除index的元素，无法操作const对象</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> index, <span class="type">const</span> T&amp; theElement)</span> </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//在index处插入theElement，无法操作const对象</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">output</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//从左至右输出元素</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/05/16/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-C++学习笔记/C++并发编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/05/08/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">C++并发编程</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-05-08T12:01:15.000Z" itemprop="datePublished">2023-05-08</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            线程管控线程的基本管控线程通过一个thread对象创建，thread的构造函数接受一个可调用对象，在构造对象的同时创建新线程。传递的函数称为起始函数，当它返回时，线程结束。
 一旦启动了线程，就需要指定是等它结束（再继续往下运行）还是将其分离（使其独自运行）。如果在其析构时还未指定状态，析构函数会调用std::terminate()函数终止程序。
 如果需要等待线程完成，调用join()；若需要分离，调用detach()。调用后对象的joinable()函数会变为false。
 使用资源管理对象处理异常问题当异常抛出时，线程很可能没有指定join或detach，或略过了二者。可以使用threadGuard对象来管理线程，当threadGuard对象析构时，它会检测其中的thread对象是否指定了状态，若未指定，则指定为join：
-123456789101112131415161718class threadGuard &#123;private:    std::thread&amp; t;public:    threadGuard(std::thread&amp; t_)         ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/25/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Effective%20C++/" title="Effective C++">Effective C++</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-04-25T08:56:49.000Z" title="发表于 2023-04-25 16:56:49">2023-04-25</time></span></div><div class="content">一、让自己习惯C++条款01：视c++为一个语言联邦如今的c++是一种多重泛型编程语言，同时支持面向过程，面向对象，函数形式，泛型形式，元编程形式的语言。可以这样理解C++：C++是一个由相关语言组成的语言联邦而并非单一语言。c++的主要次语言有四种：
+123456789101112131415161718class threadGuard &#123;private:    std::thread&amp; t;public:    threadGuard(std::thread&amp; t_)     ...  
+          </div>
+        
+      </div>
 
-C部分：区块，语句，预处理器，内置数据类型，数组，指针等。
-Object-Oriented C++（面向对象）：类型，封装，继承，多态等。
-Template C++：泛型编程部分，提供了模板元编程。
-STL标准模板库：包含容器，迭代器，算法以及函数对象等
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/05/08/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
 
-C++并不是一个带有一组守则的一体语言，而是四个次语言组成的联邦。
-条款02：尽量以const，emum，inline替换 #define“宁可以编译器替换预处理器。“
-将#define NUMBER 1.63替换为
-1const double Number = 1.63;
+ 
 
-当使用const替换时，有两种特殊情况：
+   
 
-定义常量指针时
+<article id="post-C++学习笔记/Effective C++" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/04/25/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Effective%20C++/">Effective C++</a>
+      </h1>
+    
+  
+</div>
 
-常量表达式通常放在头文件内方便不同源码包含，有必要将指针（而不是指针所指之物声明为const）：
-123const char* const aut ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JS_KringKoter</div><div class="author-info__description">克林沃特的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="前端工程化">前端工程化</a><time datetime="2023-09-21T08:25:29.000Z" title="发表于 2023-09-21 16:25:29">2023-09-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/18/HTML/" title="HTML">HTML</a><time datetime="2023-09-18T08:00:23.000Z" title="发表于 2023-09-18 16:00:23">2023-09-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" title="黄昏的魔术师">黄昏的魔术师</a><time datetime="2023-09-13T01:02:45.000Z" title="发表于 2023-09-13 09:02:45">2023-09-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" title="Galgame：《天空之梦·Dreamland Sky》">Galgame：《天空之梦·Dreamland Sky》</a><time datetime="2023-08-31T07:17:46.000Z" title="发表于 2023-08-31 15:17:46">2023-08-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" title="空箱">空箱</a><time datetime="2023-08-31T07:11:06.000Z" title="发表于 2023-08-31 15:11:06">2023-08-31</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/STL/" style="font-size: 1.3em; color: #99a1ac">STL</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 1.1em; color: #999">并发</a> <a href="/tags/Java/" style="font-size: 1.1em; color: #999">Java</a> <a href="/tags/c/" style="font-size: 1.5em; color: #99a9bf">c++</a> <a href="/tags/%E6%95%A3%E6%96%87/" style="font-size: 1.1em; color: #999">散文</a> <a href="/tags/HTML/" style="font-size: 1.1em; color: #999">HTML</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.2em; color: #999da3">前端</a> <a href="/tags/%E9%9F%B3%E4%B9%90%F0%9F%8E%B6/" style="font-size: 1.1em; color: #999">音乐🎶</a> <a href="/tags/python/" style="font-size: 1.1em; color: #999">python</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.3em; color: #99a1ac">笔记</a> <a href="/tags/%E5%B0%8F%E8%AF%B4/" style="font-size: 1.4em; color: #99a5b6">小说</a> <a href="/tags/Unreal-Engine/" style="font-size: 1.1em; color: #999">Unreal Engine</a> <a href="/tags/%E6%97%A7%E4%BD%9C%E4%B8%BA%E6%96%B0/" style="font-size: 1.2em; color: #999da3">旧作为新</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">7</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">26</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-09-24T00:44:05.091Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By JS_KringKoter</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-04-25T08:56:49.000Z" itemprop="datePublished">2023-04-25</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            26k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="一、让自己习惯C"><a href="#一、让自己习惯C" class="headerlink" title="一、让自己习惯C++"></a>一、让自己习惯C++</h2><h3 id="条款01：视c-为一个语言联邦"><a href="#条款01：视c-为一个语言联邦" class="headerlink" title="条款01：视c++为一个语言联邦"></a>条款01：视c++为一个语言联邦</h3><p>如今的c++是一种多重泛型编程语言，同时支持面向过程，面向对象，函数形式，泛型形式，元编程形式的语言。可以这样理解C++：C++是一个由相关语言组成的语言联邦而并非单一语言。c++的主要次语言有四种：</p>
+<ul>
+<li>C部分：区块，语句，预处理器，内置数据类型，数组，指针等。</li>
+<li>Object-Oriented C++（面向对象）：类型，封装，继承，多态等。</li>
+<li>Template C++：泛型编程部分，提供了模板元编程。</li>
+<li>STL标准模板库：包含容器，迭代器，算法以及函数对象等</li>
+</ul>
+<p>C++并不是一个带有一组守则的一体语言，而是四个次语言组成的联邦。</p>
+<h3 id="条款02：尽量以const，emum，inline替换-define"><a href="#条款02：尽量以const，emum，inline替换-define" class="headerlink" title="条款02：尽量以const，emum，inline替换 #define"></a>条款02：尽量以const，emum，inline替换 #define</h3><p>“宁可以编译器替换预处理器。“</p>
+<p>将<code>#define NUMBER 1.63</code>替换为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const double Number = 1.63;</span><br></pre></td></tr></table></figure>
+
+<p>当使用const替换时，有两种特殊情况：</p>
+<ul>
+<li>定义常量指针时</li>
+</ul>
+<p>常量表达式通常放在头文件内方便不同源码包含，有必要将指针（而不是指针所指之物声明为const）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span>* <span class="type">const</span> authorName = <span class="string">&quot;Js_KringKoter&quot;</span>;</span><br><span class="line"><span class="comment">//或使用更为合宜的string对象：</span></span><br><span class="line"><span class="type">const</span> string autherName = <span class="string">&quot;JS_KringKoter&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>class专属常量时</li>
+</ul>
+<p>为了将常量的作用域限制于class内，且防止其多次复制，有必要将其限定为static：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Name</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">static</span> <span class="type">const</span> <span class="type">int</span> NameLenth = <span class="number">10</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述语句为NameLenth的声明而非定义，如果需要取该常量的地址，则需要在实现文件中对其定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> Name::NameLenth;</span><br></pre></td></tr></table></figure>
+
+<p>亦可使用enum hack补偿做法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Name</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">enum</span> &#123; NameLenth = <span class="number">5</span> &#125;;</span><br><span class="line">    <span class="type">int</span> scores[NameLenth];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>enum hack的行为与define较为相似，如取一个enum的地址为非法。</p>
+<h4 id="使用inline函数代替-define"><a href="#使用inline函数代替-define" class="headerlink" title="使用inline函数代替#define"></a>使用inline函数代替#define</h4><p>#define可能会导致问题，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> CALL_WITH_MAX(a, b) f((a) &gt; (b) ? (a) : (b))</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a = <span class="number">5</span>, b = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">CALL_WITH_MAX</span>(++a, b)        <span class="comment">//a被累加两次</span></span><br></pre></td></tr></table></figure>
+
+<p>使用template inline来代替：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">CallWithMax</span><span class="params">(<span class="type">const</span> T&amp; a, <span class="type">const</span> T&amp; b)</span>  <span class="comment">//由于不知道T是什么，采用传递引用方式</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">f</span>(a &gt; b ? a : b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>总结：</p>
+<ul>
+<li>对于单纯常量，最好以const对象或enums替换#defines。</li>
+<li>对于形似函数的宏，最好改用inline函数代替#defines。</li>
+</ul>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/04/25/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Effective%20C++/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+
+  <nav id="page-nav">
+    <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
+    <a id="prev-btn" class="page-nav-btn disabled" href=" /  ">
+      <i class="fa-solid fa-angle-left"></i>
+    </a>
+    <div id="num-bar">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a>  
+    </div>
+    <a id="next-btn" class="page-nav-btn " href="/page/2/">
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+  </nav>
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2023 JS_KringKoter<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
