@@ -1,489 +1,245 @@
-<!DOCTYPE html>
-
-
-<html theme="dark" showBanner="true" hasBanner="true" > 
-<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
-<link href="/fontawesome/css/brands.css" rel="stylesheet">
-<link href="/fontawesome/css/solid.css" rel="stylesheet">
-<script src="/js/color.global.min.js" ></script>
-<script src="/js/load-settings.js" ></script>
-<head>
-  <meta charset="utf-8">
-  
-  
-  
-
-  
-  <title>JS_KringKoter | Personal blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-
-  <meta name="description" content="克林沃特的个人博客">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JS_KringKoter</title><meta name="author" content="JS_KringKoter"><meta name="copyright" content="JS_KringKoter"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="山 海 行 人">
 <meta property="og:type" content="website">
-<meta property="og:title" content="JS_KringKoter | Personal blog">
+<meta property="og:title" content="JS_KringKoter">
 <meta property="og:url" content="https://jskringkoter.github.io/page/2/index.html">
-<meta property="og:site_name" content="JS_KringKoter | Personal blog">
-<meta property="og:description" content="克林沃特的个人博客">
+<meta property="og:site_name" content="JS_KringKoter">
+<meta property="og:description" content="山 海 行 人">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/avatar.jpg?raw=true">
 <meta property="article:author" content="JS_KringKoter">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="JS_KringKoter | Personal blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body>
-  
-  
-    
-<div id="banner" class=" is_home ">
-  <img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/Bai-sky(1).png?raw=true" itemprop="image">
-  <div id="banner-dim"></div>
-</div>
- 
-   
-  <div id="main-grid" class="shadow   ">
-    <div id="nav" class=" is_home "  >
-      <navbar id="navbar">
-  <nav id="title-nav">
-    <a href="/">
-      <div id="vivia-logo">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-      <div>JS_KringKoter | Personal blog </div>
-    </a>
-  </nav>
-  <nav id="main-nav">
-    
-      <a class="main-nav-link" href="/">Home</a>
-    
-      <a class="main-nav-link" href="/archives">Archives</a>
-    
-      <a class="main-nav-link" href="/about">About</a>
-    
-  </nav>
-  <nav id="sub-nav">
-    <a id="theme-btn" class="nav-icon">
-      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
-      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
-    </a>
-    
-      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
-      </a>
-    
-    <div id="nav-menu-btn" class="nav-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
-    </div>
-  </nav>
-</navbar>
-<div id="nav-dropdown" class="hidden">
-  <div id="dropdown-link-list">
-    
-      <a class="nav-dropdown-link" href="/">Home</a>
-    
-      <a class="nav-dropdown-link" href="/archives">Archives</a>
-    
-      <a class="nav-dropdown-link" href="/about">About</a>
-    
-    
-      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
-     
-    </div>
-</div>
-<script>
-  let dropdownBtn = document.getElementById("nav-menu-btn");
-  let dropdownEle = document.getElementById("nav-dropdown");
-  dropdownBtn.onclick = function() {
-    dropdownEle.classList.toggle("hidden");
+<meta name="twitter:image" content="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/avatar.jpg?raw=true"><link rel="shortcut icon" href="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/avatar.jpg?raw=true"><link rel="canonical" href="https://jskringkoter.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JS_KringKoter',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-09-24 14:55:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
   }
-</script>
-    </div>
-    <div id="sidebar-wrapper">
-      <sidebar id="sidebar">
-  
-    <div class="widget-wrap">
-  <div class="info-card">
-    <div class="avatar">
-      
-        <image src=https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/avatar.jpg?raw=true></image>
-      
-      <div class="img-dim"></div>
-    </div>
-    <div class="info">
-      <div class="username">JS_KringKoter </div>
-      <div class="dot"></div>
-      <div class="subtitle">山河皆有幸 </div>
-      <div class="link-list">
-        
-          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
-        
-          <a class="link-btn" target="_blank" rel="noopener" href="https://steamcommunity.com/id/JS_KringKoter/" title="Steam"><i class="fa-brands fa-steam"></i></a>
-        
-          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/JSKringKoter" title="GitHub"><i class="fa-brands fa-github"></i></a>
-         
-      </div>  
-    </div>
-  </div>
-</div>
+  .justified-gallery img {
+    opacity: 1
+  }
 
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-  <div class="sticky">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-      
-
-
-
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-      
-  <div class="widget-wrap">
-    <div class="widget">
-      <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%8F%E8%AF%B4/" rel="tag">小说</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%A3%E6%96%87/" rel="tag">散文</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%97%A7%E4%BD%9C%E4%B8%BA%E6%96%B0/" rel="tag">旧作为新</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90%F0%9F%8E%B6/" rel="tag">音乐🎶</a></li></ul>
-    </div>
-  </div>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
 
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
 
-    
-      
-  <div class="widget-wrap">
-    <div class="widget">
-      <h3 class="widget-title">归档</h3>
-      
-      
-        <a class="archive-link" href="/archives/2023/09 ">
-          九月 2023 
-          <div class="archive-count">3 </div>
-        </a>
-      
-        <a class="archive-link" href="/archives/2023/08 ">
-          八月 2023 
-          <div class="archive-count">2 </div>
-        </a>
-      
-        <a class="archive-link" href="/archives/2023/07 ">
-          七月 2023 
-          <div class="archive-count">2 </div>
-        </a>
-      
-        <a class="archive-link" href="/archives/2023/05 ">
-          五月 2023 
-          <div class="archive-count">2 </div>
-        </a>
-      
-        <a class="archive-link" href="/archives/2023/04 ">
-          四月 2023 
-          <div class="archive-count">10 </div>
-        </a>
-      
-        <a class="archive-link" href="/archives/2023/03 ">
-          三月 2023 
-          <div class="archive-count">7 </div>
-        </a>
-      
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget-wrap">
-    <div class="widget">
-      <h3 class="widget-title">最新文章</h3>
-      <ul>
-        
-          <a class="recent-link" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="前端工程化" >
-            <div class="recent-link-text">
-              前端工程化
-            </div>
-          </a>
-        
-          <a class="recent-link" href="/2023/09/18/HTML/" title="HTML" >
-            <div class="recent-link-text">
-              HTML
-            </div>
-          </a>
-        
-          <a class="recent-link" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" title="黄昏的魔术师" >
-            <div class="recent-link-text">
-              黄昏的魔术师
-            </div>
-          </a>
-        
-          <a class="recent-link" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" title="Galgame：《天空之梦·Dreamland Sky》" >
-            <div class="recent-link-text">
-              Galgame：《天空之梦·Dreamland Sky》
-            </div>
-          </a>
-        
-          <a class="recent-link" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" title="空箱" >
-            <div class="recent-link-text">
-              空箱
-            </div>
-          </a>
-        
-      </ul>
-    </div>
-  </div>
-
-    
-  </div>
-</sidebar>
-    </div>
-    <div id="content-body">
-      
-   
-
-<article id="post-从入门到入门的python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/23/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8%E7%9A%84python/">从入门到入门的python</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-23T07:42:13.000Z" itemprop="datePublished">2023-04-23</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.7k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <p>某个闲来无事旷了c++课的下着小雨的下午，克林沃特坐在电脑前，寻找着一点可以做的事情。经过了大半个月的苦战，他终于学完了c++的STL。现在，没活整的他决定学一学python，以度过他的Effective C++发货前无聊的时光。由于python实在没什么东西，这篇笔记将只记录有用的语法。</p>
-<h3 id="输入输出和数据成员"><a href="#输入输出和数据成员" class="headerlink" title="输入输出和数据成员"></a>输入输出和数据成员</h3><p>python不需要显示指明变量类型，变量之间的转换也极其方便</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>()              <span class="comment">#输出</span></span><br><span class="line">name = <span class="built_in">input</span>()       <span class="comment">#输入，默认为string类型</span></span><br><span class="line">name = <span class="built_in">int</span>(<span class="built_in">input</span>())  <span class="comment">#使用int()函数将输入转换为int类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#类型转换函数：</span></span><br><span class="line"><span class="built_in">int</span>()</span><br><span class="line">string()</span><br><span class="line"><span class="built_in">float</span>()</span><br></pre></td></tr></table></figure>
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/avatar.jpg?raw=true" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 往事</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 追忆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 自设</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/Swing%C2%B7Stoncort.png?raw=true')"><nav id="nav"><span id="blog-info"><a href="/" title="JS_KringKoter"><span class="site-name">JS_KringKoter</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 往事</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 追忆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 自设</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">JS_KringKoter</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/JSKringKoter" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2265757077@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/23/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8%E7%9A%84python/" title="从入门到入门的python">从入门到入门的python</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-23T07:42:13.000Z" title="发表于 2023-04-23 15:42:13">2023-04-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-24T12:56:17.608Z" title="更新于 2023-04-24 20:56:17">2023-04-24</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/python/">python</a></span></div><div class="content">某个闲来无事旷了c++课的下着小雨的下午，克林沃特坐在电脑前，寻找着一点可以做的事情。经过了大半个月的苦战，他终于学完了c++的STL。现在，没活整的他决定学一学python，以度过他的Effective C++发货前无聊的时光。由于python实在没什么东西，这篇笔记将只记录有用的语法。
+输入输出和数据成员python不需要显示指明变量类型，变量之间的转换也极其方便
+12345678print()              #输出name = input()       #输入，默认为string类型name = int(input())  #使用int()函数将输入转换为int类型#类型转换函数：int()string()float()
 
 
 
-<h4 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h4><p>string类型变量可以拼接：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title = <span class="string">&quot;玩原神玩的&quot;</span></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&quot;你说的对&quot;</span></span><br><span class="line"></span><br><span class="line">final = title + <span class="built_in">str</span>                    <span class="comment">#使用+号拼接</span></span><br><span class="line">final = <span class="string">&quot;你说的对%s&quot;</span> % title            <span class="comment">#使用占位符拼接单个字符串</span></span><br><span class="line">final = <span class="string">&quot;你说%s的对%s&quot;</span> % (title, <span class="built_in">str</span>)   <span class="comment">#使用占位符拼接多个字符串</span></span><br><span class="line">final = <span class="string">f&quot;你说的对<span class="subst">&#123;title&#125;</span>&quot;</span>              <span class="comment">#以f打头的字符串可以使用&#123;value&#125;拼接</span></span><br></pre></td></tr></table></figure>
-        
-      </div>
+字符串格式化string类型变量可以拼接：
+1234567title = &quot;玩原神玩的&quot;str = &quot;你说的对&quot;final = title + str                    #使用+号拼接final = &quot;你说的对%s&quot; % title            #使用占 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" title="关联容器">关联容器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-19T10:50:36.000Z" title="发表于 2023-04-19 18:50:36">2023-04-19</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-22T10:51:10.983Z" title="更新于 2023-04-22 18:51:10">2023-04-22</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/c/">c++</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/STL/">STL</a></span></div><div class="content">不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。
+STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。multi表示允许重复关键字，unordered表示无序组织。
 
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/23/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8%E7%9A%84python/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
 
- 
 
-   
+按关键字有序保存元素
+作用
 
-<article id="post-C++学习笔记/STL标准模板库/关联容器/关联容器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/">关联容器</a>
-      </h1>
-    
-  
-</div>
 
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-19T10:50:36.000Z" itemprop="datePublished">2023-04-19</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            7.8k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li></ul>
 
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <p>不同于顺序容器使用顺序访问元素，关联容器使用关键字访问元素。map中的元素为key-value配对，set中的元素为单关键字。字典可以看作一个map容器——单词代表关键字，释义表示值。</p>
-<p>STL提供8个关联容器，它们通过muti和unordered与map，set相互组合。multi表示允许重复关键字，unordered表示无序组织。</p>
-<table>
-<thead>
-<tr>
-<th>按关键字有序保存元素</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>map</td>
-<td>关联数组；保存 关键字-值 对</td>
-</tr>
-<tr>
-<td>set</td>
-<td>只保存关键字的容器</td>
-</tr>
-<tr>
-<td>multimap</td>
-<td>关键字可重复出现的map</td>
-</tr>
-<tr>
-<td>multiset</td>
-<td>关键字可重复出现的set</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>无序集合</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>unordered_map</td>
-<td>用哈希函数组织的map</td>
-</tr>
-<tr>
-<td>unordered_set</td>
-<td>用哈希函数组织的set</td>
-</tr>
-<tr>
-<td>unordered_multimap</td>
-<td>哈希组织map，关键字可重复出现</td>
-</tr>
-<tr>
-<td>unordered_multiset</td>
-<td>哈希组织set，关键字可重复出现</td>
-</tr>
-</tbody></table>
-<h3 id="使用关联容器"><a href="#使用关联容器" class="headerlink" title="使用关联容器"></a>使用关联容器</h3><h4 id="使用map"><a href="#使用map" class="headerlink" title="使用map"></a>使用map</h4><p>一个经典的关联容器实例为单词计数器：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">map&lt;string, <span class="type">int</span>&gt; wordCount;</span><br><span class="line">string word;</span><br><span class="line"><span class="keyword">while</span> (cin &gt;&gt; word) &#123;</span><br><span class="line">    ++wordCount[string];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x : wordCount) &#123;</span><br><span class="line">    cout &lt;&lt; x.first &lt;&lt; <span class="string">&quot; : &quot;</span> &lt;&lt; x.second &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+map
+关联数组；保存 关键字-值 对
 
-<p>输出大致是：</p>
-<p>你说得对 : 2  啊对对对 : 3 …… （是否太过抽象了）</p>
-<p>在for语句中使用auto自动类型推断，此时生成的是一个pair对象，该对象中定义了first和second公有成员，分别储存关键字及值。</p>
-        
-      </div>
 
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/19/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
+set
+只保存关键字的容器
 
- 
 
-   
+multimap
+关键字可重复出现的map
 
-<article id="post-C++学习笔记/STL标准模板库/泛型算法/lambda表达式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a>
-      </h1>
-    
-  
-</div>
 
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-18T00:23:24.000Z" itemprop="datePublished">2023-04-18</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.5k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li></ul>
+multiset
+关键字可重复出现的set
 
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            lambda表达式概览可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为：
+
+
+
+
+无序集合
+作用
+
+
+
+unordered_map
+用哈希函数组织的map
+
+
+unordered_set
+用哈希函数组织的set
+
+
+unordered_multimap
+哈希组织map，关键字可重复出现
+
+
+unordered_multiset
+哈希组织set，关键字可重复出现
+
+
+使用关联容器使用map一个经典的关联容器实例为单词计数器：
+12345678map&lt;string, int&gt; wordCount;string wo ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="lambda表达式">lambda表达式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-18T00:23:24.000Z" title="发表于 2023-04-18 08:23:24">2023-04-18</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-18T12:11:10.771Z" title="更新于 2023-04-18 20:11:10">2023-04-18</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/c/">c++</a></span></div><div class="content">lambda表达式概览可以向算法传递任何类型的可调用对象，这其中包括函数，函数指针，还有重载了调用运算符()的类，以及lambda表达式。lambda表达式的行为类似于函数，可以对其使用调用运算符和传递参数。lambda表达式的一般结构为：
 [捕获列表] (参数列表) -&gt; 返回类型{函数体}
 可以忽略返回类型和参数列表。当忽略返回类型时，返回类型根据return的类型自动推断，否则类型为void。不加()表明忽略参数列表，等价于指定一个空参数列表（空括号）。
 1auto f = [] &#123; return 42; &#125;;
@@ -495,73 +251,7 @@
 
 
 
-使用捕获列表空捕获列表表示不会使用表达式所在函数中的...  
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/18/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-文章/风乎舞雩" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/16/%E6%96%87%E7%AB%A0/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/">风乎舞雩</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-16T15:26:33.000Z" itemprop="datePublished">2023-04-16</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.5k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%A3%E6%96%87/" rel="tag">散文</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            风乎舞雩序
+使用捕获列表空捕获列表表示不会使用表达式所在函数中的任何参 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/16/%E6%96%87%E7%AB%A0/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/" title="风乎舞雩">风乎舞雩</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-16T15:26:33.000Z" title="发表于 2023-04-16 23:26:33">2023-04-16</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-16T15:27:22.239Z" title="更新于 2023-04-16 23:27:22">2023-04-16</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%A3%E6%96%87/">散文</a></span></div><div class="content">风乎舞雩序
  “莫春者，春服既成，冠者五六人，童子六七人，浴乎沂，风乎舞雩，咏而归。“ 
 
 ​                                                                    ——《子路、曾皙、冉有、公西华侍坐》
@@ -569,558 +259,123 @@
 风拂过脸颊，撩动了衣角，将去年陈旧的落叶带向高空；阳光抹在铁栏杆上，温热的触感传来，让我心中一阵触动。站在教学楼五楼的平台上，我想着读过的那篇文章，无时无刻的微风仿佛在提醒我，这里应该有它的名字。仍然记得高一的时候，每当学习困顿，我就会来到这个没有人的台子上写歌。不算短暂的高一时光中，写下的诗句从青涩，到成熟，这个台子都看在眼中。音符沉积着，经年累月无人打扫，现在去应该还能找到一些痕迹吧。
 风乎舞雩？就叫它舞雩台好了。
 于是这个台子有了它的名字，一个独属于我的名字。
-开端第一封信——或许那时还不能叫做信——是《关于英语作文...  
-          </div>
-        
-      </div>
+开端第一封信——或许那时还不能叫做信——是《关于英语作文的修改 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/" title="泛型算法">泛型算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-13T10:06:11.000Z" title="发表于 2023-04-13 18:06:11">2023-04-13</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-19T07:03:07.518Z" title="更新于 2023-04-19 15:03:07">2023-04-19</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/c/">c++</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/STL/">STL</a></span></div><div class="content">初识泛型算法：好怪，再看一眼泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。
+算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算符也要求提供重载函数。
+以下是一个find()函数，它接受两个迭代器组成的迭代器范围和一个值，若找到了这个值，则返回指向这个值的迭代器，否则返回迭代器范围的末尾。
+12345vector&lt;int&gt; vec;auto iter = find(vec.cbegin(), vec.cend(), 30);if (iter == vec.cend())    cout &lt;&lt; &quot;find it&quot;;//若没有找到，则返回vec.cend();若传递的迭代器末尾为vec.cend() - 2，则返回vec.cend() - 2。
 
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/16/%E6%96%87%E7%AB%A0/%E9%A3%8E%E4%B9%8E%E8%88%9E%E9%9B%A9/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-C++学习笔记/STL标准模板库/泛型算法/泛型算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/">泛型算法</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-13T10:06:11.000Z" itemprop="datePublished">2023-04-13</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            5.5k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <h3 id="初识泛型算法：好怪，再看一眼"><a href="#初识泛型算法：好怪，再看一眼" class="headerlink" title="初识泛型算法：好怪，再看一眼"></a>初识泛型算法：好怪，再看一眼</h3><p>泛型算法意思是：什么都可以用的算法。它不依赖于容器类型，是个容器都可以用（除了几个极其特殊的）。大多数算法定义在头文件algorithm和numeric中，如果找不到……那就都包含一遍吧。</p>
-<p>算法不直接操作容器，而是操作容器的迭代器，所以编辑器不保证容器类型匹配，这是程序员的责任。虽然算法不依赖于容器的操作，但依赖于元素的操作，如果容器元素是自定义类，那么算法中出现的运算符也要求提供重载函数。</p>
-<p>以下是一个find()函数，它接受两个迭代器组成的迭代器范围和一个值，若找到了这个值，则返回指向这个值的迭代器，否则返回迭代器范围的末尾。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">auto</span> iter = <span class="built_in">find</span>(vec.<span class="built_in">cbegin</span>(), vec.<span class="built_in">cend</span>(), <span class="number">30</span>);</span><br><span class="line"><span class="keyword">if</span> (iter == vec.<span class="built_in">cend</span>())</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;find it&quot;</span>;</span><br><span class="line"><span class="comment">//若没有找到，则返回vec.cend();若传递的迭代器末尾为vec.cend() - 2，则返回vec.cend() - 2。</span></span><br></pre></td></tr></table></figure>
-
-<p>在书后习题中还有一个函数count()，接受两个迭代器组成的范围和一个值，返回迭代器范围中该值的数量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> number = <span class="built_in">count</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>算法不会执行迭代器的操作，它建立在迭代器之上</strong></p>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/13/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-C++学习笔记/STL标准模板库/顺序容器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/">顺序容器</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-06T06:13:41.000Z" itemprop="datePublished">2023-04-06</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            6.6k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <h3 id="顺序容器的分类"><a href="#顺序容器的分类" class="headerlink" title="顺序容器的分类"></a>顺序容器的分类</h3><p>容器特定对象（包括内置数据类型，结构，类等）的集合。顺序容器则提供了按顺序储存或访问它们的能力。</p>
-<p>理解为一个很牛逼的数组就行了。</p>
-<p>下面是顺序容器的类型和特点：</p>
-<table>
-<thead>
-<tr>
-<th>容器类型</th>
-<th>特点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>vector</td>
-<td>大小可变，可以增添或删除，可以随机访问。在尾部之外的地方插入数据可能很慢。</td>
-</tr>
-<tr>
-<td>deque</td>
-<td>双端队列，在头部插入数据很快。</td>
-</tr>
-<tr>
-<td>list</td>
-<td>双向链表，在任何位置插入数据很快，但访问很慢。</td>
-</tr>
-<tr>
-<td>forward_list</td>
-<td>单向链表，只支持单向数据访问，在任何位置插入数据很快。</td>
-</tr>
-<tr>
-<td>array</td>
-<td>固定数组，无法变化大小，可随机访问。</td>
-</tr>
-<tr>
-<td>string</td>
-<td>类似于vector<string></td>
-</tr>
-</tbody></table>
-<p>应在不同情况下选择不同的容器，一般除非有特殊理由，则使用vector。避免使用数组，容器的数据处理效率要大于数组。如果不确定应选择何种容器，则在只使用vector和list的情况下使用迭代器（而不是下标访问）。</p>
-<h3 id="顺序容器的迭代器"><a href="#顺序容器的迭代器" class="headerlink" title="顺序容器的迭代器"></a>顺序容器的迭代器</h3><p>所有的容器迭代器都有++操作，–仅forward_list不支持（无法双向访问）。支持随机访问的迭代器才能使用+, -运算符。</p>
-<p>可以对迭代器使用&lt;, &lt;=, &gt;, =&gt;运算符，但list和forward_list不支持。</p>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-C++学习笔记/STL标准模板库/概念，改进和模型，深入探讨迭代器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/">概念，改进和模型，深入探讨迭代器</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-05T10:28:29.000Z" itemprop="datePublished">2023-04-05</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            530 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <h3 id="概念，改进和模型"><a href="#概念，改进和模型" class="headerlink" title="概念，改进和模型"></a>概念，改进和模型</h3><p>STL有着许多个c++术语无法描述的特性。</p>
-<p>就迭代器而言，它可以是一个指针，一个结构，一个类。它无法用一个确切的“类型”来形容，只是存在一类需要这种东西来满足需求。C++将这种东西称作“概念”。</p>
-<p>正向迭代器是一个类，输入迭代器也是一个类，但正向迭代器拥有输入迭代器所有的功能，这可以看成一种继承关系。但是两个概念之间的继承是没有意义的，但可以将正向迭代器看成输入迭代器的“改进”。</p>
-<p>概念的具体实现形式为模型。若某样东西满足了概念的所有需求，它即为该概念的一个“模型”。</p>
-<p><code>int* ps = new int(3)</code></p>
-<p>ps指针可以随机访问，可以读写，它就可以看成随机迭代器的一个模型。</p>
-<h3 id="深入讨论迭代器"><a href="#深入讨论迭代器" class="headerlink" title="深入讨论迭代器"></a>深入讨论迭代器</h3><h4 id="1-将指针用于迭代器"><a href="#1-将指针用于迭代器" class="headerlink" title="1.将指针用于迭代器"></a>1.将指针用于迭代器</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> NUM = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> rec[NUM] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="built_in">sort</span> (rec, rec + NUM);  <span class="comment">//rec + NUM即数组超尾，c++确保这是被定义的</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : rec)</span><br><span class="line">    cout &lt;&lt; x &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
-<p>如上所示，普通的指针可以作为迭代器使用，可以使用诸如sort()的STL方法。</p>
-<h4 id="2-copy-ostream-iterator-istream-iterator"><a href="#2-copy-ostream-iterator-istream-iterator" class="headerlink" title="2. copy(), ostream_iterator, istream_iterator"></a>2. copy(), ostream_iterator, istream_iterator</h4><p>未完……先学后面</p>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-C++学习笔记/STL标准模板库/vector模板库和迭代器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/vector%E6%A8%A1%E6%9D%BF%E5%BA%93%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8/">vector模板库和迭代器</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-04T11:31:27.000Z" itemprop="datePublished">2023-04-04</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <p>STL（Standard Template Library）标准模板库提供了容器，迭代器，函数对象和算法的模板，这些组成了一种不同于OOP的编程思想：泛型编程。</p>
-<h3 id="模板类vector"><a href="#模板类vector" class="headerlink" title="模板类vector"></a>模板类vector</h3><p>vector可以译作“向量“（事实上在UE4中确实如此），但它实际对应数组。vector储存了一组可随机访问的值，可以对它使用[], *等运算符来访问数据。</p>
-<p>要创建vector对象，需要使用<type>表示法来指出需要的类型。可以使用初始化参数指出需要储存多少数据。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">rating</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">score</span><span class="params">(n)</span></span>;   <span class="comment">//n为变量</span></span><br></pre></td></tr></table></figure>
-
-<p>可以通过数组表示法访问各个成员。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rating[<span class="number">0</span>] = <span class="number">1.3</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cout &lt;&lt; rating[i];</span><br></pre></td></tr></table></figure>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/vector%E6%A8%A1%E6%9D%BF%E5%BA%93%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-C++学习笔记/STL标准模板库/智能指针模板类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/">智能指针模板类</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-04-04T09:42:46.000Z" itemprop="datePublished">2023-04-04</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.8k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <h3 id="1-智能指针的作用"><a href="#1-智能指针的作用" class="headerlink" title="1.智能指针的作用"></a>1.智能指针的作用</h3><p>智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。</p>
-<p>如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::string * ps = <span class="keyword">new</span> <span class="built_in">string</span>(str);</span><br><span class="line"><span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (i = <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span>();  <span class="comment">//若引发异常，delete将不被执行。</span></span><br><span class="line"><span class="keyword">delete</span> ps;  </span><br></pre></td></tr></table></figure>
+在书后习题中还有一个函数coun ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/06/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" title="顺序容器">顺序容器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-06T06:13:41.000Z" title="发表于 2023-04-06 14:13:41">2023-04-06</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-13T10:02:39.174Z" title="更新于 2023-04-13 18:02:39">2023-04-13</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/c/">c++</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/STL/">STL</a></span></div><div class="content">顺序容器的分类容器特定对象（包括内置数据类型，结构，类等）的集合。顺序容器则提供了按顺序储存或访问它们的能力。
+理解为一个很牛逼的数组就行了。
+下面是顺序容器的类型和特点：
 
 
 
-<h3 id="2-使用智能指针"><a href="#2-使用智能指针" class="headerlink" title="2.使用智能指针"></a>2.使用智能指针</h3><p>智能指针共有四种：auto_ptr, unique_ptr, share_ptr, weak_ptr。其中auto_ptr已被抛弃，weak_ptr不作讨论。</p>
-<h4 id="2-1-创建智能指针对象"><a href="#2-1-创建智能指针对象" class="headerlink" title="2.1 创建智能指针对象"></a>2.1 创建智能指针对象</h4><p>智能指针作为模板类，应使用模板类语法：</p>
-<p><code>auto_ptr&lt;Type&gt; name(new Type);</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">auto_ptr&lt;<span class="type">double</span>&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> <span class="type">double</span>)</span></span>;</span><br><span class="line"><span class="function">atuo_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(<span class="keyword">new</span> string)</span></span>;</span><br></pre></td></tr></table></figure>
+容器类型
+特点
 
 
 
-<p>所有智能指针类都有一个explicit构造函数，避免将普通指针直接转换为智能指针（但可以使用普通指针为参量的构造函数）。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shared_ptr&lt;<span class="type">double</span>&gt; pd;</span><br><span class="line"><span class="type">double</span>* ps = <span class="keyword">new</span> <span class="type">double</span>;</span><br><span class="line">pd = ps;                      <span class="comment">//非法</span></span><br><span class="line">pd = <span class="built_in">shared_ptr</span>&lt;<span class="type">double</span>&gt; (ps); <span class="comment">//合法</span></span><br><span class="line">shared_ptr&lt;<span class="type">double</span>&gt; ptr = ps;  <span class="comment">//非法</span></span><br><span class="line"><span class="function">shared_ptr&lt;<span class="type">double</span>&gt; <span class="title">ptr</span><span class="params">(ps)</span></span>;   <span class="comment">//合法</span></span><br></pre></td></tr></table></figure>
+vector
+大小可变，可以增添或删除，可以随机访问。在尾部之外的地方插入数据可能很慢。
+
+
+deque
+双端队列，在头部插入数据很快。
+
+
+list
+双向链表，在任何位置插入数据很快，但访问很慢。
+
+
+forward_list
+单向链表，只支持单向数据访问，在任何位置插入数据很快。
+
+
+array
+固定数组，无法变化大小，可随机访问。
+
+
+string
+类似于vector
+
+
+应在不同情况下选择不同的容器，一般除非有特殊理由，则使用vector。避免使用数组，容器的数据处理效率要大于数组。如果不确定应选择何种容器，则在只使用vector和list的情况下使用迭代器（而不是下标访问）。
+顺序容器的迭代器所有的容器迭代器都有++操作，–仅forward_list不支持（无法双向访问）。支持随机访问的迭代器才能使用+, -运算符。
+可以对迭代器使用&lt;, &lt;=, &gt;, =&g ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/05/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%A6%82%E5%BF%B5%EF%BC%8C%E6%94%B9%E8%BF%9B%E5%92%8C%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/" title="概念，改进和模型，深入探讨迭代器">概念，改进和模型，深入探讨迭代器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-05T10:28:29.000Z" title="发表于 2023-04-05 18:28:29">2023-04-05</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-13T10:03:13.456Z" title="更新于 2023-04-13 18:03:13">2023-04-13</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/c/">c++</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/STL/">STL</a></span></div><div class="content">概念，改进和模型STL有着许多个c++术语无法描述的特性。
+就迭代器而言，它可以是一个指针，一个结构，一个类。它无法用一个确切的“类型”来形容，只是存在一类需要这种东西来满足需求。C++将这种东西称作“概念”。
+正向迭代器是一个类，输入迭代器也是一个类，但正向迭代器拥有输入迭代器所有的功能，这可以看成一种继承关系。但是两个概念之间的继承是没有意义的，但可以将正向迭代器看成输入迭代器的“改进”。
+概念的具体实现形式为模型。若某样东西满足了概念的所有需求，它即为该概念的一个“模型”。
+int* ps = new int(3)
+ps指针可以随机访问，可以读写，它就可以看成随机迭代器的一个模型。
+深入讨论迭代器1.将指针用于迭代器12345const int NUM = 5;int rec[NUM] = &#123;1, 2, 4, 3, 0&#125;;sort (rec, rec + NUM);  //rec + NUM即数组超尾，c++确保这是被定义的for (int x : rec)    cout &lt;&lt; x &lt;&lt; endl;
+
+如上所示，普通的指针可以作为迭代 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/vector%E6%A8%A1%E6%9D%BF%E5%BA%93%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8/" title="vector模板库和迭代器">vector模板库和迭代器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-04T11:31:27.000Z" title="发表于 2023-04-04 19:31:27">2023-04-04</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-13T10:02:49.982Z" title="更新于 2023-04-13 18:02:49">2023-04-13</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/c/">c++</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/STL/">STL</a></span></div><div class="content">STL（Standard Template Library）标准模板库提供了容器，迭代器，函数对象和算法的模板，这些组成了一种不同于OOP的编程思想：泛型编程。
+模板类vectorvector可以译作“向量“（事实上在UE4中确实如此），但它实际对应数组。vector储存了一组可随机访问的值，可以对它使用[], *等运算符来访问数据。
+要创建vector对象，需要使用表示法来指出需要的类型。可以使用初始化参数指出需要储存多少数据。
+12345#include &lt;vector&gt;using namespace std;vector&lt;double&gt; rating(5);vector&lt;int&gt; score(n);   //n为变量
+
+可以通过数组表示法访问各个成员。
+12rating[0] = 1.3;for (int i = 0; i &lt; n; i++) cout &lt;&lt; rating[i];
 
 
 
-<p><strong>注意：智能指针必须使用new，否则将对非堆内存使用 delete</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">str</span><span class="params">(<span class="string">&quot;你说的对&quot;</span>)</span></span>;</span><br><span class="line"><span class="function">auto_ptr&lt;string&gt; <span class="title">ps</span><span class="params">(&amp;str)</span></span>; <span class="comment">//非法！</span></span><br></pre></td></tr></table></figure>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-UE4学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">UE4学习笔记</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-03-27T11:06:15.000Z" itemprop="datePublished">2023-03-27</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            6.3k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <h2 id="从零开始的FPS"><a href="#从零开始的FPS" class="headerlink" title="从零开始的FPS"></a>从零开始的FPS</h2><h3 id="一、创建材质-amp-为Actor附加材质"><a href="#一、创建材质-amp-为Actor附加材质" class="headerlink" title="一、创建材质 &amp; 为Actor附加材质"></a>一、创建材质 &amp; 为Actor附加材质</h3><p>创建 材质 蓝图后，查找</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VectorParameter <span class="comment">//设置颜色</span></span><br><span class="line">ScalarParameter <span class="comment">//设置高光度与粗糙度 (推荐默认值0.1)</span></span><br></pre></td></tr></table></figure>
+迭代器迭代器是一个对象，但它具有指针的性质，可以认为它是一个广义指针。可以对其使用operator*(), operator++()等。将指针 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/04/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%A8%A1%E6%9D%BF%E7%B1%BB/" title="智能指针模板类">智能指针模板类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-04T09:42:46.000Z" title="发表于 2023-04-04 17:42:46">2023-04-04</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-13T10:03:02.492Z" title="更新于 2023-04-13 18:03:02">2023-04-13</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/c/">c++</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/STL/">STL</a></span></div><div class="content">1.智能指针的作用智能指针可以自动释放内存，避免了忘记使用delete的情况。同时可以避免引发异常退出导致的内存泄漏。
+如：
+12345std::string * ps = new string(str);int i = 0;if (i = 0)    throw();  //若引发异常，delete将不被执行。delete ps;  
 
 
 
-<h3 id="二、在发生碰撞时改变Actor的材质"><a href="#二、在发生碰撞时改变Actor的材质" class="headerlink" title="二、在发生碰撞时改变Actor的材质"></a>二、在发生碰撞时改变Actor的材质</h3><p>创建Actor的蓝图，打开事件图表。</p>
-<p>查找 <code> 事件命中</code> 以及<code>设置材质</code></p>
-<p>连接二者，编译运行，此Actor在任何目标碰撞时都会改变颜色。</p>
-<h4 id="优化1：仅响应子弹（FirstPersonProjectile）的碰撞"><a href="#优化1：仅响应子弹（FirstPersonProjectile）的碰撞" class="headerlink" title="优化1：仅响应子弹（FirstPersonProjectile）的碰撞"></a>优化1：仅响应子弹（FirstPersonProjectile）的碰撞</h4><p>查找 <code>类型转换为FirstPersonProjectile</code>，连接<code>事件命中</code>的 <em>Other</em> 输出引脚和其<em>Object</em> 输入引脚。</p>
-<h4 id="优化2：两种颜色来回切换"><a href="#优化2：两种颜色来回切换" class="headerlink" title="优化2：两种颜色来回切换"></a>优化2：两种颜色来回切换</h4><p>查找<code>Flip Flop</code>，连接A和B引脚至两个<code>设置材质</code></p>
-<h4 id="优化3：在击中两次后销毁"><a href="#优化3：在击中两次后销毁" class="headerlink" title="优化3：在击中两次后销毁"></a>优化3：在击中两次后销毁</h4><p>创建bool类型变量（命名为isHited，默认值false）用于储存 <strong>是否击中过</strong>  这一信息。</p>
-<p>查找<code>分支</code>，<em>False</em>引脚后设置isHited为真（表示击中过），连接<code>设置材质</code>；<em>True</em>引脚连接<code>销毁Actor</code>。</p>
-<h5 id="优化3-1：在击中后添加音效和特效"><a href="#优化3-1：在击中后添加音效和特效" class="headerlink" title="优化3.1：在击中后添加音效和特效"></a>优化3.1：在击中后添加音效和特效</h5><p>依次搜索<br><code>在位置处生成音效</code>和<code>在位置处生成发射器</code>，将<em>Location</em>输入引脚依次和<code>事件命中</code>的<em>Hit Location</em>输出引脚相连（生成位置为碰撞处）。</p>
-<h5 id="优化3-2：为摧毁的Actor计数"><a href="#优化3-2：为摧毁的Actor计数" class="headerlink" title="优化3.2：为摧毁的Actor计数"></a>优化3.2：为摧毁的Actor计数</h5><p>创建int类型变量hitCount，默认值0，用于储存 <strong>击中次数</strong>。</p>
-<p>在<code>销毁Actor</code>后连接<code>设置Hit Count</code>，将变量拖到蓝图中，选择获取变量，连接<code>整数+整数</code>并将值设置为1，在连接<code>设置Hit Count</code>与<code>整数+整数</code>。</p>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
+2.使用智能指针智能指针共有四种：auto_ptr, unique_ptr, share_ptr, weak_ptr。其中auto_ptr已被抛弃，weak_ptr不作讨论。
+2.1 创建智能指针对象智能指针作为模板类，应使用模板类语法：
+auto_ptr&lt;Type&gt; name(new Type);
+12auto_ptr&lt;double&gt; ps(new double);atuo_ptr&lt;string&gt; ps(new string);
 
 
-  <nav id="page-nav">
-    <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
-    <a id="prev-btn" class="page-nav-btn " href=" /  ">
-      <i class="fa-solid fa-angle-left"></i>
-    </a>
-    <div id="num-bar">
-      <a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a>  
-    </div>
-    <a id="next-btn" class="page-nav-btn " href="/page/3/">
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-  </nav>
+
+所有智能指针类都有一个explicit构造函数，避免将普通指针直接转换为智能指针（但可以使用普通指针为参量的构造函数）。
+123456shared_ptr&lt;double& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/27/UE4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="UE4学习笔记">UE4学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-27T11:06:15.000Z" title="发表于 2023-03-27 19:06:15">2023-03-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-04T01:08:22.993Z" title="更新于 2023-04-04 09:08:22">2023-04-04</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Unreal-Engine/">Unreal Engine</a></span></div><div class="content">从零开始的FPS一、创建材质 &amp; 为Actor附加材质创建 材质 蓝图后，查找
+12VectorParameter //设置颜色ScalarParameter //设置高光度与粗糙度 (推荐默认值0.1)
 
 
-    </div>
-    <div id="footer-wrapper">
-      <footer id="footer">
-  
-  <div id="footer-info" class="inner">
-    
-    &copy; 2023 JS_KringKoter<br>
-    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
-  </div>
-</footer>
 
-    </div>
-    <div class="back-to-top-wrapper">
-    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
-        <i class="fa-solid fa-angle-up"></i>
-    </button>
-</div>
-
-<script>
-    function topFunction() {
-        window.scroll({ top: 0, behavior: 'smooth' });
+二、在发生碰撞时改变Actor的材质创建Actor的蓝图，打开事件图表。
+查找  事件命中 以及设置材质
+连接二者，编译运行，此Actor在任何目标碰撞时都会改变颜色。
+优化1：仅响应子弹（FirstPersonProjectile）的碰撞查找 类型转换为FirstPersonProjectile，连接事件命中的 Other 输出引脚和其Object 输入引脚。
+优化2：两种颜色来回切换查找Flip Flop，连接A和B引脚至两个设置材质
+优化3：在击中两次后销毁创建bool类型变量（命名为isHited，默认值false）用于储存 是否击中过  这一信息。
+查找分支，False引脚后设置isHited为真（表示击中过），连接设置材质；True引脚连接销毁Actor。
+优化3.1：在击中后添加音效和特效依次搜索在位置处生成音效和在位置处生成发射器，将Location输入 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/JSKringKoter/JSKringKoter.github.io/blob/main/img/avatar.jpg?raw=true" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JS_KringKoter</div><div class="author-info__description">山 海 行 人</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JSKringKoter" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2265757077@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="前端工程化">前端工程化</a><time datetime="2023-09-21T08:25:29.000Z" title="发表于 2023-09-21 16:25:29">2023-09-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/18/HTML/" title="HTML">HTML</a><time datetime="2023-09-18T08:00:23.000Z" title="发表于 2023-09-18 16:00:23">2023-09-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/%E6%96%87%E7%AB%A0/%E9%BB%84%E6%98%8F%E7%9A%84%E9%AD%94%E6%9C%AF%E5%B8%88/" title="黄昏的魔术师">黄昏的魔术师</a><time datetime="2023-09-13T01:02:45.000Z" title="发表于 2023-09-13 09:02:45">2023-09-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/31/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E6%A2%A6/" title="Galgame：《天空之梦·Dreamland Sky》">Galgame：《天空之梦·Dreamland Sky》</a><time datetime="2023-08-31T07:17:46.000Z" title="发表于 2023-08-31 15:17:46">2023-08-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/31/%E6%96%87%E7%AB%A0/%E7%A9%BA%E7%AE%B1/" title="空箱">空箱</a><time datetime="2023-08-31T07:11:06.000Z" title="发表于 2023-08-31 15:11:06">2023-08-31</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%97%A7%E4%BD%9C%E4%B8%BA%E6%96%B0/" style="font-size: 1.2em; color: #999da3">旧作为新</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.3em; color: #99a1ac">笔记</a> <a href="/tags/c/" style="font-size: 1.5em; color: #99a9bf">c++</a> <a href="/tags/Java/" style="font-size: 1.1em; color: #999">Java</a> <a href="/tags/%E6%95%A3%E6%96%87/" style="font-size: 1.1em; color: #999">散文</a> <a href="/tags/HTML/" style="font-size: 1.1em; color: #999">HTML</a> <a href="/tags/%E5%B0%8F%E8%AF%B4/" style="font-size: 1.4em; color: #99a5b6">小说</a> <a href="/tags/Unreal-Engine/" style="font-size: 1.1em; color: #999">Unreal Engine</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 1.1em; color: #999">并发</a> <a href="/tags/%E9%9F%B3%E4%B9%90%F0%9F%8E%B6/" style="font-size: 1.1em; color: #999">音乐🎶</a> <a href="/tags/python/" style="font-size: 1.1em; color: #999">python</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.2em; color: #999da3">前端</a> <a href="/tags/STL/" style="font-size: 1.3em; color: #99a1ac">STL</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">7</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">26</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">97.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-09-24T06:55:23.176Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By JS_KringKoter</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">人活着就是为了秋千·荷尔特</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
     }
-    let btn = document.getElementById('back-to-top-btn');
-    function scrollFunction() {
-        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-            btn.classList.remove('hide')
-        } else {
-            btn.classList.add('hide')
-        }
-    }
-    window.onscroll = function() {
-        scrollFunction();
-    }
-</script>
-
-  </div>
-  <script src="/js/light-dark-switch.js"></script>
-</body>
-</html>
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["“他仍是山行人，仍是一袭白衣。”","“如果我说，这其实是魔法，晓先生会相信吗？”","“铁路修了很多年，如今仍在修着。”","“山河皆有幸。”"])
+  } else {
+    document.getElementById("subtitle").textContent = "“他仍是山行人，仍是一袭白衣。”"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
