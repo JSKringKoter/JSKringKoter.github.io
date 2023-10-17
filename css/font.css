@@ -3,3 +3,10 @@
   font-display: swap;
   src: url('/css/小豆岛秋日和简繁-闪.ttf') format("truetype");  
 }
+
+@font-face {
+  font-family: 'Roboto Mono Medium';
+  font-display: swap;
+  src: url('/css/Roboto Mono Medium.ttf') format("truetype");  
+}
+
