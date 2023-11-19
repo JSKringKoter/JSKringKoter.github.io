@@ -1,0 +1,6 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://jskring.top/sitemap.xml
+Sitemap: https://jskring.top/baidusitemap.xml
