@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jskring.top/about/index.html</loc>
+    
+    <lastmod>2024-02-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jskring.top/posts/62277.html</loc>
     
     <lastmod>2024-02-01</lastmod>
@@ -410,15 +419,6 @@
     <loc>https://jskring.top/posts/9.html</loc>
     
     <lastmod>2023-11-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jskring.top/about/index.html</loc>
-    
-    <lastmod>2023-11-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
